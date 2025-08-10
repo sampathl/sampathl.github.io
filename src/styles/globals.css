@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme tokens - Color palette from theme.ts */
+:root {
+  /* Theme Colors - Light Mode */
+  --bg: 253 247 228;
+  --fg: 44 44 44;
+  --muted: 95 99 104;
+  --accent: 187 171 140;
+  --surface: 250 238 209;
+  --hover: 248 248 240;
+  --secondary: 222 208 182;
+  --navbar: 187 171 140;
+  --hover-border: 222 208 182;
+  
+  /* Layout Variables - Dynamic Spacing */
+  --sidebar-width: 320px;
+  --sidebar-collapsed-width: 80px;
+  --main-padding-x: 2rem;
+  --main-padding-y: 3rem;
+  --content-max-width: 1200px;
+  --section-spacing: 4rem;
+  
+  /* Responsive Breakpoints */
+  --mobile: 640px;
+  --tablet: 768px;
+  --desktop: 1024px;
+  --wide: 1280px;
+}
+
+[data-theme="dark"] {
+  --bg: 26 26 26;
+  --fg: 223 208 184;
+  --muted: 176 176 176;
+  --accent: 148 137 121;
+  --surface: 40 44 52;
+  --hover: 57 62 70;
+  --secondary: 57 62 70;
+  --navbar: 57 62 70;
+  --hover-border: 148 137 121;
+}
+
+/* Sidebar Collapsed State */
+[data-sidebar-collapsed="true"] {
+  --sidebar-width: 80px;
+}
+
+/* Layout Container */
+.layout-container {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  min-height: 100vh;
+  transition: grid-template-columns 0.3s ease-in-out;
+}
+
+.layout-container[data-sidebar-collapsed="true"] {
+  grid-template-columns: var(--sidebar-collapsed-width) 1fr;
+}
+
+/* Main Content Area */
+.main-content {
+  min-height: 100vh;
+  padding: var(--main-padding-y) var(--main-padding-x);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive Layout Adjustments */
+@media (max-width: 1023px) {
+  .layout-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-content {
+    padding-left: calc(var(--main-padding-x) + 1rem);
+    padding-right: var(--main-padding-x);
+  }
+}
+
+/* Section Spacing */
+section {
+  margin-bottom: var(--section-spacing);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+  scroll-margin-top: 80px;
+}
+
+/* Content Pane Widths - Dynamic based on sidebar state */
+.content-pane {
+  width: 90%;
+  max-width: 90%;
+  transition: width 0.3s ease-in-out;
+}
+
+@media (max-width: 1023px) {
+  .content-pane {
+    width: 100% !important;
+  }
+}
+
+/* Ensure smooth transitions for all layout changes */
+.layout-container,
+.content-pane,
+.main-content {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Base styles */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Work Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  background-color: rgb(var(--bg));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.main-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Section animation delays - Dynamic */
+section:nth-child(1) { animation-delay: 0.1s; }
+section:nth-child(2) { animation-delay: 0.2s; }
+section:nth-child(3) { animation-delay: 0.3s; }
+section:nth-child(4) { animation-delay: 0.4s; }
+section:nth-child(5) { animation-delay: 0.5s; }
+section:nth-child(6) { animation-delay: 0.6s; }
+
+/* Custom scrollbar - Consolidated */
+.main-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: rgb(var(--secondary));
+  border-radius: 4px;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: rgb(var(--muted));
+  border-radius: 4px;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--accent));
+}
+
+/* Selection styles */
+::selection {
+  background: rgb(var(--accent));
+  color: rgb(var(--bg));
+}
+
+/* Theme-based image switching - Simplified */
+[data-theme="light"] [data-theme="light"],
+[data-theme="dark"] [data-theme="dark"] {
+  opacity: 1;
+}
+
+[data-theme="light"] [data-theme="dark"],
+[data-theme="dark"] [data-theme="light"] {
+  opacity: 0;
+}
+
+/* Hero section styles */
+.hero-pane {
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes heroEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tech-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+.tech-icon:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.tech-icon:nth-child(3) {
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Ensure content panes have proper spacing */
+section > div {
+  margin: 0 auto;
+}
+
+/* Typography hierarchy matching theme.ts */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 600;
+}
+
+p, span, div, button, input, textarea {
+  font-family: "Inter", sans-serif;
+}
+
+/* Enhanced hover effects matching theme.ts */
+.hover-effect {
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.hover-effect:hover {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
