@@ -1,6 +1,7 @@
 import { useLayout } from './Layout'
 import { cn } from '../lib/cn'
-import MaterialIcon from './MaterialIcon'
+import { motion } from 'framer-motion'
+import { MdLocationOn, MdWork, MdSchool } from 'react-icons/md'
 
 export default function AboutSection() {
   const { isCollapsed } = useLayout()
@@ -31,17 +32,17 @@ export default function AboutSection() {
             I'm passionate about clean code, system design, and creating tools that developers love to use.
           </p>
           <div className="space-y-3">
-            <div className="flex items-center gap-3">
-              <MaterialIcon name="location_on" className="text-[rgb(var(--accent))]" />
-              <span className="text-[rgb(var(--fg))]" style={{ fontFamily: '"Inter", sans-serif' }}>San Francisco Bay Area</span>
+            <div className="flex items-center gap-2 text-[rgb(var(--muted))]">
+              <MdLocationOn className="text-[rgb(var(--accent))]" />
+              <span>San Francisco, CA</span>
             </div>
-            <div className="flex items-center gap-3">
-              <MaterialIcon name="work" className="text-[rgb(var(--accent))]" />
-              <span className="text-[rgb(var(--fg))]" style={{ fontFamily: '"Inter", sans-serif' }}>Available for new opportunities</span>
+            <div className="flex items-center gap-2 text-[rgb(var(--muted))]">
+              <MdWork className="text-[rgb(var(--accent))]" />
+              <span>5+ years experience</span>
             </div>
-            <div className="flex items-center gap-3">
-              <MaterialIcon name="school" className="text-[rgb(var(--accent))]" />
-              <span className="text-[rgb(var(--fg))]" style={{ fontFamily: '"Inter", sans-serif' }}>B.S. Computer Science, UC Berkeley</span>
+            <div className="flex items-center gap-2 text-[rgb(var(--muted))]">
+              <MdSchool className="text-[rgb(var(--accent))]" />
+              <span>Computer Science Degree</span>
             </div>
           </div>
         </div>

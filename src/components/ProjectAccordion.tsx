@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import MaterialIcon from './MaterialIcon'
+import { MdExpandLess, MdExpandMore, MdDataUsage, MdAnalytics, MdPsychology } from 'react-icons/md'
 import { cn } from '../lib/cn'
 
 interface ProjectAccordionProps {
@@ -11,6 +11,18 @@ interface ProjectAccordionProps {
     status: 'active' | 'completed' | 'disabled'
     icon: string
   }[]
+}
+
+// Function to map icon names to React Icons components
+const getProjectIcon = (iconName: string) => {
+  const iconMap: { [key: string]: React.ComponentType<any> } = {
+    'data_usage': MdDataUsage,
+    'analytics': MdAnalytics,
+    'psychology': MdPsychology,
+    // Add more mappings as needed
+  }
+  
+  return iconMap[iconName] || MdDataUsage // Default fallback
 }
 
 export default function ProjectAccordion({ projects }: ProjectAccordionProps) {
@@ -53,15 +65,19 @@ export default function ProjectAccordion({ projects }: ProjectAccordionProps) {
                   ? "bg-[rgb(var(--muted))]" 
                   : "bg-[rgb(var(--accent))]"
               )}>
-                <MaterialIcon 
-                  name={project.icon} 
-                  className={cn(
-                    "text-lg",
-                    project.status === 'disabled' 
-                      ? "text-[rgb(var(--muted))]" 
-                      : "text-white"
-                  )} 
-                />
+                {(() => {
+                  const IconComponent = getProjectIcon(project.icon)
+                  return (
+                    <IconComponent 
+                      className={cn(
+                        "text-lg",
+                        project.status === 'disabled' 
+                          ? "text-[rgb(var(--muted))]" 
+                          : "text-white"
+                      )} 
+                    />
+                  )
+                })()}
               </div>
               <div>
                 <h3 className={cn(
@@ -88,10 +104,7 @@ export default function ProjectAccordion({ projects }: ProjectAccordionProps) {
             </div>
             
             {project.status !== 'disabled' && (
-              <MaterialIcon 
-                name={expandedId === project.id ? "expand_less" : "expand_more"} 
-                className="text-[rgb(var(--accent))] text-xl transition-transform duration-200" 
-              />
+              expandedId === project.id ? <MdExpandLess className="text-[rgb(var(--accent))] text-xl transition-transform duration-200" /> : <MdExpandMore className="text-[rgb(var(--accent))] text-xl transition-transform duration-200" />
             )}
           </button>
           
@@ -101,10 +114,10 @@ export default function ProjectAccordion({ projects }: ProjectAccordionProps) {
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech) => (
+                {project.technologies.map((tech, index) => (
                   <span
-                    key={tech}
-                    className="px-3 py-1 text-sm bg-[rgb(var(--surface))] text-[rgb(var(--fg))] rounded-full border border-[rgb(var(--secondary))]"
+                    key={index}
+                    className="px-3 py-1 bg-[rgb(var(--surface))] text-[rgb(var(--fg))] rounded-full text-sm border border-[rgb(var(--secondary))]"
                   >
                     {tech}
                   </span>

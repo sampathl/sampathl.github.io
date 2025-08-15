@@ -1,6 +1,8 @@
 import { useLayout } from './Layout'
 import { cn } from '../lib/cn'
-import MaterialIcon from './MaterialIcon'
+import { motion } from 'framer-motion'
+import { FaLinkedin, FaGithub } from 'react-icons/fa'
+import { MdEmail } from 'react-icons/md'
 
 export default function ContactSection() {
   const { isCollapsed } = useLayout()
@@ -28,21 +30,21 @@ export default function ContactSection() {
           </p>
           <div className="space-y-4">
             <div className="flex items-center gap-3 p-4 rounded-lg bg-[rgb(var(--hover))]">
-              <MaterialIcon name="email" className="text-[rgb(var(--accent))] text-xl" />
+              <MdEmail className="text-[rgb(var(--accent))] text-xl" />
               <div>
                 <div className="font-medium text-[rgb(var(--fg))]" style={{ fontFamily: '"Work Sans", sans-serif' }}>Email</div>
                 <div className="text-sm text-[rgb(var(--muted))]" style={{ fontFamily: '"Inter", sans-serif' }}>sampath@example.com</div>
               </div>
             </div>
             <div className="flex items-center gap-3 p-4 rounded-lg bg-[rgb(var(--hover))]">
-              <MaterialIcon name="linkedin" className="text-[rgb(var(--accent))] text-xl" />
+              <FaLinkedin className="text-[rgb(var(--accent))] text-xl" />
               <div>
                 <div className="font-medium text-[rgb(var(--fg))]" style={{ fontFamily: '"Work Sans", sans-serif' }}>LinkedIn</div>
                 <div className="text-sm text-[rgb(var(--muted))]" style={{ fontFamily: '"Inter", sans-serif' }}>linkedin.com/in/sampath</div>
               </div>
             </div>
             <div className="flex items-center gap-3 p-4 rounded-lg bg-[rgb(var(--hover))]">
-              <MaterialIcon name="github" className="text-[rgb(var(--accent))] text-xl" />
+              <FaGithub className="text-[rgb(var(--accent))] text-xl" />
               <div>
                 <div className="font-medium text-[rgb(var(--fg))]" style={{ fontFamily: '"Work Sans", sans-serif' }}>GitHub</div>
                 <div className="text-sm text-[rgb(var(--muted))]" style={{ fontFamily: '"Inter", sans-serif' }}>github.com/sampath</div>

@@ -2,7 +2,9 @@ import { Link, NavLink } from 'react-router-dom'
 import { ThemeProvider, ThemeToggle } from './Theme'
 import { useState, useEffect, createContext, useContext } from 'react'
 import { cn } from '../lib/cn'
-import MaterialIcon from './MaterialIcon'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useLocation } from 'react-router-dom'
+import { MdViewList, MdFullscreen, MdMenu, MdChevronRight, MdChevronLeft, MdHome, MdWork, MdFolder, MdPerson, MdEmail } from 'react-icons/md'
 import { NAV_ITEMS, BREAKPOINTS, SCROLL_OFFSET } from '../lib/constants'
 
 // Enhanced context for layout state
@@ -11,13 +13,17 @@ interface LayoutContextType {
   isMobile: boolean
   isTablet: boolean
   isDesktop: boolean
+  isSinglePageMode: boolean
+  setIsSinglePageMode: (mode: boolean) => void
 }
 
 const LayoutContext = createContext<LayoutContextType>({
   isCollapsed: false,
   isMobile: false,
   isTablet: false,
-  isDesktop: false
+  isDesktop: false,
+  isSinglePageMode: false,
+  setIsSinglePageMode: () => {}
 })
 
 export const useLayout = () => useContext(LayoutContext)
@@ -25,11 +31,23 @@ export const useLayout = () => useContext(LayoutContext)
 export function Layout({ children }: { children: React.ReactNode }) {
   const [activeSection, setActiveSection] = useState('hero')
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
+  const [isSinglePageMode, setIsSinglePageMode] = useState(() => {
+    // Initialize from localStorage if available
+    const saved = localStorage.getItem('portfolio-single-page-mode')
+    return saved ? JSON.parse(saved) : false
+  })
   const [viewportInfo, setViewportInfo] = useState({
     isMobile: false,
     isTablet: false,
     isDesktop: false
   })
+
+
+
+  // Save single-page mode preference to localStorage
+  useEffect(() => {
+    localStorage.setItem('portfolio-single-page-mode', JSON.stringify(isSinglePageMode))
+  }, [isSinglePageMode])
 
   // Responsive breakpoint detection
   useEffect(() => {
@@ -106,33 +124,75 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   const layoutContextValue: LayoutContextType = {
     isCollapsed: isSidebarCollapsed,
-    ...viewportInfo
+    ...viewportInfo,
+    isSinglePageMode,
+    setIsSinglePageMode
   }
 
   return (
     <ThemeProvider>
       <LayoutContext.Provider value={layoutContextValue}>
         <div className="min-h-screen" style={{ fontFamily: '"Work Sans", "Inter", sans-serif' }}>
-          <div className={cn(
-            "layout-container",
-            isSidebarCollapsed && "data-sidebar-collapsed"
-          )}>
-            <Sidebar 
-              activeSection={activeSection} 
-              scrollToSection={scrollToSection}
-              onCollapseChange={setIsSidebarCollapsed}
-              isMobile={viewportInfo.isMobile}
-              isTablet={viewportInfo.isTablet}
-              isCollapsed={isSidebarCollapsed}
-            />
-            <main className="main-content bg-[rgb(var(--bg))] relative">
-              {/* Floating Theme Toggle - Top Right Corner */}
-              <div className="fixed top-6 right-6 z-50">
+          {isSinglePageMode ? (
+            // Single Page Mode - No sidebar, no navigation, just content
+            <main className="w-full bg-[rgb(var(--bg))] relative">
+              {/* Floating Theme Toggle and Layout Mode Toggle - Top Right Corner */}
+              <div className="fixed top-6 right-6 z-50 flex items-center gap-4">
+                {/* Layout Mode Toggle */}
+                <div className="bg-[rgb(var(--accent))] text-[rgb(var(--bg))] px-4 py-2 rounded-full shadow-lg border-2 border-[rgb(var(--accent))] hover:border-[rgb(var(--bg))] transition-all duration-300 hover:scale-105">
+                  <button
+                    onClick={() => setIsSinglePageMode(false)}
+                    className="flex items-center gap-2 font-semibold text-sm"
+                  >
+                    <MdViewList className="text-lg" />
+                    Multi-Page
+                  </button>
+                </div>
+                
+                {/* Theme Toggle */}
                 <ThemeToggle />
               </div>
+              
               {children}
             </main>
-          </div>
+          ) : (
+            // Normal Layout with Sidebar
+            <div className={cn(
+              "layout-container",
+              isSidebarCollapsed && "data-sidebar-collapsed"
+            )}>
+              <Sidebar 
+                activeSection={activeSection} 
+                scrollToSection={scrollToSection}
+                onCollapseChange={setIsSidebarCollapsed}
+                isMobile={viewportInfo.isMobile}
+                isTablet={viewportInfo.isTablet}
+                isCollapsed={isSidebarCollapsed}
+              />
+              <main className="main-content bg-[rgb(var(--bg))] relative">
+                {/* Floating Theme Toggle and Layout Mode Toggle - Top Right Corner */}
+                <div className="fixed top-6 right-6 z-50 flex items-center gap-4">
+
+                  
+                  {/* Single Page Mode Toggle */}
+                  <div className="bg-[rgb(var(--accent))] text-[rgb(var(--bg))] px-4 py-2 rounded-full shadow-lg border-2 border-[rgb(var(--accent))] hover:border-[rgb(var(--bg))] transition-all duration-300 hover:scale-105">
+                    <button
+                      onClick={() => setIsSinglePageMode(true)}
+                      className="flex items-center gap-2 font-semibold text-sm"
+                    >
+                      <MdFullscreen className="text-lg" />
+                      Single-Page
+                    </button>
+                  </div>
+                  
+                  {/* Theme Toggle */}
+                  <ThemeToggle />
+                </div>
+                
+                {children}
+              </main>
+            </div>
+          )}
         </div>
       </LayoutContext.Provider>
     </ThemeProvider>
@@ -170,6 +230,19 @@ function Sidebar({
     }
   }, [isMobile, isTablet, onCollapseChange])
 
+  // Function to map icon names to React Icons components
+  const getNavIcon = (iconName: string) => {
+    const iconMap: { [key: string]: React.ComponentType<any> } = {
+      'home': MdHome,
+      'work': MdWork,
+      'folder': MdFolder,
+      'person': MdPerson,
+      'email': MdEmail,
+    }
+    
+    return iconMap[iconName] || MdHome
+  }
+
   return (
     <>
       {/* Mobile Menu Button */}
@@ -178,7 +251,7 @@ function Sidebar({
           className="lg:hidden fixed top-4 left-4 z-50 p-3 rounded-xl bg-[rgb(var(--surface))] backdrop-blur-sm border border-[rgb(var(--hover-border))] shadow-lg hover:border-[rgb(var(--accent))] transition-all duration-300"
           onClick={() => setIsMobileOpen(!isMobileOpen)}
         >
-          <MaterialIcon name="menu" className="text-lg" />
+          <MdMenu className="text-lg" />
         </button>
       )}
 
@@ -238,7 +311,7 @@ function Sidebar({
                 onClick={() => onCollapseChange(!isCollapsed)}
                 className="p-2 rounded-lg hover:bg-[rgb(var(--hover))] transition-colors"
               >
-                <MaterialIcon name={isCollapsed ? "chevron_right" : "chevron_left"} className="text-lg" />
+                {isCollapsed ? <MdChevronRight className="text-lg" /> : <MdChevronLeft className="text-lg" />}
               </button>
             )}
           </div>
@@ -281,13 +354,17 @@ function Sidebar({
                     "flex items-center justify-center transition-all duration-300",
                     isActive && "animate-pulse"
                   )}>
-                    <MaterialIcon 
-                      name={item.icon} 
-                      className={cn(
-                        "text-lg flex-shrink-0 transition-all duration-300",
-                        isActive ? "scale-110" : "group-hover:scale-110"
-                      )} 
-                    />
+                    {(() => {
+                      const IconComponent = getNavIcon(item.icon)
+                      return (
+                        <IconComponent 
+                          className={cn(
+                            "text-lg flex-shrink-0 transition-all duration-300",
+                            isActive ? "scale-110" : "group-hover:scale-110"
+                          )} 
+                        />
+                      )
+                    })()}
                   </div>
                   
                   {!isCollapsed && (

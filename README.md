@@ -40,6 +40,7 @@ sampath-portfolio/
     components/
       ImpactCard.tsx
       Layout.tsx
+      SinglePageLayout.tsx         # immersive experience, no sidebar
       ScrollScrubVideo.tsx
       Theme.tsx
     lib/
@@ -67,7 +68,20 @@ sampath-portfolio/
 
 ## Architecture: Dual Navigation Pattern
 
-This portfolio uses a **hybrid navigation approach** that combines single-page scrolling with traditional routing:
+This portfolio uses a **two-tier navigation approach** that provides flexibility for different user preferences:
+
+### 1. Multi-Page Mode (Traditional)
+- **`/`** - Home page with scrollable sections
+- **`/projects`** - Full projects listing  
+- **`/writing`** - Complete writing archive
+- **`/about`** - Detailed about page
+- **`/contact`** - Dedicated contact form
+- **Features**: Full sidebar navigation, traditional routing, bookmarkable URLs
+
+### 2. Single-Page Mode (Immersive)
+- **Clean, distraction-free experience**
+- **Features**: No sidebar, no navigation, minimal UI controls, full-screen content immersion
+- **Perfect for**: Presentations, demos, focused reading, portfolio showcases
 
 ### Home Page Sections (Scroll-Based)
 - **`hero`** - Introduction and main call-to-action
@@ -82,8 +96,10 @@ This portfolio uses a **hybrid navigation approach** that combines single-page s
 - **`/contact`** - Dedicated contact form
 
 ### Why This Pattern?
+- **Flexibility**: Users can choose their preferred browsing experience
 - **Quick Overview**: Users see everything important on home page without clicking
 - **Deep Dive**: Users navigate to dedicated pages for detailed content
+- **Immersive Experience**: Single-page mode removes distractions for focused viewing
 - **SEO Friendly**: Separate URLs for different content types
 - **Bookmarkable**: Users can bookmark specific sections
 - **Performance**: Home page loads quickly with essential content
@@ -111,8 +127,16 @@ Add MDX files under `src/writing` (you can create the folder) and import them in
 ### Theme
 Colors are CSS variables in `src/styles/globals.css`. The light theme mirrors a warm Marugame-like feel; dark mirrors a restrained OpenAI vibe. Toggle lives in `Theme.tsx` and is used in the sidebar.
 
+### Layout Modes
+
+The portfolio offers two distinct layout modes accessible via floating buttons in the top-right corner:
+
+1. **Multi-Page Mode**: Traditional navigation with sidebar and routing
+
+3. **Single-Page Mode**: Immersive experience with no sidebar or navigation
+
 ### Mobile behavior
-On small screens the sidebar collapses into a compact bar with a Menu button. Hit areas are large and content uses stacked layout.
+On small screens the sidebar collapses into a compact bar with a Menu button. Hit areas are large and content uses stacked layout. All layout modes are fully responsive.
 
 ## SEO & performance
 

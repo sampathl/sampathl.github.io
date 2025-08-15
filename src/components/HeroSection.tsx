@@ -1,6 +1,14 @@
 import { useLayout } from './Layout'
 import { cn } from '../lib/cn'
-import MaterialIcon from './MaterialIcon'
+import { motion } from 'framer-motion'
+import { 
+  MdFolder, 
+  MdDownload, 
+  MdEmail, 
+  MdCode, 
+  MdDataUsage, 
+  MdApi 
+} from 'react-icons/md'
 
 // Scroll to section function
 const scrollToSection = (sectionId: string) => {
@@ -62,24 +70,30 @@ export default function HeroSection() {
               className="px-6 py-3 rounded-xl bg-white/20 backdrop-blur-sm text-white font-medium hover:bg-white/30 hover:scale-105 transition-all duration-300 flex items-center gap-2 border border-white/30"
               style={{ fontFamily: '"Work Sans", sans-serif' }}
             >
-              <MaterialIcon name="folder" className="text-lg" />
-              See Projects
+              <div className="flex items-center gap-2 text-[rgb(var(--muted))]">
+                <MdFolder className="text-lg" />
+                <span>View Projects</span>
+              </div>
             </button>
             <a 
               href="/cv/Sampath_Lakkaraju_CV.pdf" 
               className="px-6 py-3 rounded-xl bg-white/20 backdrop-blur-sm text-white font-medium hover:bg-white/30 hover:scale-105 transition-all duration-300 flex items-center gap-2 border border-white/30"
               style={{ fontFamily: '"Work Sans", sans-serif' }}
             >
-              <MaterialIcon name="download" className="text-lg" />
-              Download CV
+              <div className="flex items-center gap-2 text-[rgb(var(--muted))]">
+                <MdDownload className="text-lg" />
+                <span>Download CV</span>
+              </div>
             </a>
             <button 
               onClick={() => scrollToSection('contact')}
               className="px-6 py-3 rounded-xl bg-white/20 backdrop-blur-sm text-white font-medium hover:bg-white/30 hover:scale-105 transition-all duration-300 flex items-center gap-2 border border-white/30"
               style={{ fontFamily: '"Work Sans", sans-serif' }}
             >
-              <MaterialIcon name="email" className="text-lg" />
-              Contact Me
+              <div className="flex items-center gap-2 text-[rgb(var(--muted))]">
+                <MdEmail className="text-lg" />
+                <span>Get in Touch</span>
+              </div>
             </button>
           </div>
         </div>
@@ -92,13 +106,13 @@ export default function HeroSection() {
         {/* Floating Tech Icons */}
         <div className="absolute bottom-6 left-6 flex gap-3">
           <div className="tech-icon w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
-            <MaterialIcon name="code" className="text-lg" />
+            <MdCode className="text-lg" />
           </div>
           <div className="tech-icon w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
-            <MaterialIcon name="data_usage" className="text-lg" />
+            <MdDataUsage className="text-lg" />
           </div>
           <div className="tech-icon w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
-            <MaterialIcon name="api" className="text-lg" />
+            <MdApi className="text-lg" />
           </div>
         </div>
       </div>

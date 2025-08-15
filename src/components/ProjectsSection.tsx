@@ -1,6 +1,7 @@
 import { useLayout } from './Layout'
 import { cn } from '../lib/cn'
-import MaterialIcon from './MaterialIcon'
+import { motion } from 'framer-motion'
+import { MdArrowForward } from 'react-icons/md'
 import ProjectAccordion from './ProjectAccordion'
 
 // Scroll to section function
@@ -75,7 +76,7 @@ export default function ProjectsSection() {
           className="inline-flex items-center gap-2 text-[rgb(var(--accent))] font-medium hover:underline hover:scale-105 transition-all duration-300"
           style={{ fontFamily: '"Work Sans", sans-serif' }}
         >
-          <MaterialIcon name="arrow_forward" className="text-lg" />
+          <MdArrowForward className="text-lg" />
           View All Projects →
         </button>
       </div>

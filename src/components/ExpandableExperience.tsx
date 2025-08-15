@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
+import { MdExpandMore, MdInfo, MdDataUsage, MdPhone, MdStream, MdApi, MdDesignServices, MdCloud } from 'react-icons/md'
 import { useState } from 'react'
-import MaterialIcon from './MaterialIcon'
 
 type ExperienceItem = {
   id: string
@@ -15,6 +15,23 @@ type ExperienceItem = {
 
 type Props = {
   experiences: ExperienceItem[]
+}
+
+// Function to map icon names to React Icons components
+const getIconComponent = (iconName: string) => {
+  const iconMap: { [key: string]: React.ComponentType<any> } = {
+    'data_usage': MdDataUsage,
+    'phone': MdPhone,
+    'stream': MdStream,
+    'api': MdApi,
+    'design_services': MdDesignServices,
+    'cloud': MdCloud,
+    'analytics': MdDataUsage,
+    'psychology': MdDesignServices,
+    // Add more mappings as needed
+  }
+  
+  return iconMap[iconName] || MdDataUsage // Default fallback
 }
 
 export default function ExpandableExperience({ experiences }: Props) {
@@ -42,7 +59,10 @@ export default function ExpandableExperience({ experiences }: Props) {
             <div className="flex items-center justify-between">
               {/* Left side - Icon */}
               <div className="w-12 h-12 bg-[rgb(var(--accent))] rounded-lg flex items-center justify-center text-white mr-4">
-                <MaterialIcon name={experience.icon} className="text-xl" />
+                {(() => {
+                  const IconComponent = getIconComponent(experience.icon)
+                  return <IconComponent className="text-xl" />
+                })()}
               </div>
               
               {/* Content area with grid layout */}
@@ -70,7 +90,7 @@ export default function ExpandableExperience({ experiences }: Props) {
                       animate={{ rotate: expandedId === experience.id ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <MaterialIcon name="expand_more" className="text-2xl text-[rgb(var(--muted))]" />
+                      <MdExpandMore className="text-2xl text-[rgb(var(--muted))]" />
                     </motion.div>
                   </div>
                 </div>
@@ -94,7 +114,7 @@ export default function ExpandableExperience({ experiences }: Props) {
                       {experience.blurb}
                     </p>
                     <div className="mt-4 flex items-center gap-2 text-sm text-[rgb(var(--muted))]">
-                      <MaterialIcon name="info" className="text-sm" />
+                      <MdInfo className="text-sm" />
                       <span>Click to collapse</span>
                     </div>
                   </div>

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
+import { MdDarkMode, MdLightMode } from 'react-icons/md'
 
 type Theme = 'light' | 'dark'
 type Ctx = { theme: Theme, toggle: () => void }
@@ -39,21 +40,15 @@ export function useTheme() {
   return ctx
 }
 
-// Material Icons
-const MaterialIcon = ({ name, className = "" }: { name: string; className?: string }) => (
-  <span className={`material-icons ${className}`}>{name}</span>
-)
-
 export function ThemeToggle() {
   const { theme, toggle } = useTheme()
   return (
     <button
       onClick={toggle}
-      className="p-3 rounded-full bg-[rgb(var(--surface))]/80 backdrop-blur-sm border border-[rgb(var(--secondary))] text-[rgb(var(--fg))] hover:bg-[rgb(var(--accent))] hover:text-[rgb(var(--bg))] hover:border-[rgb(var(--accent))] hover:scale-110 shadow-lg transition-all duration-300"
-      aria-label="Toggle theme"
-      title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+      className="p-2 rounded-lg bg-[rgb(var(--surface))] text-[rgb(var(--fg))] hover:bg-[rgb(var(--hover))] transition-colors"
+      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
-      <MaterialIcon name={theme === 'light' ? 'dark_mode' : 'light_mode'} className="text-lg" />
+      {theme === 'light' ? <MdDarkMode className="text-lg" /> : <MdLightMode className="text-lg" />}
     </button>
   )
 }
