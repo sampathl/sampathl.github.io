@@ -1,5 +1,5 @@
-import { useLayout } from './Layout'
-import { cn } from '../lib/cn'
+import { useLayout } from '../../../components/layout/Layout'
+import { cn } from '../../../lib/cn'
 import { motion } from 'framer-motion'
 import { MdLocationOn, MdWork, MdSchool } from 'react-icons/md'
 

@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
 import { useState } from 'react'
-import HeaderSection from './single-page/components/HeaderSection'
-import PortfolioSection from './single-page/components/PortfolioSection'
-import SkillsSection from './single-page/components/SkillsSection'
+import HeaderSection from './components/HeaderSection'
+import PortfolioSection from './components/PortfolioSection'
+import SkillsSection from './components/SkillsSection'
 
 export default function SinglePage() {
   const [highlightedSkills, setHighlightedSkills] = useState<string[]>([])

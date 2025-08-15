@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { MdExpandLess, MdExpandMore, MdDataUsage, MdAnalytics, MdPsychology } from 'react-icons/md'
-import { cn } from '../lib/cn'
+import { cn } from '../../../lib/cn'
 
 interface ProjectAccordionProps {
   projects: {

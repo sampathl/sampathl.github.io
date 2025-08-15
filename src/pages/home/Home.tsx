@@ -1,9 +1,9 @@
 import { Helmet } from 'react-helmet-async'
-import HeroSection from '../components/HeroSection'
-import ExperienceSection from '../components/ExperienceSection'
-import ProjectsSection from '../components/ProjectsSection'
-import AboutSection from '../components/AboutSection'
-import ContactSection from '../components/ContactSection'
+import HeroSection from './components/HeroSection'
+import ExperienceSection from './components/ExperienceSection'
+import ProjectsSection from './components/ProjectsSection'
+import AboutSection from './components/AboutSection'
+import ContactSection from './components/ContactSection'
 
 export default function Home() {
   return (

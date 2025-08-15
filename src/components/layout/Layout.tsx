@@ -1,11 +1,11 @@
 import { Link, NavLink } from 'react-router-dom'
 import { ThemeProvider, ThemeToggle } from './Theme'
 import { useState, useEffect, createContext, useContext } from 'react'
-import { cn } from '../lib/cn'
+import { cn } from '../../lib/cn'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
 import { MdViewList, MdFullscreen, MdMenu, MdChevronRight, MdChevronLeft, MdHome, MdWork, MdFolder, MdPerson, MdEmail } from 'react-icons/md'
-import { NAV_ITEMS, BREAKPOINTS, SCROLL_OFFSET } from '../lib/constants'
+import { NAV_ITEMS, BREAKPOINTS, SCROLL_OFFSET } from '../../lib/constants'
 
 // Enhanced context for layout state
 interface LayoutContextType {
@@ -41,8 +41,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
     isTablet: false,
     isDesktop: false
   })
-
-
 
   // Save single-page mode preference to localStorage
   useEffect(() => {
@@ -172,8 +170,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <main className="main-content bg-[rgb(var(--bg))] relative">
                 {/* Floating Theme Toggle and Layout Mode Toggle - Top Right Corner */}
                 <div className="fixed top-6 right-6 z-50 flex items-center gap-4">
-
-                  
                   {/* Single Page Mode Toggle */}
                   <div className="bg-[rgb(var(--accent))] text-[rgb(var(--bg))] px-4 py-2 rounded-full shadow-lg border-2 border-[rgb(var(--accent))] hover:border-[rgb(var(--bg))] transition-all duration-300 hover:scale-105">
                     <button

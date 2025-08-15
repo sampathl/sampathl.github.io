@@ -1,5 +1,5 @@
-import { useLayout } from './Layout'
-import { cn } from '../lib/cn'
+import { useLayout } from '../../../components/layout/Layout'
+import { cn } from '../../../lib/cn'
 import { motion } from 'framer-motion'
 import { FaLinkedin, FaGithub } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'

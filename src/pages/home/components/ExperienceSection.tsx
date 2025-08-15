@@ -1,5 +1,5 @@
-import { useLayout } from './Layout'
-import { cn } from '../lib/cn'
+import { useLayout } from '../../../components/layout/Layout'
+import { cn } from '../../../lib/cn'
 import ExpandableExperience from './ExpandableExperience'
 
 export default function ExperienceSection() {

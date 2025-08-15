@@ -1,14 +1,13 @@
 import { Routes, Route } from 'react-router-dom'
-import { Layout } from './components/Layout'
-import { useLayout } from './components/Layout'
-import SinglePageLayout from './components/SinglePageLayout'
-import Home from './pages/Home'
+import { Layout, useLayout } from './components/layout/Layout'
+import SinglePageLayout from './components/layout/SinglePageLayout'
+import Home from './pages/home'
 import Projects from './pages/Projects'
 import Project from './pages/Project'
 import Writing from './pages/Writing'
 import About from './pages/About'
 import Contact from './pages/Contact'
-import SinglePage from './pages/SinglePage'
+import SinglePage from './pages/single-page'
 
 function AppContent() {
   const { isSinglePageMode } = useLayout()
