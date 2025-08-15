@@ -9,6 +9,8 @@ type ExperienceItem = {
   blurb: string
   category: string
   icon: string
+  fromDate: string
+  toDate: string
 }
 
 type Props = {
@@ -38,29 +40,40 @@ export default function ExpandableExperience({ experiences }: Props) {
             className="w-full p-6 text-left hover:bg-[rgb(var(--hover))] transition-colors duration-200"
           >
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-[rgb(var(--accent))] rounded-lg flex items-center justify-center text-white">
-                  <MaterialIcon name={experience.icon} className="text-xl" />
-                </div>
-                <div>
+              {/* Left side - Icon */}
+              <div className="w-12 h-12 bg-[rgb(var(--accent))] rounded-lg flex items-center justify-center text-white mr-4">
+                <MaterialIcon name={experience.icon} className="text-xl" />
+              </div>
+              
+              {/* Content area with grid layout */}
+              <div className="flex-1">
+                {/* Top row: Title and Date */}
+                <div className="flex items-end justify-between mb-2">
                   <h3 className="text-xl font-semibold text-[rgb(var(--fg))] text-left">
                     {experience.title}
                   </h3>
-                  <p className="text-sm text-[rgb(var(--muted))] mt-1">
-                    {experience.metric}
+                  <p className="text-sm text-[rgb(var(--muted))] text-right">
+                    {experience.fromDate} - {experience.toDate}
                   </p>
                 </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-[rgb(var(--accent))] font-medium">
-                  {experience.category}
-                </span>
-                <motion.div
-                  animate={{ rotate: expandedId === experience.id ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <MaterialIcon name="expand_more" className="text-2xl text-[rgb(var(--muted))]" />
-                </motion.div>
+                
+                {/* Bottom row: Metric and Category */}
+                <div className="flex items-center justify-between">
+                  <p className="text-sm text-[rgb(var(--muted))] text-left">
+                    {experience.metric}
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm text-[rgb(var(--accent))] font-medium">
+                      {experience.category}
+                    </span>
+                    <motion.div
+                      animate={{ rotate: expandedId === experience.id ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <MaterialIcon name="expand_more" className="text-2xl text-[rgb(var(--muted))]" />
+                    </motion.div>
+                  </div>
+                </div>
               </div>
             </div>
           </button>

@@ -12,7 +12,9 @@ export default function ExperienceSection() {
       metric: "PySpark tuning & query refactors",
       blurb: "Cut retraining query time with optimized SQL and configuration; improved iteration speed for DS teams.",
       category: "Data Engineering",
-      icon: "data_usage"
+      icon: "data_usage",
+      fromDate: "Jan 2024",
+      toDate: "Present"
     },
     {
       id: "2",
@@ -20,7 +22,9 @@ export default function ExperienceSection() {
       metric: "AWS Connect phone infra revamp",
       blurb: "Rationalized IVR flows and observability; reduced vendor usage and idle time.",
       category: "Infrastructure",
-      icon: "phone"
+      icon: "phone",
+      fromDate: "Sep 2023",
+      toDate: "Dec 2023"
     },
     {
       id: "3",
@@ -28,7 +32,9 @@ export default function ExperienceSection() {
       metric: "Kafka to S3 streaming optimization",
       blurb: "Implemented efficient data serialization and batching for real-time analytics.",
       category: "Data Engineering",
-      icon: "stream"
+      icon: "stream",
+      fromDate: "Jun 2023",
+      toDate: "Aug 2023"
     },
     {
       id: "4",
@@ -36,7 +42,9 @@ export default function ExperienceSection() {
       metric: "FastAPI & async processing",
       blurb: "Optimized backend endpoints with asynchronous operations and caching strategies.",
       category: "Performance",
-      icon: "api"
+      icon: "api",
+      fromDate: "Mar 2023",
+      toDate: "May 2023"
     },
     {
       id: "5",
@@ -44,7 +52,9 @@ export default function ExperienceSection() {
       metric: "Redesigned UI/UX for internal tools",
       blurb: "Improved usability and visual appeal of internal dashboards and reporting tools.",
       category: "User Experience",
-      icon: "design_services"
+      icon: "design_services",
+      fromDate: "Jan 2023",
+      toDate: "Feb 2023"
     },
     {
       id: "6",
@@ -52,7 +62,9 @@ export default function ExperienceSection() {
       metric: "Serverless architecture adoption",
       blurb: "Migrated monolithic services to AWS Lambda, reducing operational overhead.",
       category: "Infrastructure",
-      icon: "cloud"
+      icon: "cloud",
+      fromDate: "Oct 2022",
+      toDate: "Dec 2022"
     }
   ]
 
