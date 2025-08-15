@@ -7,15 +7,23 @@ const ThemeCtx = createContext<Ctx | null>(null)
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
+    // Check if theme is already set by the HTML script
+    const currentTheme = document.documentElement.getAttribute('data-theme') as Theme
+    if (currentTheme) return currentTheme
+    
+    // Fallback to localStorage or default
     const saved = localStorage.getItem('theme') as Theme | null
     if (saved) return saved
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    return prefersDark ? 'dark' : 'light'
+    return 'dark' // Default to dark theme
   })
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-    localStorage.setItem('theme', theme)
+    // Only update if the theme has actually changed
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    if (currentTheme !== theme) {
+      document.documentElement.setAttribute('data-theme', theme)
+      localStorage.setItem('theme', theme)
+    }
   }, [theme])
 
   return (

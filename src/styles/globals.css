@@ -5,6 +5,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 /* Theme tokens - Color palette from theme.ts */
 :root {
   /* Theme Colors - Light Mode */
