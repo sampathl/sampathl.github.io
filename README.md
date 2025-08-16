@@ -1,168 +1,246 @@
-# Sampath Portfolio (React + Vite + TS)
+# Sampath Portfolio
 
-Modern, warm, mobile-first portfolio with a left sidebar, impact cards, theme toggle, MDX-ready writing, and a scroll-tied "video" placeholder.
+A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. Features both multi-page and single-page layouts with smooth animations and a clean design.
 
-## Quick start
+## 🚀 Features
 
-```bash
-# 1) install
-npm install
+- **Dual Layout Modes**: Switch between multi-page navigation and single-page portfolio view
+- **Responsive Design**: Optimized for all device sizes
+- **Dark/Light Theme**: Toggle between themes with persistent storage
+- **Smooth Animations**: Powered by Framer Motion
+- **TypeScript**: Full type safety throughout the application
+- **Modern UI**: Clean, professional design with Tailwind CSS
 
-# 2) run dev server
-npm run dev
-# open the printed localhost URL
-
-# 3) build for production
-npm run build
-npm run preview
-```
-
-> Requires Node 18+.
-
-## Tech choices
-
-- **Vite + React + TypeScript** — fast dev, modern bundling
-- **React Router** — pages
-- **Tailwind** — styling with theme tokens
-- **Framer Motion** — tasteful motion + scroll awareness
-- **React Helmet Async** — SEO metas per route
-- **TanStack Query** — future-proof data fetching/caching (not yet used on v1)
-- **MDX-ready** — author notes/case studies with React components
-
-## File structure
+## 🏗️ Project Structure
 
 ```
-sampath-portfolio/
-  public/
-    placeholder.jpg                # replace with your images
-    cv/Sampath_Lakkaraju_CV.pdf    # replace with your real CV
-  src/
-    components/
-      ImpactCard.tsx
-      Layout.tsx
-      SinglePageLayout.tsx         # immersive experience, no sidebar
-      ScrollScrubVideo.tsx
-      Theme.tsx
-    lib/
-      cn.ts
-      constants.ts                 # centralized navigation and config
-    pages/
-      About.tsx
-      Contact.tsx
-      Home.tsx
-      Project.tsx
-      Projects.tsx
-      Writing.tsx
-    styles/
-      globals.css
-    App.tsx
-    main.tsx
-  index.html
-  tailwind.config.js
-  postcss.config.js
-  vite.config.ts
-  tsconfig.json
-  package.json
-  README.md
+src/
+├── components/                    # Reusable UI components
+│   ├── common/                   # Shared components used across pages
+│   │   └── ImpactCard.tsx       # Card component for displaying metrics
+│   ├── layout/                   # Layout and navigation components
+│   │   ├── Layout.tsx           # Main layout with navigation
+│   │   ├── SinglePageLayout.tsx # Single page layout wrapper
+│   │   └── Theme.tsx            # Theme provider and toggle
+│   └── ui/                      # Basic UI components
+│       ├── MaterialIcon.tsx     # Material Design icon wrapper
+│       └── ScrollScrubVideo.tsx # Video scrubbing component
+│
+├── pages/                        # Page components organized by feature
+│   ├── home/                    # Home page with multi-page layout
+│   │   ├── components/          # Home-specific components
+│   │   │   ├── HeroSection.tsx      # Hero section
+│   │   │   ├── ExperienceSection.tsx # Experience timeline
+│   │   │   ├── ProjectsSection.tsx   # Projects showcase
+│   │   │   ├── AboutSection.tsx      # About information
+│   │   │   ├── ContactSection.tsx    # Contact form
+│   │   │   ├── ExpandableExperience.tsx # Expandable experience items
+│   │   │   └── ProjectAccordion.tsx  # Project accordion
+│   │   ├── Home.tsx             # Home page component
+│   │   └── index.ts             # Export file
+│   │
+│   ├── single-page/             # Single page portfolio layout
+│   │   ├── components/          # Single page components
+│   │   │   ├── HeaderSection.tsx    # Header with navigation
+│   │   │   ├── PortfolioSection.tsx # Portfolio items
+│   │   │   └── SkillsSection.tsx    # Skills showcase
+│   │   ├── SinglePage.tsx       # Single page component
+│   │   └── index.ts             # Export file
+│   │
+│   ├── projects/                # Projects page
+│   │   ├── components/          # Project components
+│   │   │   ├── ProjectsSection.tsx  # Projects grid
+│   │   │   └── ProjectDetail.tsx    # Individual project view
+│   │   ├── Projects.tsx         # Projects listing page
+│   │   ├── Project.tsx          # Individual project page
+│   │   └── index.ts             # Export file
+│   │
+│   ├── about/                   # About page
+│   │   ├── components/          # About components
+│   │   │   └── AboutSection.tsx     # About information
+│   │   ├── About.tsx            # About page
+│   │   └── index.ts             # Export file
+│   │
+│   ├── contact/                 # Contact page
+│   │   ├── components/          # Contact components
+│   │   │   └── ContactSection.tsx   # Contact form and info
+│   │   ├── Contact.tsx          # Contact page
+│   │   └── index.ts             # Export file
+│   │
+│   └── writing/                 # Writing page
+│       ├── components/          # Writing components
+│       │   └── WritingSection.tsx   # Articles and blog posts
+│       ├── Writing.tsx          # Writing page
+│       └── index.ts             # Export file
+│
+├── hooks/                       # Custom React hooks
+│   ├── usePortfolio.ts          # Portfolio filtering and sorting
+│   ├── useSkills.ts             # Skills management
+│   └── useExperience.ts         # Experience management
+│
+├── types/                       # TypeScript type definitions
+│   ├── portfolio.ts             # Portfolio-related types
+│   └── index.ts                 # Type exports
+│
+├── data/                        # Static data
+│   └── portfolio.ts             # Portfolio data
+│
+├── lib/                         # Utility functions
+│   ├── cn.ts                    # Class name utility
+│   └── constants.ts             # Application constants
+│
+└── styles/                      # Global styles
+    └── globals.css              # Global CSS and Tailwind imports
 ```
 
-## Architecture: Dual Navigation Pattern
+## 🎯 Key Benefits of New Structure
 
-This portfolio uses a **two-tier navigation approach** that provides flexibility for different user preferences:
+1. **Better Organization**: Each page has its own directory with related components
+2. **Easier Maintenance**: Components are grouped by functionality and page
+3. **Improved Scalability**: Easy to add new pages and features
+4. **Better Separation of Concerns**: Data, types, and business logic are separated
+5. **Enhanced Developer Experience**: Easier to find and work with specific features
+6. **Reusable Components**: Common components can be shared across pages
+7. **Custom Hooks**: Business logic extracted into reusable hooks
 
-### 1. Multi-Page Mode (Traditional)
-- **`/`** - Home page with scrollable sections
-- **`/projects`** - Full projects listing  
-- **`/writing`** - Complete writing archive
-- **`/about`** - Detailed about page
-- **`/contact`** - Dedicated contact form
-- **Features**: Full sidebar navigation, traditional routing, bookmarkable URLs
+## 🛠️ Technologies Used
 
-### 2. Single-Page Mode (Immersive)
-- **Clean, distraction-free experience**
-- **Features**: No sidebar, no navigation, minimal UI controls, full-screen content immersion
-- **Perfect for**: Presentations, demos, focused reading, portfolio showcases
+- **React 18** - Modern React with hooks and functional components
+- **TypeScript** - Type safety and better developer experience
+- **Tailwind CSS** - Utility-first CSS framework
+- **Framer Motion** - Animation library for smooth transitions
+- **React Router** - Client-side routing
+- **React Icons** - Icon library
+- **React Helmet Async** - Document head management
+- **Vite** - Fast build tool and development server
 
-### Home Page Sections (Scroll-Based)
-- **`hero`** - Introduction and main call-to-action
-- **`experience`** - Impact cards and achievements  
-- **`writing`** - Latest articles preview
-- **`contact`** - Contact information and status
+## 🚀 Getting Started
 
-### Dedicated Route Pages (URL-Based)
-- **`/projects`** - Full projects listing
-- **`/writing`** - Complete writing archive
-- **`/about`** - Detailed about page
-- **`/contact`** - Dedicated contact form
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd Portfolio
+   ```
 
-### Why This Pattern?
-- **Flexibility**: Users can choose their preferred browsing experience
-- **Quick Overview**: Users see everything important on home page without clicking
-- **Deep Dive**: Users navigate to dedicated pages for detailed content
-- **Immersive Experience**: Single-page mode removes distractions for focused viewing
-- **SEO Friendly**: Separate URLs for different content types
-- **Bookmarkable**: Users can bookmark specific sections
-- **Performance**: Home page loads quickly with essential content
-- **Scalability**: Easy to add more content to dedicated pages
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-The navigation in `src/lib/constants.ts` handles both approaches - scroll-to-section for home page content and route navigation for dedicated pages.
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-## How to customize content
+4. **Open in browser**
+   Navigate to `http://localhost:5173`
 
-### Hero
-Edit `src/pages/Home.tsx` hero text and CTAs. Put your CV as `public/cv/Sampath_Lakkaraju_CV.pdf`.
+## 📝 Available Scripts
 
-### Impact highlights
-Edit the `<ImpactCard>` items in `Home.tsx`. Keep a metric and a one-liner.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+- `npx tsc --noEmit` - Type check without emitting files
 
-### Projects
-Add to `src/pages/Projects.tsx`. Each item links to `/projects/:slug` which uses `Project.tsx` (template). Create dedicated pages later by branching `Project.tsx` or swapping to file-based routing if you migrate to Next.
+## 🎨 Customization
 
-### Writing (MDX)
-Add MDX files under `src/writing` (you can create the folder) and import them in `src/pages/Writing.tsx`. The repo already supports MDX via the `@mdx-js/rollup` plugin in `vite.config.ts`.
+### Adding New Pages
 
-### Scroll-tied video
-`src/components/ScrollScrubVideo.tsx` is a placeholder. Replace the inner block with a `<video>` element. Keep videos **5–10s, muted, loop, 1080p max**. Provide a static poster and respect `prefers-reduced-motion` (swap to a static image).
+1. Create a new directory in `src/pages/`
+2. Add your page component and any sub-components
+3. Create an `index.ts` file for exports
+4. Update `src/App.tsx` with the new route
 
-### Theme
-Colors are CSS variables in `src/styles/globals.css`. The light theme mirrors a warm Marugame-like feel; dark mirrors a restrained OpenAI vibe. Toggle lives in `Theme.tsx` and is used in the sidebar.
+### Adding New Components
 
-### Layout Modes
+1. Place in appropriate directory (`common/`, `ui/`, or page-specific `components/`)
+2. Export from the component file
+3. Import where needed
 
-The portfolio offers two distinct layout modes accessible via floating buttons in the top-right corner:
+### Custom Hooks
 
-1. **Multi-Page Mode**: Traditional navigation with sidebar and routing
+1. Create new hook in `src/hooks/`
+2. Export types if needed
+3. Import and use in components
 
-3. **Single-Page Mode**: Immersive experience with no sidebar or navigation
+## 🌟 Features
 
-### Mobile behavior
-On small screens the sidebar collapses into a compact bar with a Menu button. Hit areas are large and content uses stacked layout. All layout modes are fully responsive.
+### Multi-Page Layout
+- **Home**: Hero section, experience timeline, projects showcase, about, contact
+- **Projects**: Comprehensive projects grid with filtering
+- **About**: Detailed skills, experience, and education
+- **Contact**: Contact form with social links
+- **Writing**: Articles and blog posts with category filtering
 
-## SEO & performance
+### Single-Page Layout
+- **Portfolio View**: All content in one scrollable page
+- **Skills Mapping**: Interactive skills visualization
+- **Compact Navigation**: Header with essential links
 
-- Add per-page `<Helmet>` title+description.
-- Use small, compressed images (AVIF/WEBP) in `public/` and reference with `/...` URLs.
-- If you need SEO for deep pages, consider pre-rendering critical routes (Netlify / Vercel prerender) or migrate to Next.js later. This SPA structure keeps that door open.
+### Interactive Elements
+- **Theme Toggle**: Switch between light and dark themes
+- **Responsive Navigation**: Mobile-friendly navigation menu
+- **Smooth Animations**: Page transitions and component animations
+- **Form Handling**: Contact form with validation
+- **Filtering**: Projects and articles filtering by category
 
-## Next steps (recommended)
+## 📱 Responsive Design
 
-1. **Replace placeholders** — add a real headshot, project thumbnails, and your CV PDF.
-2. **One flagship case study** — duplicate `Project.tsx` into a dedicated page and add:
-   - TL;DR (role, timeframe, metrics)
-   - Problem → Approach → Architecture → Results
-   - Diagram or short scroll-tied video
-   - “What I’d do next”
-3. **Add Writing (MDX)** — start with: PySpark 90% speedup, Idempotent APIs, Serverless patterns.
-4. **Analytics** — add your preferred privacy-friendly analytics (e.g., Umami).
-5. **Contact** — change `your.email@example.com` and LinkedIn handle in `Contact.tsx`.
-6. **Assets pipeline** — if you want automatic image optimization, use Cloudinary (drop-in URLs) or convert images to AVIF/WEBP and use `srcset` in components.
-7. **Accessibility** — ensure alt text on all images and `prefers-reduced-motion` fallbacks for motion sections.
-8. **Deployment** — Netlify/Vercel/Cloudflare Pages work out of the box.
+- **Mobile First**: Optimized for mobile devices
+- **Breakpoint System**: Responsive design using Tailwind breakpoints
+- **Touch Friendly**: Optimized for touch interactions
+- **Performance**: Optimized loading and rendering
 
-## Migration path
+## 🔧 Development
 
-When/if you want SSG/SSR, localized routes, API routes, or automatic image optimization, migrate to **Next.js**. Your components and styles will port almost directly.
+### Code Style
+- **TypeScript**: Strict type checking enabled
+- **ESLint**: Code quality and consistency
+- **Prettier**: Code formatting
+- **Component Structure**: Consistent component organization
+
+### State Management
+- **React Hooks**: Local state management
+- **Context API**: Theme and layout state
+- **Custom Hooks**: Reusable business logic
+
+### Performance
+- **Code Splitting**: Route-based code splitting
+- **Lazy Loading**: Components loaded on demand
+- **Optimized Images**: Responsive image handling
+- **Bundle Optimization**: Efficient bundling with Vite
+
+## 🚀 Deployment
+
+The application can be deployed to any static hosting service:
+
+1. **Build the application**
+   ```bash
+   npm run build
+   ```
+
+2. **Deploy the `dist/` folder** to your hosting service
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🙏 Acknowledgments
+
+- **Tailwind CSS** for the utility-first CSS framework
+- **Framer Motion** for smooth animations
+- **React Icons** for the icon library
+- **Vite** for the fast build tool
 
 ---
 
-Happy shipping!
+Built with ❤️ by Sampath Lakkaraju

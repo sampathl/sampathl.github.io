@@ -1,11 +1,13 @@
+import { getNavigationText } from './textConstants'
+
 // Navigation configuration
 export const NAV_ITEMS = [
-  { to: '/', label: 'Home', icon: 'home', section: 'hero' },
-  { to: '/', label: 'Experience', icon: 'work', section: 'experience' },
-  { to: '/', label: 'Projects', icon: 'folder', section: 'projects' },
-  // { to: '/', label: 'Writing', icon: 'edit', section: 'writing' },
-  { to: '/', label: 'About', icon: 'person', section: 'about' },
-  { to: '/', label: 'Contact', icon: 'email', section: 'contact' },
+  { to: '/', label: getNavigationText('home'), icon: 'home', section: 'hero' },
+  { to: '/', label: getNavigationText('experience'), icon: 'work', section: 'experience' },
+  { to: '/', label: getNavigationText('projects'), icon: 'folder', section: 'projects' },
+  // { to: '/', label: getNavigationText('writing'), icon: 'edit', section: 'writing' },
+  { to: '/', label: getNavigationText('about'), icon: 'person', section: 'about' },
+  { to: '/', label: getNavigationText('contact'), icon: 'email', section: 'contact' },
 ] as const;
 
 // Breakpoint constants

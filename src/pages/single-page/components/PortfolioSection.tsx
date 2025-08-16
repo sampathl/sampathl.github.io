@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { MdViewList } from 'react-icons/md'
 import { usePortfolio } from '../../../hooks/usePortfolio'
 import type { PortfolioSectionProps, PortfolioItem } from '../../../types/portfolio'
+import { getPortfolioText } from '../../../lib/textConstants'
 
 // Sub-components
 function SegmentedControl({ 
@@ -11,7 +12,7 @@ function SegmentedControl({
   activeFilter: string
   onFilterChange: (filter: string) => void 
 }) {
-  const filters = ['All', 'Experience', 'Education', 'Projects']
+  const filters = getPortfolioText('filters') as string[]
   
   return (
     <div className="flex flex-wrap gap-2 mb-8">
@@ -49,10 +50,11 @@ function ListItem({
   }
 
   const getCategoryLabel = (category: string) => {
+    const categories = getPortfolioText('categories') as any
     switch (category) {
-      case 'experience': return 'Experience'
-      case 'education': return 'Education'
-      case 'project': return 'Project'
+      case 'experience': return categories.experience
+      case 'education': return categories.education
+      case 'project': return categories.project
       default: return category
     }
   }
@@ -116,7 +118,7 @@ export default function PortfolioSection({
     <div className="mb-12">
       <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
         <MdViewList className="text-2xl text-[rgb(var(--accent))]" />
-        Portfolio
+        {getPortfolioText('title')}
       </h2>
       
       <SegmentedControl 
@@ -135,7 +137,7 @@ export default function PortfolioSection({
           ))
         ) : (
           <div className="text-center py-12 text-[rgb(var(--muted))]">
-            <p>No items found for the selected filter.</p>
+            <p>{getPortfolioText('noItemsFound')}</p>
           </div>
         )}
       </div>
