@@ -18,14 +18,28 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     return 'dark' // Default to dark theme
   })
 
+  // Function to update favicon based on theme
+  const updateFavicon = (currentTheme: Theme) => {
+    const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement
+    if (favicon) {
+      favicon.href = currentTheme === 'light' ? '/favicon-light.svg' : '/favicon-dark.svg'
+    }
+  }
+
   useEffect(() => {
     // Only update if the theme has actually changed
     const currentTheme = document.documentElement.getAttribute('data-theme')
     if (currentTheme !== theme) {
       document.documentElement.setAttribute('data-theme', theme)
       localStorage.setItem('theme', theme)
+      updateFavicon(theme)
     }
   }, [theme])
+
+  // Update favicon on initial load
+  useEffect(() => {
+    updateFavicon(theme)
+  }, []) // Only run once on mount
 
   return (
     <ThemeCtx.Provider value={{ theme, toggle: () => setTheme(t => t === 'light' ? 'dark' : 'light') }}>

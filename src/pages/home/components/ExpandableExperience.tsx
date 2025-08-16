@@ -1,37 +1,20 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { MdExpandMore, MdInfo, MdDataUsage, MdPhone, MdStream, MdApi, MdDesignServices, MdCloud } from 'react-icons/md'
+import { MdExpandMore, MdInfo } from 'react-icons/md'
 import { useState } from 'react'
 
 type ExperienceItem = {
   id: string
   title: string
-  metric: string
-  blurb: string
-  category: string
-  icon: string
+  company: string
+  details: string
+  fields: string
+  logo: string
   fromDate: string
   toDate: string
 }
 
 type Props = {
   experiences: ExperienceItem[]
-}
-
-// Function to map icon names to React Icons components
-const getIconComponent = (iconName: string) => {
-  const iconMap: { [key: string]: React.ComponentType<any> } = {
-    'data_usage': MdDataUsage,
-    'phone': MdPhone,
-    'stream': MdStream,
-    'api': MdApi,
-    'design_services': MdDesignServices,
-    'cloud': MdCloud,
-    'analytics': MdDataUsage,
-    'psychology': MdDesignServices,
-    // Add more mappings as needed
-  }
-  
-  return iconMap[iconName] || MdDataUsage // Default fallback
 }
 
 export default function ExpandableExperience({ experiences }: Props) {
@@ -57,12 +40,22 @@ export default function ExpandableExperience({ experiences }: Props) {
             className="w-full p-6 text-left hover:bg-[rgb(var(--hover))] transition-colors duration-200"
           >
             <div className="flex items-center justify-between">
-              {/* Left side - Icon */}
-              <div className="w-12 h-12 bg-[rgb(var(--accent))] rounded-lg flex items-center justify-center text-white mr-4">
-                {(() => {
-                  const IconComponent = getIconComponent(experience.icon)
-                  return <IconComponent className="text-xl" />
-                })()}
+              {/* Left side - Company Logo */}
+              <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mr-4 overflow-hidden border border-[rgb(var(--secondary))]">
+                <img 
+                  src={experience.logo} 
+                  alt={`${experience.company} logo`}
+                  className="w-12 h-12 object-contain"
+                  onError={(e) => {
+                    // Fallback to company initials if image fails to load
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    target.nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
+                <span className="hidden text-[rgb(var(--accent))] font-bold text-sm">
+                  {experience.company.split(' ').map(word => word[0]).join('').toUpperCase()}
+                </span>
               </div>
               
               {/* Content area with grid layout */}
@@ -80,11 +73,11 @@ export default function ExpandableExperience({ experiences }: Props) {
                 {/* Bottom row: Metric and Category */}
                 <div className="flex items-center justify-between">
                   <p className="text-sm text-[rgb(var(--muted))] text-left">
-                    {experience.metric}
+                    {experience.company}
                   </p>
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-[rgb(var(--accent))] font-medium">
-                      {experience.category}
+                      {experience.fields}
                     </span>
                     <motion.div
                       animate={{ rotate: expandedId === experience.id ? 180 : 0 }}
@@ -110,9 +103,14 @@ export default function ExpandableExperience({ experiences }: Props) {
               >
                 <div className="px-6 pb-6 border-t border-[rgb(var(--secondary))] bg-[rgb(var(--hover))]/30">
                   <div className="pt-4">
-                    <p className="text-[rgb(var(--fg))] leading-relaxed">
-                      {experience.blurb}
-                    </p>
+                    <ul className="space-y-2">
+                      {experience.details.split(';').map((detail, index) => (
+                        <li key={index} className="flex items-start gap-2 text-[rgb(var(--fg))] leading-relaxed">
+                          <span className="text-[rgb(var(--accent))] mt-1">•</span>
+                          <span>{detail.trim()}</span>
+                        </li>
+                      ))}
+                    </ul>
                     <div className="mt-4 flex items-center gap-2 text-sm text-[rgb(var(--muted))]">
                       <MdInfo className="text-sm" />
                       <span>Click to collapse</span>
