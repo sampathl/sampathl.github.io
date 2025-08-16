@@ -5,7 +5,7 @@ export interface PortfolioItem {
   dates: string
   category: 'experience' | 'education' | 'project'
   description: string
-  skills: string[]
+  skills: readonly string[]
 }
 
 export interface PortfolioSectionProps {

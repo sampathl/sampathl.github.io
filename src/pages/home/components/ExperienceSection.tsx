@@ -1,23 +1,23 @@
 import { useLayout } from '../../../components/layout/Layout'
 import { cn } from '../../../lib/cn'
 import ExpandableExperience from './ExpandableExperience'
-import { getExperienceText } from '../../../lib/textConstants'
+import { getMultiPageHomeExperienceData } from '../../../lib/usageFunctions'
 
 export default function ExperienceSection() {
   const { isCollapsed } = useLayout()
   
-  const experiences = getExperienceText('experiences') as any[]
-
+  const { experiences } = getMultiPageHomeExperienceData()
+  
   return (
     <section id="experience" className="py-16 min-h-screen">
       <h2 className="text-3xl font-bold text-[rgb(var(--fg))] mb-8" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-        {getExperienceText('title')}
+        Experience
       </h2>
       <div className={cn(
         "content-pane",
         isCollapsed ? "data-sidebar-collapsed" : ""
       )} data-sidebar-collapsed={isCollapsed.toString()}>
-        <ExpandableExperience experiences={experiences} />
+        <ExpandableExperience experiences={[...experiences]} />
       </div>
     </section>
   )

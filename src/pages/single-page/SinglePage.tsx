@@ -4,6 +4,7 @@ import { useState } from 'react'
 import HeaderSection from './components/HeaderSection'
 import PortfolioSection from './components/PortfolioSection'
 import SkillsSection from './components/SkillsSection'
+import { getPageMetadata } from '../../lib/textConstants'
 
 export default function SinglePage() {
   const [highlightedSkills, setHighlightedSkills] = useState<string[]>([])
@@ -36,7 +37,7 @@ export default function SinglePage() {
     <div style={{ fontFamily: '"Work Sans", "Inter", sans-serif' }}>
       <Helmet>
         <title>Sampath Lakkaraju — Portfolio</title>
-        <meta name="description" content="Data pipelines, reliable APIs, and clean UIs." />
+        <meta name="description" content={getPageMetadata('metaDescription')} />
       </Helmet>
 
       <motion.div

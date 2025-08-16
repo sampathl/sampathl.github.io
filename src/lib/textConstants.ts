@@ -1,131 +1,10 @@
 // Text constants for the portfolio application
-// This file contains all text content that will be used for internationalization
+// This file contains UI text content and constants that are not part of the core data
+// Core data has been moved to consolidatedData.ts
 
-export const HERO_SECTION = {
-  title: "Sampath Lakkaraju",
-  subtitle: "Senior Software Engineer \n Building applications",
-  lightThemeAlt: "Sampath Lakkaraju - Light Theme",
-  darkThemeAlt: "Sampath Lakkaraju - Dark Theme",
-  initials: "SL"
-} as const;
-
-export const ABOUT_SECTION = {
-  title: "About Me",
-  role: "Senior Software Engineer",
-  description1: "I specialize in building scalable data pipelines, reliable APIs, and polished user experiences. With over 8 years of experience in software engineering, I've worked across the full stack to deliver solutions that drive business impact.",
-  description2: "My expertise includes Python, TypeScript, React, AWS, and modern data technologies. I'm passionate about clean code, system design, and creating tools that developers love to use.",
-  location: "San Francisco, CA",
-  experience: "5+ years experience",
-  education: "Computer Science Degree",
-  coreSkillsTitle: "Core Skills",
-  focusAreasTitle: "Focus Areas",
-  skills: ['Python', 'TypeScript', 'React', 'Node.js', 'AWS', 'Docker', 'Kubernetes', 'PostgreSQL'],
-  focusAreas: ['Data Engineering', 'API Development', 'Full-Stack Applications', 'System Design', 'Performance Optimization']
-} as const;
-
-export const EXPERIENCE_SECTION = {
-  title: "Experience",
-  experiences: [
-    {
-      id: "1",
-      title: "Senior Software Engineer",
-      company: "Franklin Templeton",
-      details: "Cut retraining query time with optimized SQL and configuration; improved iteration speed for DS teams.",
-      fields: "Fullstack & Data ",
-      logo: "/images/companies/franklin-templeton.svg",
-      fromDate: "June 2025",
-      toDate: "Present"
-    },
-    {
-      id: "2",
-      title: "Software Engineer",
-      company: "FINRA",
-      details: "Rationalized IVR flows and observability; reduced vendor usage and idle time.",
-      fields: "Application Development",
-      logo: "/images/companies/finra.svg",
-      fromDate: "April 2024",
-      toDate: "February 2025"
-    },
-    {
-      id: "3",
-      title: "Senior Software Engineer",
-      company: "Dropbox",
-      details: "Implemented efficient data serialization and batching for real-time analytics.",
-      fields: "Fullstack & Data",
-      logo: "/images/companies/dropbox.svg",
-      fromDate: "February 2024",
-      toDate: "September 2024"
-    },
-    {
-      id: "4",
-      title: "Software Engineer",
-      company: "Tech Mahindra",
-      details: "Optimized backend endpoints with asynchronous operations and caching strategies.",
-      fields: "Data Engineering & Automation",
-      logo: "/images/companies/tech-mahindra.svg",
-      fromDate: "January 2014",
-      toDate: "June 2017"
-    }
-  ]
-} as const;
-
-export const PROJECTS_SECTION = {
-  title: "Featured Projects",
-  description: "Explore my latest work in data engineering, API development, and full-stack applications.",
-  viewAllButton: "View All Projects →",
-  projects: [
-    {
-      id: "1",
-      title: "Data Pipeline Optimization",
-      description: "Built a high-performance ETL pipeline using Apache Kafka and Apache Spark, reducing data processing time by 70% and improving reliability through fault-tolerant design patterns.",
-      technologies: ["Python", "Apache Kafka", "Apache Spark", "AWS S3", "Docker"],
-      status: "completed" as const,
-      icon: "data_usage"
-    },
-    {
-      id: "2",
-      title: "Real-time Analytics Dashboard",
-      description: "Developed a real-time analytics platform using React, Node.js, and WebSocket connections, providing live insights into system performance and user behavior metrics.",
-      technologies: ["React", "Node.js", "WebSocket", "PostgreSQL", "Redis"],
-      status: "active" as const,
-      icon: "analytics"
-    },
-    {
-      id: "3",
-      title: "AI-Powered Recommendation Engine",
-      description: "Machine learning system for personalized content recommendations using collaborative filtering and deep learning models, currently in development phase.",
-      technologies: ["Python", "TensorFlow", "Scikit-learn", "FastAPI", "MongoDB"],
-      status: "disabled" as const,
-      icon: "psychology"
-    }
-  ]
-} as const;
-
-export const CONTACT_SECTION = {
-  title: "Get In Touch",
-  subtitle: "Let's Work Together",
-  description1: "I'm always interested in hearing about new opportunities, interesting projects, or just connecting with fellow developers and designers.",
-  description2: "Whether you have a question about my work, want to collaborate on something, or just want to say hello, feel free to reach out.",
-  email: "Email",
-  emailAddress: "sampath@example.com",
-  linkedin: "LinkedIn",
-  linkedinUrl: "linkedin.com/in/sampath",
-  github: "GitHub",
-  githubUrl: "github.com/sampath",
-  currentStatusTitle: "Current Status",
-  availableStatus: "Available for new opportunities",
-  statusDescription: "Open to full-time roles, contract work, and interesting side projects.",
-  responseTimeTitle: "Response Time",
-  responseTimeDescription: "I typically respond to messages within 24 hours during weekdays. For urgent matters, feel free to reach out on LinkedIn."
-} as const;
-
-export const HEADER_SECTION = {
-  title: "Sampath Lakkaraju",
-  role: "Software Engineer",
-  description: "Data pipelines, APIs, and polished UX",
-  email: "sampath@example.com",
-  linkedinUrl: "linkedin.com/in/yourprofile"
-} as const;
+// ============================================================================
+// UI TEXT CONSTANTS
+// ============================================================================
 
 export const NAVIGATION = {
   home: "Home",
@@ -260,75 +139,118 @@ export const WRITING_SECTION = {
   ]
 } as const;
 
-// Helper function to get text by key (for future internationalization)
-export const getText = (section: string, key: string, locale: string = 'en'): string => {
-  // For now, return the English text
-  // In the future, this can be expanded to support multiple locales
-  const sections: Record<string, any> = {
-    HERO_SECTION,
-    ABOUT_SECTION,
-    EXPERIENCE_SECTION,
-    PROJECTS_SECTION,
-    CONTACT_SECTION,
-    HEADER_SECTION,
-    NAVIGATION,
-    SKILLS_SECTION,
-    PORTFOLIO_SECTION,
-    WRITING_SECTION
-  };
-  
-  const sectionData = sections[section];
-  if (!sectionData) {
-    console.warn(`Section ${section} not found in text constants`);
-    return key;
+export const ABOUT_SECTION = {
+  title: "About Me",
+  coreSkillsTitle: "Core Skills",
+  focusAreasTitle: "Focus Areas",
+  skills: ['Python', 'TypeScript', 'React', 'Node.js', 'AWS', 'Docker', 'Kubernetes', 'PostgreSQL'],
+  focusAreas: ['Data Engineering', 'API Development', 'Full-Stack Applications', 'System Design', 'Performance Optimization']
+} as const;
+
+// ============================================================================
+// LEGACY COMPATIBILITY FUNCTIONS
+// ============================================================================
+// These functions maintain backward compatibility for components that haven't migrated yet
+// They now route to the consolidated data structure
+
+import { getLegacyPageMetadata, getLegacyHeroSection, getLegacyHeaderSection, getLegacyContactSection, getLegacyExperienceSection, getLegacyEducationSection, getLegacyProjectsSection } from './usageFunctions';
+
+// Legacy profile getters
+export const getPageMetadata = (key: keyof ReturnType<typeof getLegacyPageMetadata>, locale: string = 'en'): string => {
+  const data = getLegacyPageMetadata();
+  return data[key as keyof typeof data] as string;
+};
+
+export const getHeroText = (key: keyof ReturnType<typeof getLegacyHeroSection>, locale: string = 'en'): string => {
+  const data = getLegacyHeroSection();
+  return data[key as keyof typeof data] as string;
+};
+
+export const getHeaderText = (key: keyof ReturnType<typeof getLegacyHeaderSection>, locale: string = 'en'): string => {
+  const data = getLegacyHeaderSection();
+  return data[key as keyof typeof data] as string;
+};
+
+export const getContactText = (key: keyof ReturnType<typeof getLegacyContactSection>, locale: string = 'en'): string => {
+  const data = getLegacyContactSection();
+  return data[key as keyof typeof data] as string;
+};
+
+// Legacy experience getters
+export const getExperienceText = (key: keyof ReturnType<typeof getLegacyExperienceSection>, locale: string = 'en'): any => {
+  const data = getLegacyExperienceSection();
+  if (key === 'experiences') {
+    return data.experiences;
   }
-  
-  const value = sectionData[key];
-  if (value === undefined) {
-    console.warn(`Key ${key} not found in section ${section}`);
-    return key;
+  return data[key as keyof typeof data];
+};
+
+// Legacy education getters
+export const getEducationText = (key: keyof ReturnType<typeof getLegacyEducationSection>, locale: string = 'en'): any => {
+  const data = getLegacyEducationSection();
+  if (key === 'education') {
+    return data.education;
   }
-  
-  return value;
+  return data[key as keyof typeof data];
 };
 
-// Type-safe text getters for each section
-export const getHeroText = (key: keyof typeof HERO_SECTION, locale: string = 'en'): string => {
-  return getText('HERO_SECTION', key, locale);
+// Legacy project getters
+export function getProjectsText(key: 'projects', locale?: string): any
+export function getProjectsText(key: 'title' | 'description' | 'viewAllButton', locale?: string): string
+export function getProjectsText(key: keyof ReturnType<typeof getLegacyProjectsSection>, locale?: string): any {
+  const data = getLegacyProjectsSection();
+  if (key === 'projects') {
+    return data.projects;
+  }
+  return data[key as keyof typeof data];
+}
+
+// Legacy about section getters
+export const getAboutText = (key: keyof typeof ABOUT_SECTION, locale: string = 'en'): string | readonly string[] => {
+  if (key === 'skills' || key === 'focusAreas') {
+    return ABOUT_SECTION[key];
+  }
+  return ABOUT_SECTION[key] as string;
 };
 
-export const getAboutText = (key: keyof typeof ABOUT_SECTION, locale: string = 'en'): string => {
-  return getText('ABOUT_SECTION', key, locale);
+// Legacy portfolio data getters
+export const getPortfolioDataText = (key: 'allItems', locale?: string): any => {
+  // This is now handled by the usePortfolio hook using consolidated data
+  console.warn('getPortfolioDataText is deprecated. Use usePortfolio hook instead.');
+  return [];
 };
 
-export const getExperienceText = (key: keyof typeof EXPERIENCE_SECTION, locale: string = 'en'): string => {
-  return getText('EXPERIENCE_SECTION', key, locale);
+// Legacy skills getters
+export const getSkillsText = (key: keyof typeof SKILLS_SECTION, locale: string = 'en'): string | any => {
+  if (key === 'skillsData') {
+    return SKILLS_SECTION.skillsData;
+  }
+  return SKILLS_SECTION[key];
 };
 
-export const getProjectsText = (key: keyof typeof PROJECTS_SECTION, locale: string = 'en'): string => {
-  return getText('PROJECTS_SECTION', key, locale);
+// Legacy portfolio getters
+export const getPortfolioText = (key: keyof typeof PORTFOLIO_SECTION, locale: string = 'en'): string | readonly string[] => {
+  if (key === 'filters') {
+    return PORTFOLIO_SECTION.filters;
+  }
+  if (key === 'categories') {
+    return Object.values(PORTFOLIO_SECTION.categories);
+  }
+  return PORTFOLIO_SECTION[key] as string;
 };
 
-export const getContactText = (key: keyof typeof CONTACT_SECTION, locale: string = 'en'): string => {
-  return getText('CONTACT_SECTION', key, locale);
+// Legacy writing getters
+export const getWritingText = (key: keyof typeof WRITING_SECTION, locale: string = 'en'): string | readonly string[] | any => {
+  if (key === 'articles') {
+    return WRITING_SECTION.articles;
+  }
+  if (key === 'categories') {
+    return WRITING_SECTION.categories;
+  }
+  return WRITING_SECTION[key];
 };
 
-export const getHeaderText = (key: keyof typeof HEADER_SECTION, locale: string = 'en' ): string => {
-  return getText('HEADER_SECTION', key, locale);
-};
-
-export const getSkillsText = (key: keyof typeof SKILLS_SECTION, locale: string = 'en'): string => {
-  return getText('SKILLS_SECTION', key, locale);
-};
-
-export const getPortfolioText = (key: keyof typeof PORTFOLIO_SECTION, locale: string = 'en'): string => {
-  return getText('PORTFOLIO_SECTION', key, locale);
-};
-
-export const getWritingText = (key: keyof typeof WRITING_SECTION, locale: string = 'en'): string => {
-  return getText('WRITING_SECTION', key, locale);
-};
-
+// Legacy navigation getters
 export const getNavigationText = (key: keyof typeof NAVIGATION, locale: string = 'en'): string => {
-  return getText('NAVIGATION', key, locale);
+  return NAVIGATION[key];
 };

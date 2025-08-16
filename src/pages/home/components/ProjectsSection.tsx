@@ -3,7 +3,7 @@ import { cn } from '../../../lib/cn'
 import { motion } from 'framer-motion'
 import { MdArrowForward } from 'react-icons/md'
 import ProjectAccordion from './ProjectAccordion'
-import { getProjectsText } from '../../../lib/textConstants'
+import { getMultiPageHomeProjectsData } from '../../../lib/usageFunctions'
 
 // Scroll to section function
 const scrollToSection = (sectionId: string) => {
@@ -23,22 +23,22 @@ const scrollToSection = (sectionId: string) => {
 export default function ProjectsSection() {
   const { isCollapsed } = useLayout()
   
-  const projects = getProjectsText('projects') as any[]
+  const { title, description, viewAllButton, projects } = getMultiPageHomeProjectsData()
 
   return (
     <section id="projects" className="py-16 min-h-screen">
       <h2 className="text-3xl font-bold text-[rgb(var(--fg))] mb-8" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-        {getProjectsText('title')}
+        {title}
       </h2>
       <div className={cn(
         "content-pane",
         isCollapsed ? "data-sidebar-collapsed" : ""
       )} data-sidebar-collapsed={isCollapsed.toString()}>
-        <ProjectAccordion projects={projects} />
+        <ProjectAccordion projects={[...projects]} />
       </div>
       <div className="mt-8">
         <p className="text-[rgb(var(--muted))] mb-4" style={{ fontFamily: '"Inter", sans-serif' }}>
-          {getProjectsText('description')}
+          {description}
         </p>
         <button 
           onClick={() => scrollToSection('projects')}
@@ -46,7 +46,7 @@ export default function ProjectsSection() {
           style={{ fontFamily: '"Work Sans", sans-serif' }}
         >
           <MdArrowForward className="text-lg" />
-          {getProjectsText('viewAllButton')}
+          {viewAllButton}
         </button>
       </div>
     </section>

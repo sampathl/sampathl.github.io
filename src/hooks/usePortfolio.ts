@@ -1,11 +1,27 @@
 import { useState, useMemo } from 'react'
-import { portfolioData } from '../data/portfolio'
+import { getLegacyPortfolioExperienceItems, getLegacyPortfolioEducationItems, getLegacyPortfolioProjectItems } from '../lib/usageFunctions'
 import type { PortfolioItem } from '../types/portfolio'
 
 export const usePortfolio = (highlightedSkills: string[] = [], showSkillMapping: boolean = false) => {
   const [activeFilter, setActiveFilter] = useState('All')
 
   const filteredItems = useMemo(() => {
+    // Get experience items from consolidated data
+    const experienceItems = getLegacyPortfolioExperienceItems()
+    
+    // Get education items from consolidated data
+    const educationItems = getLegacyPortfolioEducationItems()
+    
+    // Get project items from consolidated data
+    const projectItems = getLegacyPortfolioProjectItems()
+    
+    // Combine all consolidated data
+    const portfolioData = [
+      ...experienceItems,
+      ...educationItems,
+      ...projectItems,
+    ] as readonly PortfolioItem[]
+    
     let filtered = portfolioData.filter(item => {
       if (activeFilter === 'All') return true
       if (activeFilter === 'Experience') return item.category === 'experience'

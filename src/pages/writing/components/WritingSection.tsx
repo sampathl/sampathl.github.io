@@ -176,7 +176,7 @@ export default function WritingSection() {
                       
                       <div className="flex items-center justify-between">
                         <div className="flex flex-wrap gap-2">
-                          {article.tags.map((tag, tagIndex) => (
+                          {article.tags.map((tag: string, tagIndex: number) => (
                             <span
                               key={tagIndex}
                               className="text-xs bg-[rgb(var(--hover))] text-[rgb(var(--fg))] px-2 py-1 rounded border border-[rgb(var(--secondary))]"

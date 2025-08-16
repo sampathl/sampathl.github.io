@@ -7,7 +7,7 @@ interface ProjectAccordionProps {
     id: string
     title: string
     description: string
-    technologies: string[]
+    technologies: readonly string[]
     status: 'active' | 'completed' | 'disabled'
     icon: string
   }[]

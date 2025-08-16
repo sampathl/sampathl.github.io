@@ -11,6 +11,7 @@ type ExperienceItem = {
   logo: string
   fromDate: string
   toDate: string
+  technologies: readonly string[]
 }
 
 type Props = {
@@ -111,9 +112,17 @@ export default function ExpandableExperience({ experiences }: Props) {
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-4 flex items-center gap-2 text-sm text-[rgb(var(--muted))]">
-                      <MdInfo className="text-sm" />
-                      <span>Click to collapse</span>
+                    <div className="mt-4">
+                      <div className="flex flex-wrap gap-2">
+                        {experience.technologies.map((tech, index) => (
+                          <span
+                            key={index}
+                            className="px-3 py-1 text-xs font-medium bg-[rgb(var(--accent))]/10 text-[rgb(var(--accent))] rounded-full border border-[rgb(var(--accent))]/20"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -1,14 +1,18 @@
 import { useLayout } from '../../../components/layout/Layout'
 import { cn } from '../../../lib/cn'
 import { motion } from 'framer-motion'
-import { MdLocationOn, MdWork, MdSchool } from 'react-icons/md'
+import { MdLocationOn, MdWork, MdSchool, MdCode, MdDataUsage, MdTrendingUp } from 'react-icons/md'
 import { getAboutText } from '../../../lib/textConstants'
+import { getAboutProfileData } from '../../../lib/usageFunctions'
 
 export default function AboutSection() {
   const { isCollapsed } = useLayout()
   
   const skills = getAboutText('skills') as string[]
   const focusAreas = getAboutText('focusAreas') as string[]
+  
+  // Get profile data for location, experience, and education
+  const { location, experience, education } = getAboutProfileData()
 
   return (
     <section id="about" className="py-16 min-h-screen">
@@ -21,26 +25,26 @@ export default function AboutSection() {
       )} data-sidebar-collapsed={isCollapsed.toString()}>
         <div>
           <h3 className="text-2xl font-semibold text-[rgb(var(--fg))] mb-4" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-            {getAboutText('role')}
+            Senior Software Engineer
           </h3>
           <p className="text-[rgb(var(--muted))] mb-6 leading-relaxed" style={{ fontFamily: '"Inter", sans-serif' }}>
-            {getAboutText('description1')}
+            I specialize in building scalable data pipelines, reliable APIs, and polished user experiences. With over 8 years of experience in software engineering, I've worked across the full stack to deliver solutions that drive business impact.
           </p>
           <p className="text-[rgb(var(--muted))] mb-6 leading-relaxed" style={{ fontFamily: '"Inter", sans-serif' }}>
-            {getAboutText('description2')}
+            My expertise includes Python, TypeScript, React, AWS, and modern data technologies. I'm passionate about clean code, system design, and creating tools that developers love to use.
           </p>
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-[rgb(var(--muted))]">
               <MdLocationOn className="text-[rgb(var(--accent))]" />
-              <span>{getAboutText('location')}</span>
+              <span>{location}</span>
             </div>
             <div className="flex items-center gap-2 text-[rgb(var(--muted))]">
               <MdWork className="text-[rgb(var(--accent))]" />
-              <span>{getAboutText('experience')}</span>
+              <span>{experience}</span>
             </div>
             <div className="flex items-center gap-2 text-[rgb(var(--muted))]">
               <MdSchool className="text-[rgb(var(--accent))]" />
-              <span>{getAboutText('education')}</span>
+              <span>{education}</span>
             </div>
           </div>
         </div>
