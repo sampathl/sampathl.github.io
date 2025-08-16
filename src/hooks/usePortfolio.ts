@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { getLegacyPortfolioExperienceItems, getLegacyPortfolioEducationItems, getLegacyPortfolioProjectItems } from '../lib/usageFunctions'
+import { getExperienceData, getEducationData, getProjectData } from '../lib/experienceData'
 import type { PortfolioItem } from '../types/portfolio'
 
 export const usePortfolio = (highlightedSkills: string[] = [], showSkillMapping: boolean = false) => {
@@ -7,13 +7,37 @@ export const usePortfolio = (highlightedSkills: string[] = [], showSkillMapping:
 
   const filteredItems = useMemo(() => {
     // Get experience items from consolidated data
-    const experienceItems = getLegacyPortfolioExperienceItems()
+    const experienceItems = getExperienceData('portfolio').map(item => ({
+      id: item.id,
+      title: item.title,
+      organization: item.company,
+      dates: `${item.fromDate} - ${item.toDate}`,
+      category: 'experience' as const,
+      description: item.details,
+      skills: item.technologies
+    }))
     
     // Get education items from consolidated data
-    const educationItems = getLegacyPortfolioEducationItems()
+    const educationItems = getEducationData('portfolio').map(item => ({
+      id: item.id,
+      title: item.title,
+      organization: item.organization,
+      dates: item.dates,
+      category: 'education' as const,
+      description: item.description,
+      skills: item.skills
+    }))
     
     // Get project items from consolidated data
-    const projectItems = getLegacyPortfolioProjectItems()
+    const projectItems = getProjectData('portfolio').map(item => ({
+      id: item.id,
+      title: item.title,
+      organization: item.organization,
+      dates: item.dates,
+      category: 'project' as const,
+      description: item.description,
+      skills: item.skills
+    }))
     
     // Combine all consolidated data
     const portfolioData = [
@@ -30,11 +54,17 @@ export const usePortfolio = (highlightedSkills: string[] = [], showSkillMapping:
       return true
     })
 
-    // Filter by highlighted skills if skill mapping is active
+    // Add skill mapping info to items when skill mapping is active
     if (showSkillMapping && highlightedSkills.length > 0) {
-      filtered = filtered.filter(item => 
-        item.skills.some(skill => highlightedSkills.includes(skill))
-      )
+      filtered = filtered.map(item => ({
+        ...item,
+        hasMatchingSkills: item.skills.some(skill => highlightedSkills.includes(skill))
+      }))
+    } else {
+      filtered = filtered.map(item => ({
+        ...item,
+        hasMatchingSkills: false
+      }))
     }
 
     return filtered

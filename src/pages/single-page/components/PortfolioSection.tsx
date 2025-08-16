@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { MdViewList } from 'react-icons/md'
 import { usePortfolio } from '../../../hooks/usePortfolio'
 import type { PortfolioSectionProps, PortfolioItem } from '../../../types/portfolio'
-import { getPortfolioText } from '../../../lib/textConstants'
+import { CORE_SECTION_TITLES } from '../../../lib/consolidatedData'
 
 // Sub-components
 function SegmentedControl({ 
@@ -12,7 +12,7 @@ function SegmentedControl({
   activeFilter: string
   onFilterChange: (filter: string) => void 
 }) {
-  const filters = getPortfolioText('filters') as string[]
+  const filters = ['All', 'Experience', 'Education', 'Projects']
   
   return (
     <div className="flex flex-wrap gap-2 mb-8">
@@ -50,11 +50,10 @@ function ListItem({
   }
 
   const getCategoryLabel = (category: string) => {
-    const categories = getPortfolioText('categories') as any
     switch (category) {
-      case 'experience': return categories.experience
-      case 'education': return categories.education
-      case 'project': return categories.project
+      case 'experience': return CORE_SECTION_TITLES.experience
+      case 'education': return CORE_SECTION_TITLES.education
+      case 'project': return 'Project'
       default: return category
     }
   }
@@ -64,14 +63,25 @@ function ListItem({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="bg-[rgb(var(--card))] rounded-lg p-6 mb-4 hover:shadow-lg transition-all duration-200"
+      className={`rounded-lg p-6 mb-4 hover:shadow-lg transition-all duration-200 ${
+        item.hasMatchingSkills 
+          ? 'bg-[rgb(var(--card))]' 
+          : 'bg-[rgb(var(--card))] opacity-60'
+      }`}
     >
       <div className="flex-1">
         {/* Top row: Title and Category */}
         <div className="flex items-end justify-between mb-2">
-          <h3 className="text-xl font-semibold text-[rgb(var(--fg))] text-left">
-            {item.title}
-          </h3>
+          <div className="flex items-center gap-2">
+            <h3 className="text-xl font-semibold text-[rgb(var(--fg))] text-left">
+              {item.title}
+            </h3>
+            {item.hasMatchingSkills && (
+              <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-[rgb(var(--accent))] text-[rgb(var(--bg))]">
+                Related
+              </span>
+            )}
+          </div>
           <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(item.category)}`}>
             {getCategoryLabel(item.category)}
           </span>
@@ -118,7 +128,7 @@ export default function PortfolioSection({
     <div className="mb-12">
       <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
         <MdViewList className="text-2xl text-[rgb(var(--accent))]" />
-        {getPortfolioText('title')}
+        Portfolio
       </h2>
       
       <SegmentedControl 
@@ -137,7 +147,7 @@ export default function PortfolioSection({
           ))
         ) : (
           <div className="text-center py-12 text-[rgb(var(--muted))]">
-            <p>{getPortfolioText('noItemsFound')}</p>
+            <p>No items found for the selected filter.</p>
           </div>
         )}
       </div>

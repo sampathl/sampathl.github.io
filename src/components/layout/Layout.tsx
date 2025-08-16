@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
 import { MdViewList, MdFullscreen, MdMenu, MdChevronRight, MdChevronLeft, MdHome, MdWork, MdFolder, MdPerson, MdEmail } from 'react-icons/md'
 import { NAV_ITEMS, BREAKPOINTS, SCROLL_OFFSET } from '../../lib/constants'
-import { getHeaderText } from '../../lib/textConstants'
+import { CORE_PROFILE_DATA } from '../../lib/consolidatedData'
 
 // Enhanced context for layout state
 interface LayoutContextType {
@@ -316,8 +316,8 @@ function Sidebar({
           {/* User Info */}
           {!isCollapsed && (
             <div className="mb-8 p-4 rounded-xl bg-[rgb(var(--hover))]">
-              <div className="text-sm font-medium text-[rgb(var(--fg))]" style={{ fontFamily: '"Work Sans", sans-serif' }}>{getHeaderText('role')}</div>
-              <div className="text-xs text-[rgb(var(--muted))] mt-1" style={{ fontFamily: '"Inter", sans-serif' }}>{getHeaderText('description')}</div>
+                              <div className="text-sm font-medium text-[rgb(var(--fg))]" style={{ fontFamily: '"Work Sans", sans-serif' }}>{CORE_PROFILE_DATA.role}</div>
+                <div className="text-xs text-[rgb(var(--muted))] mt-1" style={{ fontFamily: '"Inter", sans-serif' }}>{CORE_PROFILE_DATA.shortDescription}</div>
             </div>
           )}
 

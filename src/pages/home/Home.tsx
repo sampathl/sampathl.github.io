@@ -4,14 +4,14 @@ import ExperienceSection from './components/ExperienceSection'
 import ProjectsSection from './components/ProjectsSection'
 import AboutSection from './components/AboutSection'
 import ContactSection from './components/ContactSection'
-import { getPageMetadata } from '../../lib/textConstants'
+import { CORE_PROFILE_DATA } from '../../lib/consolidatedData'
 
 export default function Home() {
   return (
     <div style={{ fontFamily: '"Work Sans", "Inter", sans-serif' }}>
       <Helmet>
-        <title>{getPageMetadata('title')}</title>
-        <meta name="description" content={getPageMetadata('metaDescription')} />
+        <title>{`${CORE_PROFILE_DATA.name} — ${CORE_PROFILE_DATA.role}`}</title>
+        <meta name="description" content={CORE_PROFILE_DATA.metaDescription} />
       </Helmet>
 
       <HeroSection />

@@ -6,6 +6,7 @@ export interface PortfolioItem {
   category: 'experience' | 'education' | 'project'
   description: string
   skills: readonly string[]
+  hasMatchingSkills?: boolean
 }
 
 export interface PortfolioSectionProps {

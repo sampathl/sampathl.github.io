@@ -1,6 +1,6 @@
 import { FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
-import { getHeaderText } from '../../../lib/textConstants'
+import { CORE_PROFILE_DATA } from '../../../lib/consolidatedData'
 
 export default function HeaderSection() {
   return (
@@ -8,31 +8,31 @@ export default function HeaderSection() {
       <div className="max-w-6xl mx-auto px-6 py-16 pb-6">
         <div className="text-center">
           <h1 className="text-5xl font-bold mb-6" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-            {getHeaderText('title')}
+            {CORE_PROFILE_DATA.name}
           </h1>
           <p className="text-xl text-[rgb(var(--muted))]">
-             {getHeaderText('role')}
+             {CORE_PROFILE_DATA.role}
           </p>
           <p className="text-lg text-[rgb(var(--muted))] max-w-2xl mx-auto">
-            {getHeaderText('description')}
+            {CORE_PROFILE_DATA.shortDescription}
           </p>
           
           <div className="flex items-center justify-center gap-4 flex-wrap">
             <a
-              href={`mailto:${getHeaderText('email')}`}
+              href={`mailto:${CORE_PROFILE_DATA.email}`}
               className="flex items-center gap-2 hover:text-[rgb(var(--accent))] transition-colors"
             >
               <MdEmail className="text-lg" />
-              {getHeaderText('email')}
+              {CORE_PROFILE_DATA.email}
             </a>
             <a
-              href={`https://${getHeaderText('linkedinUrl')}`}
+              href={`https://${CORE_PROFILE_DATA.linkedinUrl}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 hover:text-[rgb(var(--accent))] transition-colors"
             >
               <FaLinkedin className="text-lg" />
-              {getHeaderText('linkedinUrl')}
+              {CORE_PROFILE_DATA.linkedinUrl}
             </a>
           </div>
         </div>

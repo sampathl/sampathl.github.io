@@ -67,64 +67,63 @@ export const CORE_EXPERIENCE_DATA = [
     id: "1",
     title: "Senior Software Engineer",
     company: "Franklin Templeton",
-    details: "Cut retraining query time with optimized SQL and configuration; improved iteration speed for DS teams.",
+    details: "Refactored microservice read/write operations into modular handlers; Designed and deployed Airflow DAGs for daily data extraction from Snowflake to S3 and Postgres; Built backend microservices using Python and FastAPI to expose RESTful APIs",
     fields: "Fullstack & Data ",
     logo: "/images/companies/franklin-templeton.svg",
     fromDate: "June 2025",
     toDate: "Present",
-    technologies: ["Python", "SQL", "AWS", "Docker", "Kubernetes", "FastAPI"]
+    technologies: ["Python", "FastAPI", "Airflow", "Snowflake", "S3", "Postgres", "AWS", "React", "TypeScript"]
   },
   {
     id: "2",
     title: "Software Engineer",
     company: "FINRA",
-    details: "Rationalized IVR flows and observability; reduced vendor usage and idle time.",
+    details: "Migrated CAIS applications to AWS serverless architecture using Lambda, S3, SQS, Step Functions; Redesigned data pipelines for serverless execution; Developed service APIs with idempotency and function chaining; Used CloudWatch and Splunk for monitoring and on-call investigations",
     fields: "Application Development",
     logo: "/images/companies/finra.svg",
     fromDate: "April 2024",
     toDate: "February 2025",
-    technologies: ["Java", "Spring Boot", "Microservices", "Docker", "PostgreSQL", "Redis"]
+    technologies: ["Python", "AWS Lambda", "S3", "SQS", "Step Functions", "EMR", "Splunk", "CloudWatch"]
   },
   {
     id: "3",
     title: "Senior Software Engineer",
     company: "Dropbox",
-    details: "Implemented efficient data serialization and batching for real-time analytics.",
+    details:  "Built data pipelines with Python, Airflow, Hive, HDFS, and MySQL for multi-vendor data ingestion; Developed PySpark SQL pipelines with tuning and refactoring; Built microservices and APIs in Python to power help article recommendations; Created reusable React and TypeScript UI components including support widgets and dashboards; Automated phone support infrastructure using AWS Connect, Lambda, DynamoDB; Implemented observability with CloudWatch and Grafana",
     fields: "Fullstack & Data",
     logo: "/images/companies/dropbox.svg",
     fromDate: "February 2024",
     toDate: "September 2024",
-    technologies: ["Python", "Apache Kafka", "Apache Spark", "React", "TypeScript", "AWS S3"]
+    technologies: ["Python", "React", "TypeScript", "Airflow", "Hive", "HDFS", "MySQL", "PySpark", "AWS Lambda", "AWS Connect", "DynamoDB", "REST", "gRPC", "CloudWatch", "Grafana"]
   },
   {
     id: "4",
     title: "Software Engineer",
     company: "Tech Mahindra",
-    details: "Optimized backend endpoints with asynchronous operations and caching strategies.",
-    fields: "Data Engineering & Automation",
+    details:"Automated Medicaid and Managed Care rebate data pipelines using Python and SQL; Built dashboards for contracts and sales using Python, JavaScript, AWS EC2, RDS, S3; Developed MVPs for validation of sales processes; Created support dashboards and data monitoring tools for transparency", fields: "Data Engineering & Automation",
     logo: "/images/companies/tech-mahindra.svg",
     fromDate: "January 2014",
     toDate: "June 2017",
-    technologies: ["Python", "Django", "PostgreSQL", "Redis", "Celery", "Docker"]
+    technologies: ["Python", "SQL", "JavaScript", "AWS EC2", "AWS RDS", "AWS S3"]
   }
 ] as const;
 
 export const CORE_EDUCATION_DATA = [
   {
     id: "edu-1",
-    title: "Master of Computer Science",
-    organization: "University of Technology",
-    dates: "2018 - 2020",
-    description: "Specialized in software engineering and data structures. Graduated with honors and completed thesis on scalable architectures.",
-    skills: ["Python", "Data Structures", "Algorithms", "Architecture"]
+    title: "Master of Science in Software Engineering",
+    organization: "San Jose State University ",
+    dates: "2017 - 2019",
+    description: "Corse Work: Cloud Computing, UI-UX engineering, Virtualization, Distributed Systems, Object Oriented Programming and Data Structures, Autonomous Cars, Machine learning, Software Quality Assurance and Testing",
+    skills: ["Python"]
   },
   {
     id: "edu-2",
-    title: "Bachelor of Computer Science",
-    organization: "State University",
-    dates: "2014 - 2018",
-    description: "Major in computer science with minor in mathematics. Active in programming competitions and hackathons.",
-    skills: ["Java", "C++", "Mathematics", "Problem Solving"]
+    title: "Bachelor of Technology in Electrical Engineering ",
+    organization: "Jawaharlal Nehru Technological University",
+    dates: "2009 - 2013",
+    description: "Corse Work: Control Systems, Electrical Machines, Neural Networks and Fuzzy Logics, Electro magnetic fields, Power systems, Power electronics",
+    skills: ["Matlab"]
   }
 ] as const;
 

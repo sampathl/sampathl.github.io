@@ -2,14 +2,14 @@ import { useLayout } from '../../../components/layout/Layout'
 import { cn } from '../../../lib/cn'
 import { motion } from 'framer-motion'
 import { MdLocationOn, MdWork, MdSchool, MdCode, MdDataUsage, MdTrendingUp } from 'react-icons/md'
-import { getAboutText } from '../../../lib/textConstants'
+import { CORE_PROFILE_DATA, CORE_SECTION_TITLES } from '../../../lib/consolidatedData'
 import { getAboutProfileData } from '../../../lib/usageFunctions'
 
 export default function AboutSection() {
   const { isCollapsed } = useLayout()
   
-  const skills = getAboutText('skills') as string[]
-  const focusAreas = getAboutText('focusAreas') as string[]
+  const skills = ['Python', 'TypeScript', 'React', 'Node.js', 'AWS', 'Docker', 'Kubernetes', 'PostgreSQL']
+  const focusAreas = ['Data Engineering', 'API Development', 'Full-Stack Applications', 'System Design', 'Performance Optimization']
   
   // Get profile data for location, experience, and education
   const { location, experience, education } = getAboutProfileData()
@@ -17,7 +17,7 @@ export default function AboutSection() {
   return (
     <section id="about" className="py-16 min-h-screen">
       <h2 className="text-3xl font-bold text-[rgb(var(--fg))] mb-8" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-        {getAboutText('title')}
+        {CORE_SECTION_TITLES.about}
       </h2>
       <div className={cn(
         "grid grid-cols-1 lg:grid-cols-2 gap-12 content-pane",
@@ -52,7 +52,7 @@ export default function AboutSection() {
         <div className="space-y-6">
           <div>
             <h4 className="text-lg font-semibold text-[rgb(var(--fg))] mb-3" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-              {getAboutText('coreSkillsTitle')}
+              {CORE_SECTION_TITLES.coreSkills}
             </h4>
             <div className="grid grid-cols-2 gap-3">
               {skills.map((skill) => (
@@ -65,7 +65,7 @@ export default function AboutSection() {
           
           <div>
             <h4 className="text-lg font-semibold text-[rgb(var(--fg))] mb-3" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-              {getAboutText('focusAreasTitle')}
+              {CORE_SECTION_TITLES.focusAreas}
             </h4>
             <div className="space-y-2">
               {focusAreas.map((area) => (

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import HeaderSection from './components/HeaderSection'
 import PortfolioSection from './components/PortfolioSection'
 import SkillsSection from './components/SkillsSection'
-import { getPageMetadata } from '../../lib/textConstants'
+import { CORE_PROFILE_DATA } from '../../lib/consolidatedData'
 
 export default function SinglePage() {
   const [highlightedSkills, setHighlightedSkills] = useState<string[]>([])
@@ -25,7 +25,9 @@ export default function SinglePage() {
         // Worked with skills
         'Docker', 'Kubernetes', 'PostgreSQL', 'MongoDB', 'Redis',
         'GraphQL', 'REST APIs', 'CI/CD', 'Terraform', 'Airflow',
-        'Jupyter', 'Scikit-learn', 'Tailwind CSS', 'Material-UI'
+        'Jupyter', 'Scikit-learn', 'Tailwind CSS', 'Material-UI',
+        // Education skills
+        'Matlab'
       ]
       
       setHighlightedSkills(allSkills)
@@ -37,7 +39,7 @@ export default function SinglePage() {
     <div style={{ fontFamily: '"Work Sans", "Inter", sans-serif' }}>
       <Helmet>
         <title>Sampath Lakkaraju — Portfolio</title>
-        <meta name="description" content={getPageMetadata('metaDescription')} />
+        <meta name="description" content={CORE_PROFILE_DATA.metaDescription} />
       </Helmet>
 
       <motion.div

@@ -1,7 +1,7 @@
 import { useLayout } from '../../../components/layout/Layout'
 import { cn } from '../../../lib/cn'
 import { motion } from 'framer-motion'
-import { getHeroText } from '../../../lib/textConstants'
+import { CORE_PROFILE_DATA } from '../../../lib/consolidatedData'
 
 export default function HeroSection() {
   const { isCollapsed } = useLayout()
@@ -17,7 +17,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 transition-opacity duration-500" data-theme="light">
           <img 
             src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=face&auto=format" 
-            alt={getHeroText('lightThemeAlt')} 
+            alt={`${CORE_PROFILE_DATA.name} - Light Theme`}
             className="w-full h-full object-cover opacity-100"
           />
         </div>
@@ -26,7 +26,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 transition-opacity duration-500 opacity-0" data-theme="dark">
           <img 
             src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=600&fit=crop&crop=face&auto=format" 
-            alt={getHeroText('darkThemeAlt')} 
+            alt={`${CORE_PROFILE_DATA.name} - Dark Theme`}
             className="w-full h-full object-cover"
           />
         </div>
@@ -37,17 +37,17 @@ export default function HeroSection() {
         {/* Content Overlay - Right Side */}
         <div className="absolute right-8 bottom-8 text-right max-w-md">
           <h1 className="text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-2xl" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-            {getHeroText('title')}
+            {CORE_PROFILE_DATA.name}
           </h1>
           <div className="text-xl lg:text-2xl text-white/90 mb-8 drop-shadow-lg" style={{ fontFamily: '"Inter", sans-serif' }}>
-            <div>{getHeroText('subtitle').split('\n')[0]}</div>
-            <div>{getHeroText('subtitle').split('\n')[1]}</div>
+            <div>{CORE_PROFILE_DATA.longDescription.split('\n')[0]}</div>
+            <div>{CORE_PROFILE_DATA.longDescription.split('\n')[1]}</div>
           </div>
         </div>
         
         {/* Decorative Elements */}
         <div className="absolute top-6 left-6 w-16 h-16 bg-[rgb(var(--accent))]/80 rounded-full flex items-center justify-center text-white font-bold text-xl backdrop-blur-sm">
-          {getHeroText('initials')}
+          {CORE_PROFILE_DATA.initials}
         </div>
       </div>
     </section>
