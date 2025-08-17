@@ -22,7 +22,7 @@
         // Update favicon based on theme
         const favicon = document.querySelector('link[rel="icon"]');
         if (favicon) {
-          favicon.href = savedTheme === 'light' ? '/Portfolio/favicon-light.svg' : '/Portfolio/favicon-dark.svg';
+          favicon.href = savedTheme === 'light' ? '/favicon-light.svg' : '/favicon-dark.svg';
         }
         
         // Preload critical theme styles to prevent layout shift
@@ -62,9 +62,10 @@
         document.head.appendChild(style);
       })();
     </script>
+    <script type="module" crossorigin src="/assets/index-BwXJlM-g.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-OvcZtAxZ.css">
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
