@@ -1,6 +1,48 @@
 // Core consolidated data structures
 // This file serves as a single source of truth for all portfolio data
 
+// UI Strings and Headers - Centralized UI text used once or twice across the application
+export const UI_STRINGS = {
+  // Projects Section
+  projects: {
+    pageTitle: "My Projects",
+    pageDescription: "A collection of my work in data engineering, API development, and full-stack applications"
+  },
+
+  // Section Titles
+  sectionTitles: {
+    // Main section titles
+    about: "About Me",
+    experience: "Experience",
+    education: "Education",
+    projects: "Featured Projects",
+    skills: "Skills",
+    portfolio: "Portfolio",
+    writing: "Writing & Articles",
+    
+    // Subsection titles
+    coreSkills: "Core Skills",
+    focusAreas: "Focus Areas",
+    primary: "Primary",
+    secondary: "Secondary",
+    workedWith: "Worked With",
+    featuredArticles: "Featured Articles",
+    allArticles: "All Articles",
+    stayUpdated: "Stay Updated"
+  },
+
+  // Navigation
+  navigation: {
+    summary: "Summary",
+    detailed: "Detailed"
+  },
+
+
+} as const;
+
+// UI Strings types
+export type UIStrings = typeof UI_STRINGS;
+
 export const CORE_PROFILE_DATA = {
   // Basic identity
   name: "Sampath Lakkaraju",
@@ -55,7 +97,232 @@ export const CORE_PROFILE_DATA = {
   }
 } as const;
 
+// Profile data types
+export type ProfileData = typeof CORE_PROFILE_DATA;
 
+// Skills section data - Consolidated key-value structure
+export const CORE_SKILLS_SECTION = {
+  // Core skills with years of experience
+  skills: {
+    // Primary technologies
+    'Python': 7,
+    'TypeScript': 4,
+    'React': 4,
+    'AWS': 7,
+    'SQL': 6,
+    'REST APIs': 6,
+    'GCP': 2,
+  },
+  
+  // Worked with skills (technologies used but not primary focus)  
+  //TODO: make it better along with the technologies stack. 
+  workedWith: {
+    'Docker': 3,
+    'Kubernetes': 3,
+    'PostgreSQL': 3,
+    'MongoDB': 3,
+    'Redis': 3,
+    'GraphQL': 2,
+    
+    'CI/CD': 2,
+    'Terraform': 2,
+    'Airflow': 2,
+    'Jupyter': 2,
+    'Scikit-learn': 2,
+    'Tailwind CSS': 2,
+    'Material-UI': 2,
+    'Apache Kafka': 2,
+    'Apache Spark': 2,
+    'PySpark': 2,
+    'Hive': 2,
+    'HDFS': 2,
+    'MySQL': 2,
+    'Snowflake': 2,
+    'S3': 2,
+    'Lambda': 2,
+    'SQS': 2,
+    'Step Functions': 2,
+    'EMR': 2,
+    'WebSocket': 2,
+    'TensorFlow': 2,
+    'JWT': 2,
+    'Swagger': 2,
+    'Stripe': 2,
+    'Redux': 2,
+    'Matlab': 1
+  }
+} as const;
+
+
+
+
+
+export const CORE_EXPERIENCE_DATA = [
+  {
+    id: "1",
+    title: "Senior Software Engineer",
+    company: "Franklin Templeton",
+    details: "Refactored microservice read/write operations into modular handlers; Designed and deployed Airflow DAGs for daily data extraction from Snowflake to S3 and Postgres; Built backend microservices using Python and FastAPI to expose RESTful APIs",
+    fields: "Fullstack & Data ",
+    logo: "/images/companies/franklin-templeton.svg",
+    fromDate: "June 2025",
+    toDate: "Present",
+    technologies: ["Python", "FastAPI", "Airflow", "Snowflake", "S3", "Postgres", "AWS", "React", "TypeScript"],
+    focusAreas: ["Data Engineering", "API Development", "System Design"]
+  },
+  {
+    id: "2",
+    title: "Software Engineer",
+    company: "FINRA",
+    details: "Migrated CAIS applications to AWS serverless architecture using Lambda, S3, SQS, Step Functions; Redesigned data pipelines for serverless execution; Developed service APIs with idempotency and function chaining; Used CloudWatch and Splunk for monitoring and on-call investigations",
+    fields: "Application Development",
+    logo: "/images/companies/finra.svg",
+    fromDate: "April 2024",
+    toDate: "February 2025",
+    technologies: ["Python", "AWS Lambda", "S3", "SQS", "Step Functions", "EMR", "Splunk", "CloudWatch"],
+    focusAreas: ["System Design", "Performance Optimization", "API Development"]
+  },
+  {
+    id: "3",
+    title: "Senior Software Engineer",
+    company: "Dropbox",
+    details:  "Built data pipelines with Python, Airflow, Hive, HDFS, and MySQL for multi-vendor data ingestion; Developed PySpark SQL pipelines with tuning and refactoring; Built microservices and APIs in Python to power help article recommendations; Created reusable React and TypeScript UI components including support widgets and dashboards; Automated phone support infrastructure using AWS Connect, Lambda, DynamoDB; Implemented observability with CloudWatch and Grafana",
+    fields: "Fullstack & Data",
+    logo: "/images/companies/dropbox.svg",
+    fromDate: "February 2024",
+    toDate: "September 2024",
+    technologies: ["Python", "React", "TypeScript", "Airflow", "Hive", "HDFS", "MySQL", "PySpark", "AWS Lambda", "AWS Connect", "DynamoDB", "REST", "gRPC", "CloudWatch", "Grafana"],
+    focusAreas: ["Data Engineering", "Full-Stack Applications", "Performance Optimization"]
+  },
+  {
+    id: "4",
+    title: "Software Engineer",
+    company: "Tech Mahindra",
+    details:"Automated Medicaid and Managed Care rebate data pipelines using Python and SQL; Built dashboards for contracts and sales using Python, JavaScript, AWS EC2, RDS, S3; Developed MVPs for validation of sales processes; Created support dashboards and data monitoring tools for transparency", fields: "Data Engineering & Automation",
+    logo: "/images/companies/tech-mahindra.svg",
+    fromDate: "January 2014",
+    toDate: "June 2017",
+    technologies: ["Python", "SQL", "JavaScript", "AWS EC2", "AWS RDS", "AWS S3"],
+    focusAreas: ["Data Engineering", "Automation", "Performance Optimization"]
+  }
+] as const;
+
+// Experience data types
+export type ExperienceItem = typeof CORE_EXPERIENCE_DATA[number];
+export type ExperienceFormat = 'detailed' | 'summary' | 'portfolio';
+
+export const CORE_EDUCATION_DATA = [
+  {
+    id: "edu-1",
+    title: "Master of Science in Software Engineering",
+    organization: "San Jose State University ",
+    dates: "2017 - 2019",
+    description: "Corse Work: Cloud Computing, UI-UX engineering, Virtualization, Distributed Systems, Object Oriented Programming and Data Structures, Autonomous Cars, Machine learning, Software Quality Assurance and Testing",
+    technologies: ["Python"],
+    focusAreas: ["System Design", "UI-UX Engineering", "Machine Learning", "Software Quality Assurance"]
+  },
+  {
+    id: "edu-2",
+    title: "Bachelor of Technology in Electrical Engineering ",
+    organization: "Jawaharlal Nehru Technological University",
+    dates: "2009 - 2013",
+    description: "Corse Work: Control Systems, Electrical Machines, Neural Networks and Fuzzy Logics, Electro magnetic fields, Power systems, Power electronics",
+    technologies: ["Matlab"],
+    focusAreas: ["Control Systems", "Neural Networks", "Power Systems", "Electronics"]
+  }
+] as const;
+
+// Education data types
+export type EducationItem = typeof CORE_EDUCATION_DATA[number];
+export type EducationFormat = 'detailed' | 'summary' | 'portfolio';
+
+export const CORE_PROJECTS_DATA = [
+  {
+    id: "proj-1",
+    title: "Data Pipeline Optimization",
+    organization: "Professional Project",
+    dates: "2023",
+    description: "Built a high-performance ETL pipeline using Apache Kafka and Apache Spark, reducing data processing time by 70% and improving reliability through fault-tolerant design patterns.",
+    technologies: ["Python", "Apache Kafka", "Apache Spark", "AWS S3", "Docker"],
+    status: "completed" as const,
+    icon: "data_usage",
+    metric: "70% faster processing",
+    focusAreas: ["Data Engineering", "Performance Optimization", "System Design"]
+  },
+  {
+    id: "proj-2",
+    title: "Real-time Analytics Dashboard",
+    organization: "Personal Project",
+    dates: "2024",
+    description: "Developed a real-time analytics platform using React, Node.js, and WebSocket connections, providing live insights into system performance and user behavior metrics.",
+    technologies: ["React", "Node.js", "WebSocket", "PostgreSQL", "Redis"],
+    status: "active" as const,
+    icon: "analytics",
+    metric: "Real-time insights",
+    focusAreas: ["Full-Stack Applications", "Performance Optimization", "Real-time Systems"]
+  },
+  {
+    id: "proj-3",
+    title: "AI-Powered Recommendation Engine",
+    organization: "Personal Project",
+    dates: "2024",
+    description: "Machine learning system for personalized content recommendations using collaborative filtering and deep learning models, currently in development phase.",
+    technologies: ["Python", "TensorFlow", "Scikit-learn", "FastAPI", "MongoDB"],
+    status: "active" as const,
+    icon: "code",
+    metric: "ML-powered",
+    focusAreas: ["Machine Learning", "API Development", "Data Science"]
+  },
+  {
+    id: "proj-4",
+    title: "Microservices Architecture",
+    organization: "Professional Project",
+    dates: "2023",
+    description: "Designed and implemented a scalable microservices architecture using Docker and Kubernetes, improving system reliability and deployment efficiency.",
+    technologies: ["Docker", "Kubernetes", "Node.js", "PostgreSQL", "Redis"],
+    status: "completed" as const,
+    icon: "cloud",
+    metric: "Scalable architecture",
+    focusAreas: ["System Design", "Performance Optimization", "Architecture"]
+  },
+  {
+    id: "proj-5",
+    title: "REST API Development",
+    organization: "Professional Project",
+    dates: "2023",
+    description: "Built robust REST APIs using FastAPI and Python, implementing authentication, rate limiting, and comprehensive documentation.",
+    technologies: ["Python", "FastAPI", "PostgreSQL", "JWT", "Swagger"],
+    status: "completed" as const,
+    icon: "api",
+    metric: "Production ready",
+    focusAreas: ["API Development", "System Design", "Performance Optimization"]
+  },
+  {
+    id: "proj-6",
+    title: "Full-Stack E-commerce",
+    organization: "Personal Project",
+    dates: "2024",
+    description: "Developed a complete e-commerce solution with user authentication, payment processing, and admin dashboard.",
+    technologies: ["React", "Node.js", "MongoDB", "Stripe", "Redux"],
+    status: "active" as const,
+    icon: "folder",
+    metric: "Full-stack solution",
+    focusAreas: ["Full-Stack Applications", "API Development", "System Design"]
+  }
+] as const;
+
+// Project data types
+export type ProjectItem = typeof CORE_PROJECTS_DATA[number];
+export type ProjectFormat = 'detailed' | 'summary' | 'portfolio' | 'featured';
+
+// Section titles types
+export type SectionTitlesData = typeof UI_STRINGS.sectionTitles;
+
+
+
+// ============================================================================
+// WRITING SECTION DATA (Currently Unused - Moved to Bottom)
+// ============================================================================
 
 // Writing section data
 export const CORE_WRITING_SECTION = {
@@ -140,327 +407,122 @@ export const CORE_WRITING_SECTION = {
   ]
 } as const;
 
-// Skills section data
-export const CORE_SKILLS_SECTION = {
-  primary: [
-    { name: 'Python', years: 5 },
-    { name: 'TypeScript', years: 4 },
-    { name: 'React', years: 4 },
-    { name: 'pandas', years: 4 },
-    { name: 'FastAPI', years: 3 },
-  ],
-  secondary: [
-    { name: 'Microservices', years: 3 },
-    { name: 'Data Pipelines', years: 3 },
-    { name: 'AWS', years: 3 },
-    { name: 'Node.js', years: 3 },
-    { name: 'GCP', years: 2 },
-  ],
-  workedWith: [
-    'Docker', 'Kubernetes', 'PostgreSQL', 'MongoDB', 'Redis',
-    'GraphQL', 'REST APIs', 'CI/CD', 'Terraform', 'Airflow',
-    'Jupyter', 'Scikit-learn', 'Tailwind CSS', 'Material-UI'
-  ]
-} as const;
+// ============================================================================
+// FUTURE ENHANCEMENT IDEAS - ADVANCED SKILLS MAPPING SYSTEM
+// ============================================================================
 
-// Projects page section data
-export const CORE_PROJECTS_SECTION = {
-  pageTitle: "My Projects",
-  pageDescription: "A collection of my work in data engineering, API development, and full-stack applications"
-} as const;
-
-export const CORE_SECTION_TITLES = {
-  // Main section titles
-  about: "About Me",
-  experience: "Experience",
-  education: "Education",
-  projects: "Featured Projects",
-  skills: "Skills",
-  portfolio: "Portfolio",
-  writing: "Writing & Articles",
-
-  
-  // Subsection titles
-  coreSkills: "Core Skills",
-  focusAreas: "Focus Areas",
-  primary: "Primary",
-  secondary: "Secondary",
-  workedWith: "Worked With",
-  featuredArticles: "Featured Articles",
-  allArticles: "All Articles",
-  stayUpdated: "Stay Updated"
-} as const;
-
-export const CORE_ABOUT_SECTION = {
-  title: "Senior Software Engineer",
-  description1: "I specialize in building scalable data pipelines, reliable APIs, and polished user experiences. With over 8 years of experience in software engineering, I've worked across the full stack to deliver solutions that drive business impact.",
-  description2: "My expertise includes Python, TypeScript, React, AWS, and modern data technologies. I'm passionate about clean code, system design, and creating tools that developers love to use.",
-  skills: ['Python', 'TypeScript', 'React', 'Node.js', 'AWS', 'Docker', 'Kubernetes', 'PostgreSQL'],
-  focusAreas: ['Data Engineering', 'API Development', 'Full-Stack Applications', 'System Design', 'Performance Optimization'],
-  // About page specific content
-  pageTitle: "About Me",
-  pageDescription: "I'm a Senior Software Engineer passionate about building scalable data pipelines, reliable APIs, and polished user experiences. With over 8 years of experience, I've worked across the full stack to deliver solutions that drive business impact.",
-  personalInfo: {
-    location: "San Francisco, CA",
-    experience: "8+ years",
-    education: "Master's Degree"
-  },
-  detailedFocusAreas: [
-    {
-      icon: "data_usage",
-      title: "Data Engineering",
-      description: "Building scalable data pipelines and ETL processes for large-scale data processing."
-    },
-    {
-      icon: "code",
-      title: "API Development",
-      description: "Creating robust, high-performance REST APIs and microservices architecture."
-    },
-    {
-      icon: "trending_up",
-      title: "Full-Stack Applications",
-      description: "Developing end-to-end solutions with modern frontend and backend technologies."
-    },
-    {
-      icon: "data_usage",
-      title: "System Design",
-      description: "Architecting scalable systems and optimizing performance for production environments."
-    },
-    {
-      icon: "trending_up",
-      title: "Performance Optimization",
-      description: "Improving application performance through code optimization and infrastructure tuning."
-    }
-  ],
-  aboutExperience: [
-    {
-      year: "2023 - Present",
-      title: "Senior Software Engineer",
-      company: "Tech Company",
-      description: "Leading development of data processing pipelines and API services. Mentoring junior developers and implementing best practices."
-    },
-    {
-      year: "2021 - 2023",
-      title: "Software Engineer",
-      company: "Startup",
-      description: "Built full-stack applications using React, Node.js, and cloud services. Contributed to system architecture decisions."
-    },
-    {
-      year: "2019 - 2020",
-      title: "Junior Developer",
-      company: "Digital Agency",
-      description: "Developed responsive websites and e-commerce solutions. Collaborated with design team on UX improvements."
-    }
-  ]
-} as const;
-
-export const CORE_EXPERIENCE_DATA = [
-  {
-    id: "1",
-    title: "Senior Software Engineer",
-    company: "Franklin Templeton",
-    details: "Refactored microservice read/write operations into modular handlers; Designed and deployed Airflow DAGs for daily data extraction from Snowflake to S3 and Postgres; Built backend microservices using Python and FastAPI to expose RESTful APIs",
-    fields: "Fullstack & Data ",
-    logo: "/images/companies/franklin-templeton.svg",
-    fromDate: "June 2025",
-    toDate: "Present",
-    technologies: ["Python", "FastAPI", "Airflow", "Snowflake", "S3", "Postgres", "AWS", "React", "TypeScript"]
-  },
-  {
-    id: "2",
-    title: "Software Engineer",
-    company: "FINRA",
-    details: "Migrated CAIS applications to AWS serverless architecture using Lambda, S3, SQS, Step Functions; Redesigned data pipelines for serverless execution; Developed service APIs with idempotency and function chaining; Used CloudWatch and Splunk for monitoring and on-call investigations",
-    fields: "Application Development",
-    logo: "/images/companies/finra.svg",
-    fromDate: "April 2024",
-    toDate: "February 2025",
-    technologies: ["Python", "AWS Lambda", "S3", "SQS", "Step Functions", "EMR", "Splunk", "CloudWatch"]
-  },
-  {
-    id: "3",
-    title: "Senior Software Engineer",
-    company: "Dropbox",
-    details:  "Built data pipelines with Python, Airflow, Hive, HDFS, and MySQL for multi-vendor data ingestion; Developed PySpark SQL pipelines with tuning and refactoring; Built microservices and APIs in Python to power help article recommendations; Created reusable React and TypeScript UI components including support widgets and dashboards; Automated phone support infrastructure using AWS Connect, Lambda, DynamoDB; Implemented observability with CloudWatch and Grafana",
-    fields: "Fullstack & Data",
-    logo: "/images/companies/dropbox.svg",
-    fromDate: "February 2024",
-    toDate: "September 2024",
-    technologies: ["Python", "React", "TypeScript", "Airflow", "Hive", "HDFS", "MySQL", "PySpark", "AWS Lambda", "AWS Connect", "DynamoDB", "REST", "gRPC", "CloudWatch", "Grafana"]
-  },
-  {
-    id: "4",
-    title: "Software Engineer",
-    company: "Tech Mahindra",
-    details:"Automated Medicaid and Managed Care rebate data pipelines using Python and SQL; Built dashboards for contracts and sales using Python, JavaScript, AWS EC2, RDS, S3; Developed MVPs for validation of sales processes; Created support dashboards and data monitoring tools for transparency", fields: "Data Engineering & Automation",
-    logo: "/images/companies/tech-mahindra.svg",
-    fromDate: "January 2014",
-    toDate: "June 2017",
-    technologies: ["Python", "SQL", "JavaScript", "AWS EC2", "AWS RDS", "AWS S3"]
-  }
-] as const;
-
-export const CORE_EDUCATION_DATA = [
-  {
-    id: "edu-1",
-    title: "Master of Science in Software Engineering",
-    organization: "San Jose State University ",
-    dates: "2017 - 2019",
-    description: "Corse Work: Cloud Computing, UI-UX engineering, Virtualization, Distributed Systems, Object Oriented Programming and Data Structures, Autonomous Cars, Machine learning, Software Quality Assurance and Testing",
-    skills: ["Python"]
-  },
-  {
-    id: "edu-2",
-    title: "Bachelor of Technology in Electrical Engineering ",
-    organization: "Jawaharlal Nehru Technological University",
-    dates: "2009 - 2013",
-    description: "Corse Work: Control Systems, Electrical Machines, Neural Networks and Fuzzy Logics, Electro magnetic fields, Power systems, Power electronics",
-    skills: ["Matlab"]
-  }
-] as const;
-
-export const CORE_PROJECTS_DATA = [
-  {
-    id: "proj-1",
-    title: "Data Pipeline Optimization",
-    organization: "Professional Project",
-    dates: "2023",
-    description: "Built a high-performance ETL pipeline using Apache Kafka and Apache Spark, reducing data processing time by 70% and improving reliability through fault-tolerant design patterns.",
-    skills: ["Python", "Apache Kafka", "Apache Spark", "AWS S3", "Docker"],
-    technologies: ["Python", "Apache Kafka", "Apache Spark", "AWS S3", "Docker"],
-    status: "completed" as const,
-    icon: "data_usage",
-    blurb: "Built a high-performance ETL pipeline using Apache Kafka and Apache Spark, reducing data processing time by 70% and improving reliability through fault-tolerant design patterns.",
-    metric: "70% faster processing"
-  },
-  {
-    id: "proj-2",
-    title: "Real-time Analytics Dashboard",
-    organization: "Personal Project",
-    dates: "2024",
-    description: "Developed a real-time analytics platform using React, Node.js, and WebSocket connections, providing live insights into system performance and user behavior metrics.",
-    skills: ["React", "Node.js", "WebSocket", "PostgreSQL", "Redis"],
-    technologies: ["React", "Node.js", "WebSocket", "PostgreSQL", "Redis"],
-    status: "active" as const,
-    icon: "analytics",
-    blurb: "Developed a real-time analytics platform using React, Node.js, and WebSocket connections, providing live insights into system performance and user behavior metrics.",
-    metric: "Real-time insights"
-  },
-  {
-    id: "proj-3",
-    title: "AI-Powered Recommendation Engine",
-    organization: "Personal Project",
-    dates: "2024",
-    description: "Machine learning system for personalized content recommendations using collaborative filtering and deep learning models, currently in development phase.",
-    skills: ["Python", "TensorFlow", "Scikit-learn", "FastAPI", "MongoDB"],
-    technologies: ["Python", "TensorFlow", "Scikit-learn", "FastAPI", "MongoDB"],
-    status: "active" as const,
-    icon: "code",
-    blurb: "Machine learning system for personalized content recommendations using collaborative filtering and deep learning models, currently in development phase.",
-    metric: "ML-powered"
-  },
-  {
-    id: "proj-4",
-    title: "Microservices Architecture",
-    organization: "Professional Project",
-    dates: "2023",
-    description: "Designed and implemented a scalable microservices architecture using Docker and Kubernetes, improving system reliability and deployment efficiency.",
-    skills: ["Docker", "Kubernetes", "Node.js", "PostgreSQL", "Redis"],
-    technologies: ["Docker", "Kubernetes", "Node.js", "PostgreSQL", "Redis"],
-    status: "completed" as const,
-    icon: "cloud",
-    blurb: "Designed and implemented a scalable microservices architecture using Docker and Kubernetes, improving system reliability and deployment efficiency.",
-    metric: "Scalable architecture"
-  },
-  {
-    id: "proj-5",
-    title: "REST API Development",
-    organization: "Professional Project",
-    dates: "2023",
-    description: "Built robust REST APIs using FastAPI and Python, implementing authentication, rate limiting, and comprehensive documentation.",
-    skills: ["Python", "FastAPI", "PostgreSQL", "JWT", "Swagger"],
-    technologies: ["Python", "FastAPI", "PostgreSQL", "JWT", "Swagger"],
-    status: "completed" as const,
-    icon: "api",
-    blurb: "Built robust REST APIs using FastAPI and Python, implementing authentication, rate limiting, and comprehensive documentation.",
-    metric: "Production ready"
-  },
-  {
-    id: "proj-6",
-    title: "Full-Stack E-commerce",
-    organization: "Personal Project",
-    dates: "2024",
-    description: "Developed a complete e-commerce solution with user authentication, payment processing, and admin dashboard.",
-    skills: ["React", "Node.js", "MongoDB", "Stripe", "Redux"],
-    technologies: ["React", "Node.js", "MongoDB", "Stripe", "Redux"],
-    status: "active" as const,
-    icon: "folder",
-    blurb: "Developed a complete e-commerce solution with user authentication, payment processing, and admin dashboard.",
-    metric: "Full-stack solution"
-  }
-] as const;
-
-// Detailed project data for ProjectDetail component
-export const CORE_PROJECT_DETAILS = {
-  'data-pipeline': {
-    title: 'Data Pipeline Optimization',
-    description: 'Built a high-performance ETL pipeline using Apache Kafka and Apache Spark, reducing data processing time by 70% and improving reliability through fault-tolerant design patterns.',
-    longDescription: `This project involved designing and implementing a robust data pipeline that processes millions of records daily. The system uses Apache Kafka for real-time data streaming, Apache Spark for distributed processing, and AWS S3 for data storage.
-
-Key achievements include:
-• Reduced data processing time by 70% through optimized Spark configurations
-• Implemented fault-tolerant design patterns ensuring 99.9% uptime
-• Added comprehensive monitoring and alerting using Prometheus and Grafana
-• Automated deployment pipeline using Docker and Kubernetes`,
-    technologies: ['Python', 'Apache Kafka', 'Apache Spark', 'AWS S3', 'Docker', 'Kubernetes', 'Prometheus', 'Grafana'],
-    status: 'completed',
-    icon: 'data_usage',
-    githubUrl: 'https://github.com/example/data-pipeline',
-    liveUrl: 'https://example.com/data-pipeline',
-    metrics: [
-      { label: 'Processing Time', value: '70% reduction', color: 'text-green-600' },
-      { label: 'Uptime', value: '99.9%', color: 'text-blue-600' },
-      { label: 'Data Volume', value: '10M+ records/day', color: 'text-purple-600' }
-    ]
-  },
-  'analytics-dashboard': {
-    title: 'Real-time Analytics Dashboard',
-    description: 'Developed a real-time analytics platform using React, Node.js, and WebSocket connections, providing live insights into system performance and user behavior metrics.',
-    longDescription: `A comprehensive analytics platform that provides real-time insights into system performance, user behavior, and business metrics. The dashboard features interactive charts, real-time updates, and customizable widgets.
-
-Features include:
-• Real-time data visualization using WebSocket connections
-• Interactive charts and graphs with D3.js
-• Customizable dashboard layouts
-• Role-based access control
-• Export functionality for reports`,
-    technologies: ['React', 'Node.js', 'WebSocket', 'PostgreSQL', 'Redis', 'D3.js', 'TypeScript'],
-    status: 'active',
-    icon: 'analytics',
-    githubUrl: 'https://github.com/example/analytics-dashboard',
-    liveUrl: 'https://analytics.example.com',
-    metrics: [
-      { label: 'Real-time Updates', value: '< 100ms latency', color: 'text-green-600' },
-      { label: 'Active Users', value: '500+ daily', color: 'text-blue-600' },
-      { label: 'Data Points', value: '1M+ processed', color: 'text-purple-600' }
-    ]
-  }
-} as const;
-
-// Profile data types
-export type ProfileData = typeof CORE_PROFILE_DATA;
-
-// Section titles types
-export type SectionTitlesData = typeof CORE_SECTION_TITLES;
-
-// Experience data types
-export type ExperienceItem = typeof CORE_EXPERIENCE_DATA[number];
-export type ExperienceFormat = 'detailed' | 'summary' | 'portfolio';
-
-// Education data types
-export type EducationItem = typeof CORE_EDUCATION_DATA[number];
-export type EducationFormat = 'detailed' | 'summary' | 'portfolio';
-
-// Project data types
-export type ProjectItem = typeof CORE_PROJECTS_DATA[number];
-export type ProjectFormat = 'detailed' | 'summary' | 'portfolio' | 'featured';
+// ENHANCED SKILLS MAPPING SYSTEM - IMPLEMENTATION ROADMAP
+//
+// Current Implementation:
+// - Simple key-value structure: skills: { 'Python': 5, 'React': 4, ... }
+// - Basic categorization: primary (3+ years), secondary (2-3 years)
+// - Year-based filtering for skill mapping
+//
+// Future Enhancement Vision:
+// Create a sophisticated, data-driven skills mapping system that provides intelligent
+// categorization, relationship mapping, and better project matching.
+//
+// PHASE 1: Enhanced Data Structure & Metadata
+// ===========================================
+// Extend CORE_SKILLS_SECTION with rich metadata for each skill:
+//
+// skills: {
+//   'Python': {
+//     years: 5,
+//     lastUsed: '2024-12',           // When last used professionally
+//     projectCount: 8,               // How many projects use this skill
+//     domain: 'core',                // core, data, frontend, backend, infra
+//     proficiency: 'expert',         // beginner, intermediate, expert
+//     trending: 'stable',            // growing, stable, declining
+//     impact: 'high'                 // high, medium, low business impact
+//   }
+// }
+//
+// PHASE 2: Smart Categorization Logic
+// ===================================
+// Replace fixed primary/secondary with dynamic, intelligent categories:
+//
+// 1. Core Skills: Always relevant, used across multiple domains
+//    - High usage + high recency + cross-domain application
+//    - Example: Python, TypeScript, React
+//
+// 2. Domain Skills: Specialized skills for specific areas
+//    - Data Engineering: Kafka, Spark, Airflow, Snowflake
+//    - Frontend: React, TypeScript, Tailwind, Material-UI
+//    - Backend: FastAPI, Node.js, PostgreSQL, Redis
+//    - Infrastructure: AWS, Docker, Kubernetes, Terraform
+//
+// 3. Emerging Skills: New skills gaining prominence
+//    - Growing usage + recent adoption + high potential
+//    - Example: New ML frameworks, emerging cloud services
+//
+// 4. Contextual Skills: Skills relevant to specific project types
+//    - High impact in specific contexts
+//    - Example: Specialized tools for data pipelines
+//
+// PHASE 3: Skill Relationship Mapping
+// ==================================
+// Build intelligent skill networks and dependencies:
+//
+// 1. Co-occurrence Matrix: Which skills frequently appear together
+//    - Python + FastAPI + PostgreSQL (Backend stack)
+//    - React + TypeScript + Tailwind (Frontend stack)
+//    - AWS + Docker + Kubernetes (Infrastructure stack)
+//
+// 2. Skill Dependencies: Which skills build on others
+//    - React → JavaScript → HTML/CSS
+//    - FastAPI → Python → General programming
+//    - Kubernetes → Docker → Containerization
+//
+// 3. Technology Stack Groups: Logical groupings
+//    - Data Engineering Stack: Python, Kafka, Spark, Airflow, Snowflake
+//    - Full-Stack Web: React, TypeScript, Node.js, PostgreSQL
+//    - Cloud Native: AWS, Docker, Kubernetes, Terraform
+//
+// PHASE 4: Intelligent Project Matching
+// ====================================
+// Enhanced algorithm for highlighting relevant projects:
+//
+// 1. Skill Relevance Score: Multi-factor calculation
+//    - Skill usage in project (weight: 40%)
+//    - Project recency (weight: 30%)
+//    - Project success/impact (weight: 20%)
+//    - Skill recency (weight: 10%)
+//
+// 2. Context-Aware Matching: Consider project context
+//    - Data projects: Highlight data engineering skills
+//    - Web projects: Highlight full-stack skills
+//    - Infrastructure: Highlight DevOps skills
+//
+// 3. Skill Learning Path: Suggest skill development
+//    - Based on current skills and project requirements
+//    - Identify skill gaps and learning opportunities
+//
+// IMPLEMENTATION APPROACH:
+// ========================
+// 1. Start with Phase 1: Enhanced data structure
+// 2. Build analysis functions to parse existing project/experience data
+// 3. Implement smart categorization logic
+// 4. Create enhanced project matching algorithms
+// 5. Update UI components to use new system
+//
+// BENEFITS:
+// =========
+// ✅ Data-Driven: Categories based on actual usage, not assumptions
+// ✅ Dynamic: Skills evolve based on recent activity and project success
+// ✅ Intelligent: Better project matching and skill relationship insights
+// ✅ Scalable: Easy to add new skills and see their impact
+// ✅ Insightful: Provides valuable insights about skill development and trends
+// ✅ Professional: More sophisticated and useful for portfolio visitors
+//
+// TECHNICAL CONSIDERATIONS:
+// =========================
+// - Maintain backward compatibility during transition
+// - Use computed properties for dynamic categorization
+// - Cache skill analysis results for performance
+// - Consider skill data versioning for tracking changes over time
+// - Implement skill insights dashboard for portfolio visitors
+//
+// This enhancement will transform the skills section from a simple list into an
+// intelligent, dynamic system that provides real value to portfolio visitors
+// and better represents professional skill development over time.

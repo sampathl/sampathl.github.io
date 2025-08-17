@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { MdViewList } from 'react-icons/md'
 import { usePortfolio } from './usePortfolio'
 import type { PortfolioSectionProps, PortfolioItem } from './portfolio'
-import { CORE_SECTION_TITLES } from '../../../lib/consolidatedData'
+import { UI_STRINGS } from '../../../lib/consolidatedData'
 
 // Sub-components
 function SegmentedControl({ 
@@ -35,10 +35,10 @@ function SegmentedControl({
 
 function ListItem({ 
   item, 
-  highlightedSkills = [] 
+  showSkillMapping = false
 }: { 
   item: PortfolioItem
-  highlightedSkills?: string[]
+  showSkillMapping?: boolean
 }) {
   const getCategoryColor = (category: string) => {
     switch (category) {
@@ -51,8 +51,8 @@ function ListItem({
 
   const getCategoryLabel = (category: string) => {
     switch (category) {
-      case 'experience': return CORE_SECTION_TITLES.experience
-      case 'education': return CORE_SECTION_TITLES.education
+      case 'experience': return UI_STRINGS.sectionTitles.experience
+      case 'education': return UI_STRINGS.sectionTitles.education
       case 'project': return 'Project'
       default: return category
     }
@@ -63,11 +63,7 @@ function ListItem({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className={`rounded-lg p-6 mb-4 hover:shadow-lg transition-all duration-200 ${
-        item.hasMatchingSkills 
-          ? 'bg-[rgb(var(--card))]' 
-          : 'bg-[rgb(var(--card))] opacity-60'
-      }`}
+      className="rounded-lg p-6 mb-4 hover:shadow-lg transition-all duration-200 bg-[rgb(var(--card))]"
     >
       <div className="flex-1">
         {/* Top row: Title and Category */}
@@ -76,22 +72,32 @@ function ListItem({
             <h3 className="text-xl font-semibold text-[rgb(var(--fg))] text-left">
               {item.title}
             </h3>
-            {item.hasMatchingSkills && (
-              <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-[rgb(var(--accent))] text-[rgb(var(--bg))]">
-                Related
-              </span>
-            )}
           </div>
           <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(item.category)}`}>
             {getCategoryLabel(item.category)}
           </span>
         </div>
         
-        {/* Bottom row: Organization and Date */}
+        {/* Bottom row: Organization, Focus Areas, and Date */}
         <div className="flex items-center justify-between">
-          <p className="text-sm text-[rgb(var(--muted))] text-left">
-            {item.organization}
-          </p>
+          <div className="flex items-center gap-2">
+            <p className="text-sm text-[rgb(var(--muted))] text-left">
+              {item.organization}
+            </p>
+            {/* Focus Areas tags - only show when skill mapping is active */}
+            {showSkillMapping && (
+              <div className="flex gap-1">
+                {item.focusAreas.map((area, index) => (
+                  <span
+                    key={index}
+                    className="px-2 py-1 rounded text-xs font-medium bg-[rgb(var(--accent))] text-[rgb(var(--bg))] opacity-80"
+                  >
+                    {area}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
           <p className="text-sm text-[rgb(var(--muted))] text-right">
             {item.dates}
           </p>
@@ -99,8 +105,8 @@ function ListItem({
         
         <p className="text-[rgb(var(--fg))] leading-relaxed mt-3">{item.description}</p>
         
-        {/* Skills tags - only show when skill mapping is active */}
-        {highlightedSkills.length > 0 && (
+        {/* Technologies tags - only show when skill mapping is active */}
+        {showSkillMapping && (
           <div className="mt-4 flex flex-wrap gap-2">
             {item.skills.map((skill, index) => (
               <span
@@ -119,10 +125,9 @@ function ListItem({
 
 // Main PortfolioSection component
 export default function PortfolioSection({ 
-  highlightedSkills = [],
   showSkillMapping = false
 }: PortfolioSectionProps) {
-  const { activeFilter, setActiveFilter, sortedItems } = usePortfolio(highlightedSkills, showSkillMapping)
+  const { activeFilter, setActiveFilter, sortedItems } = usePortfolio(showSkillMapping)
 
   return (
     <div className="mb-12">
@@ -142,7 +147,7 @@ export default function PortfolioSection({
             <ListItem 
               key={item.id} 
               item={item} 
-              highlightedSkills={highlightedSkills}
+              showSkillMapping={showSkillMapping}
             />
           ))
         ) : (

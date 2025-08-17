@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { MdFolder, MdCode, MdDataUsage, MdApi, MdCloud, MdAnalytics } from 'react-icons/md'
 import ImpactCard from './ImpactCard'
-import { CORE_PROJECTS_DATA, CORE_PROJECTS_SECTION } from '../../../lib/consolidatedData'
+import { CORE_PROJECTS_DATA, UI_STRINGS } from '../../../lib/consolidatedData'
 
 export default function ProjectsSection() {
   // Helper function to get icon component
@@ -48,10 +48,10 @@ export default function ProjectsSection() {
           className="text-center mb-12"
         >
           <h1 className="text-4xl font-bold text-[rgb(var(--fg))] mb-4" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-            {CORE_PROJECTS_SECTION.pageTitle}
+            {UI_STRINGS.projects.pageTitle}
           </h1>
           <p className="text-xl text-[rgb(var(--muted))] max-w-3xl mx-auto" style={{ fontFamily: '"Inter", sans-serif' }}>
-            {CORE_PROJECTS_SECTION.pageDescription}
+            {UI_STRINGS.projects.pageDescription}
           </p>
         </motion.div>
 
@@ -87,7 +87,7 @@ export default function ProjectsSection() {
                 )}
                 
                 <p className="text-[rgb(var(--muted))] mb-4 leading-relaxed">
-                  {project.blurb}
+                  {project.description}
                 </p>
 
                 {/* Technologies */}

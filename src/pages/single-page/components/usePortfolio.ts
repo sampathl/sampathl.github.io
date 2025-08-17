@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react'
 import { getExperienceData, getEducationData, getProjectData } from '../../../lib/dataAccess'
 import type { PortfolioItem } from './portfolio'
 
-export const usePortfolio = (highlightedSkills: string[] = [], showSkillMapping: boolean = false) => {
+export const usePortfolio = (showSkillMapping: boolean = false) => {
   const [activeFilter, setActiveFilter] = useState('All')
 
   const filteredItems = useMemo(() => {
@@ -14,7 +14,8 @@ export const usePortfolio = (highlightedSkills: string[] = [], showSkillMapping:
       dates: `${item.fromDate} - ${item.toDate}`,
       category: 'experience' as const,
       description: item.details,
-      skills: item.technologies
+      skills: item.technologies,
+      focusAreas: item.focusAreas
     }))
     
     // Get education items from consolidated data
@@ -25,7 +26,8 @@ export const usePortfolio = (highlightedSkills: string[] = [], showSkillMapping:
       dates: item.dates,
       category: 'education' as const,
       description: item.description,
-      skills: item.skills
+      skills: item.technologies,
+      focusAreas: item.focusAreas
     }))
     
     // Get project items from consolidated data
@@ -36,7 +38,8 @@ export const usePortfolio = (highlightedSkills: string[] = [], showSkillMapping:
       dates: item.dates,
       category: 'project' as const,
       description: item.description,
-      skills: item.skills
+      skills: item.technologies,
+      focusAreas: item.focusAreas
     }))
     
     // Combine all consolidated data
@@ -54,21 +57,13 @@ export const usePortfolio = (highlightedSkills: string[] = [], showSkillMapping:
       return true
     })
 
-    // Add skill mapping info to items when skill mapping is active
-    if (showSkillMapping && highlightedSkills.length > 0) {
-      filtered = filtered.map(item => ({
-        ...item,
-        hasMatchingSkills: item.skills.some(skill => highlightedSkills.includes(skill))
-      }))
-    } else {
-      filtered = filtered.map(item => ({
-        ...item,
-        hasMatchingSkills: false
-      }))
-    }
+    // No skill mapping logic needed - just return the items as is
+    filtered = filtered.map(item => ({
+      ...item
+    }))
 
     return filtered
-  }, [activeFilter, highlightedSkills, showSkillMapping])
+  }, [activeFilter, showSkillMapping])
 
   const sortedItems = useMemo(() => {
     return [...filteredItems].sort((a, b) => {

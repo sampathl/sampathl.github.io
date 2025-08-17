@@ -6,10 +6,9 @@ export interface PortfolioItem {
   category: 'experience' | 'education' | 'project'
   description: string
   skills: readonly string[]
-  hasMatchingSkills?: boolean
+  focusAreas: readonly string[]
 }
 
 export interface PortfolioSectionProps {
-  highlightedSkills?: string[]
   showSkillMapping?: boolean
 }

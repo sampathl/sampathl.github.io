@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
 import { MdViewList, MdFullscreen, MdMenu, MdChevronRight, MdChevronLeft, MdHome, MdWork, MdFolder, MdPerson, MdEmail } from 'react-icons/md'
 import { NAV_ITEMS, BREAKPOINTS, SCROLL_OFFSET } from '../lib/navigation'
-import { CORE_PROFILE_DATA } from '../lib/consolidatedData'
+import { CORE_PROFILE_DATA, UI_STRINGS } from '../lib/consolidatedData'
 
 // Enhanced context for layout state
 interface LayoutContextType {
@@ -144,7 +144,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     className="flex items-center gap-2 font-semibold text-sm"
                   >
                     <MdViewList className="text-lg" />
-                    Multi-Page
+                    {UI_STRINGS.navigation.detailed}
                   </button>
                 </div>
                 
@@ -171,14 +171,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <main className="main-content bg-[rgb(var(--bg))] relative">
                 {/* Floating Theme Toggle and Layout Mode Toggle - Top Right Corner */}
                 <div className="fixed top-6 right-6 z-50 flex items-center gap-4">
-                  {/* Single Page Mode Toggle */}
+                  {/* Summary Mode Toggle */}
                   <div className="bg-[rgb(var(--accent))] text-black px-4 py-2 rounded-full shadow-lg border-2 border-[rgb(var(--accent))] hover:border-black transition-all duration-300 hover:scale-105">
                     <button
                       onClick={() => setIsSinglePageMode(true)}
                       className="flex items-center gap-2 font-semibold text-sm"
                     >
                       <MdFullscreen className="text-lg" />
-                      Single-Page
+                      {UI_STRINGS.navigation.summary}
                     </button>
                   </div>
                   

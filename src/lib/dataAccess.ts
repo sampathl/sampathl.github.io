@@ -1,7 +1,7 @@
 // Profile, Experience, Education, and Project data getter functions
 // Provides flexible access to profile, experience, education, and project data based on usage context
 
-import { CORE_PROFILE_DATA, CORE_SECTION_TITLES, CORE_EXPERIENCE_DATA, CORE_EDUCATION_DATA, CORE_PROJECTS_DATA, ProfileData, SectionTitlesData, ExperienceItem, ExperienceFormat, EducationItem, EducationFormat, ProjectItem, ProjectFormat } from './consolidatedData';
+import { CORE_PROFILE_DATA, UI_STRINGS, CORE_EXPERIENCE_DATA, CORE_EDUCATION_DATA, CORE_PROJECTS_DATA, CORE_SKILLS_SECTION, ProfileData, SectionTitlesData, ExperienceItem, ExperienceFormat, EducationItem, EducationFormat, ProjectItem, ProjectFormat } from './consolidatedData';
 
 // ============================================================================
 // PROFILE GETTER FUNCTIONS
@@ -68,16 +68,40 @@ export const getProfileDataByContext = (context: 'hero' | 'header' | 'meta' | 'c
   }
 };
 
+
+
+
+
+// ============================================================================
+// SKILLS AGGREGATION FUNCTIONS
+// ============================================================================
+
 /**
- * Get specific profile field
- * @param field - Profile field name
- * @returns Value of the specified profile field
+ * Get primary skills (core technologies with 5+ years experience)
  */
-export const getProfileField = <K extends keyof ProfileData>(field: K): ProfileData[K] => {
-  return CORE_PROFILE_DATA[field];
+export const getPrimarySkills = () => {
+  return Object.entries(CORE_SKILLS_SECTION.skills)
+    .filter(([_, years]) => (years as number) >= 5)
+    .map(([skill, years]) => ({ name: skill, years: years as number }))
+    .sort((a, b) => b.years - a.years);
 };
 
+/**
+ * Get secondary skills (technologies with 2-5 years experience)
+ */
+export const getSecondarySkills = () => {
+  return Object.entries(CORE_SKILLS_SECTION.skills)
+    .filter(([_, years]) => (years as number) >= 2 && (years as number) < 5)
+    .map(([skill, years]) => ({ name: skill, years: years as number }))
+    .sort((a, b) => b.years - a.years);
+};
 
+/**
+ * Get worked with skills (technologies used but not primary focus)
+ */
+export const getWorkedWithSkills = () => {
+  return Object.keys(CORE_SKILLS_SECTION.workedWith);
+};
 
 // ============================================================================
 // SECTION TITLES GETTER FUNCTIONS
@@ -88,7 +112,7 @@ export const getProfileField = <K extends keyof ProfileData>(field: K): ProfileD
  * @returns Complete section titles data object
  */
 export const getSectionTitlesData = (): SectionTitlesData => {
-  return CORE_SECTION_TITLES;
+  return UI_STRINGS.sectionTitles;
 };
 
 /**
@@ -97,7 +121,7 @@ export const getSectionTitlesData = (): SectionTitlesData => {
  * @returns Title for the specified section
  */
 export const getSectionTitle = (section: keyof SectionTitlesData): string => {
-  return CORE_SECTION_TITLES[section];
+  return UI_STRINGS.sectionTitles[section];
 };
 
 // ============================================================================
@@ -143,50 +167,6 @@ export const getExperienceById = (id: string): ExperienceItem | undefined => {
   return CORE_EXPERIENCE_DATA.find(item => item.id === id);
 };
 
-/**
- * Get experience data filtered by company
- * @param company - Company name to filter by
- * @returns Array of experience items for the specified company
- */
-export const getExperienceByCompany = (company: string): readonly ExperienceItem[] => {
-  return CORE_EXPERIENCE_DATA.filter(item => 
-    item.company.toLowerCase().includes(company.toLowerCase())
-  );
-};
-
-/**
- * Get experience data filtered by technology
- * @param technology - Technology to filter by
- * @returns Array of experience items that use the specified technology
- */
-export const getExperienceByTechnology = (technology: string): readonly ExperienceItem[] => {
-  return CORE_EXPERIENCE_DATA.filter(item => 
-    item.technologies.some(tech => 
-      tech.toLowerCase().includes(technology.toLowerCase())
-    )
-  );
-};
-
-/**
- * Get all unique technologies used across all experiences
- * @returns Array of unique technology strings
- */
-export const getAllTechnologies = (): readonly string[] => {
-  const allTechs = CORE_EXPERIENCE_DATA.flatMap(item => item.technologies);
-  return [...new Set(allTechs)];
-};
-
-/**
- * Get experience data for a specific date range
- * @param startDate - Start date (YYYY-MM format)
- * @param endDate - End date (YYYY-MM format)
- * @returns Array of experience items within the date range
- */
-export const getExperienceByDateRange = (startDate: string, endDate: string): readonly ExperienceItem[] => {
-  // This is a placeholder - would need date parsing logic for actual implementation
-  return CORE_EXPERIENCE_DATA;
-};
-
 // ============================================================================
 // EDUCATION GETTER FUNCTIONS
 // ============================================================================
@@ -228,39 +208,6 @@ export const getEducationData = (format: EducationFormat = 'detailed'): readonly
  */
 export const getEducationById = (id: string): EducationItem | undefined => {
   return CORE_EDUCATION_DATA.find(item => item.id === id);
-};
-
-/**
- * Get education data filtered by organization
- * @param organization - Organization name to filter by
- * @returns Array of education items for the specified organization
- */
-export const getEducationByOrganization = (organization: string): readonly EducationItem[] => {
-  return CORE_EDUCATION_DATA.filter(item => 
-    item.organization.toLowerCase().includes(organization.toLowerCase())
-  );
-};
-
-/**
- * Get education data filtered by skill
- * @param skill - Skill to filter by
- * @returns Array of education items that include the specified skill
- */
-export const getEducationBySkill = (skill: string): readonly EducationItem[] => {
-  return CORE_EDUCATION_DATA.filter(item => 
-    item.skills.some(s => 
-      s.toLowerCase().includes(skill.toLowerCase())
-    )
-  );
-};
-
-/**
- * Get all unique skills from education
- * @returns Array of unique skill strings
- */
-export const getAllEducationSkills = (): readonly string[] => {
-  const allSkills = CORE_EDUCATION_DATA.flatMap(item => item.skills);
-  return [...new Set(allSkills)];
 };
 
 // ============================================================================
@@ -311,52 +258,10 @@ export const getProjectById = (id: string): ProjectItem | undefined => {
 };
 
 /**
- * Get project data filtered by organization
- * @param organization - Organization name to filter by
- * @returns Array of project items for the specified organization
- */
-export const getProjectByOrganization = (organization: string): readonly ProjectItem[] => {
-  return CORE_PROJECTS_DATA.filter(item => 
-    item.organization.toLowerCase().includes(organization.toLowerCase())
-  );
-};
-
-/**
- * Get project data filtered by skill
- * @param skill - Skill to filter by
- * @returns Array of project items that include the specified skill
- */
-export const getProjectBySkill = (skill: string): readonly ProjectItem[] => {
-  return CORE_PROJECTS_DATA.filter(item => 
-    item.skills.some(s => 
-      s.toLowerCase().includes(skill.toLowerCase())
-    )
-  );
-};
-
-/**
  * Get project data filtered by status
  * @param status - Project status to filter by
  * @returns Array of project items with the specified status
  */
 export const getProjectByStatus = (status: 'completed' | 'active'): readonly ProjectItem[] => {
   return CORE_PROJECTS_DATA.filter(item => item.status === status);
-};
-
-/**
- * Get all unique skills from projects
- * @returns Array of unique skill strings
- */
-export const getAllProjectSkills = (): readonly string[] => {
-  const allSkills = CORE_PROJECTS_DATA.flatMap(item => item.skills);
-  return [...new Set(allSkills)];
-};
-
-/**
- * Get all unique technologies from projects
- * @returns Array of unique technology strings
- */
-export const getAllProjectTechnologies = (): readonly string[] => {
-  const allTechs = CORE_PROJECTS_DATA.flatMap(item => item.technologies);
-  return [...new Set(allTechs)];
 };

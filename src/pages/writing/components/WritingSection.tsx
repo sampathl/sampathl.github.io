@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { MdArticle, MdCode, MdDataUsage, MdTrendingUp, MdAccessTime, MdReadMore } from 'react-icons/md'
 import { useState } from 'react'
-import { CORE_SECTION_TITLES, CORE_WRITING_SECTION } from '../../../lib/consolidatedData'
+import { UI_STRINGS, CORE_WRITING_SECTION } from '../../../lib/consolidatedData'
 
 export default function WritingSection() {
   const articles = CORE_WRITING_SECTION.articles
@@ -40,7 +40,7 @@ export default function WritingSection() {
           className="text-center mb-16"
         >
           <h1 className="text-5xl font-bold text-[rgb(var(--fg))] mb-6" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-            {CORE_SECTION_TITLES.writing}
+            {UI_STRINGS.sectionTitles.writing}
           </h1>
           <p className="text-xl text-[rgb(var(--muted))] max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: '"Inter", sans-serif' }}>
             {CORE_WRITING_SECTION.pageDescription}
@@ -80,7 +80,7 @@ export default function WritingSection() {
             className="mb-16"
           >
             <h2 className="text-3xl font-bold text-[rgb(var(--fg))] mb-8 text-center" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-              {CORE_SECTION_TITLES.featuredArticles}
+              {UI_STRINGS.sectionTitles.featuredArticles}
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {articles.filter(article => article.featured).map((article, index) => {

@@ -2,7 +2,7 @@ import { useLayout } from '../../../components/Layout'
 import { cn } from '../../../lib/cn'
 import { motion } from 'framer-motion'
 import { MdLocationOn, MdWork, MdSchool, MdCode, MdDataUsage, MdTrendingUp } from 'react-icons/md'
-import { CORE_PROFILE_DATA, CORE_SECTION_TITLES, CORE_ABOUT_SECTION } from '../../../lib/consolidatedData'
+import { CORE_PROFILE_DATA, UI_STRINGS, CORE_SKILLS_SECTION } from '../../../lib/consolidatedData'
 import { getAboutProfileData } from '../../../lib/dataFormatters'
 
 export default function AboutSection() {
@@ -15,7 +15,7 @@ export default function AboutSection() {
   return (
     <section id="about" className="py-16 min-h-screen">
       <h2 className="text-3xl font-bold text-[rgb(var(--fg))] mb-8" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-        {CORE_SECTION_TITLES.about}
+        {UI_STRINGS.sectionTitles.about}
       </h2>
       <div className={cn(
         "grid grid-cols-1 lg:grid-cols-2 gap-12 content-pane",
@@ -23,14 +23,16 @@ export default function AboutSection() {
       )} data-sidebar-collapsed={isCollapsed.toString()}>
         <div>
           <h3 className="text-2xl font-semibold text-[rgb(var(--fg))] mb-4" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-            {CORE_ABOUT_SECTION.title}
+            {CORE_PROFILE_DATA.role}
           </h3>
           <p className="text-[rgb(var(--muted))] mb-6 leading-relaxed" style={{ fontFamily: '"Inter", sans-serif' }}>
-            {CORE_ABOUT_SECTION.description1}
+            {UI_STRINGS.about.description.split(';').map((part, index) => (
+              <p key={index} className="text-[rgb(var(--muted))] mb-6 leading-relaxed" style={{ fontFamily: '"Inter", sans-serif' }}>
+                {part.trim()}
+              </p>
+            ))}
           </p>
-          <p className="text-[rgb(var(--muted))] mb-6 leading-relaxed" style={{ fontFamily: '"Inter", sans-serif' }}>
-            {CORE_ABOUT_SECTION.description2}
-          </p>
+          
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-[rgb(var(--muted))]">
               <MdLocationOn className="text-[rgb(var(--accent))]" />
@@ -50,10 +52,10 @@ export default function AboutSection() {
         <div className="space-y-6">
           <div>
             <h4 className="text-lg font-semibold text-[rgb(var(--fg))] mb-3" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-              {CORE_SECTION_TITLES.coreSkills}
+              {UI_STRINGS.sectionTitles.coreSkills}
             </h4>
             <div className="grid grid-cols-2 gap-3">
-              {CORE_ABOUT_SECTION.skills.map((skill) => (
+              {Object.keys(CORE_SKILLS_SECTION.skills).map((skill) => (
                 <div key={skill} className="p-3 rounded-lg bg-[rgb(var(--hover))] text-center text-[rgb(var(--fg))] font-medium">
                   {skill}
                 </div>
@@ -63,10 +65,10 @@ export default function AboutSection() {
           
           <div>
             <h4 className="text-lg font-semibold text-[rgb(var(--fg))] mb-3" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-              {CORE_SECTION_TITLES.focusAreas}
+              {UI_STRINGS.sectionTitles.focusAreas}
             </h4>
             <div className="space-y-2">
-              {CORE_ABOUT_SECTION.focusAreas.map((area) => (
+              {UI_STRINGS.about.focusAreas.map((area) => (
                 <div key={area} className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-[rgb(var(--accent))] rounded-full"></div>
                   <span className="text-[rgb(var(--muted))]" style={{ fontFamily: '"Inter", sans-serif' }}>{area}</span>

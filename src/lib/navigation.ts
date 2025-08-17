@@ -1,12 +1,12 @@
-import { CORE_SECTION_TITLES } from './consolidatedData'
+import { UI_STRINGS } from './consolidatedData'
 
 // Navigation configuration
 export const NAV_ITEMS = [
   { to: '/', label: 'Home', icon: 'home', section: 'hero' },
-  { to: '/', label: CORE_SECTION_TITLES.experience, icon: 'work', section: 'experience' },
-  { to: '/', label: CORE_SECTION_TITLES.projects, icon: 'folder', section: 'projects' },
+  { to: '/', label: UI_STRINGS.sectionTitles.experience, icon: 'work', section: 'experience' },
+  { to: '/', label: UI_STRINGS.sectionTitles.projects, icon: 'folder', section: 'projects' },
   // { to: '/', label: 'Writing', icon: 'edit', section: 'writing' },
-  { to: '/', label: CORE_SECTION_TITLES.about, icon: 'person', section: 'about' },
+  { to: '/', label: UI_STRINGS.sectionTitles.about, icon: 'person', section: 'about' },
   { to: '/', label: 'Get In Touch', icon: 'email', section: 'contact' },
 ] as const;
 

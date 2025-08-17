@@ -248,3 +248,5 @@ p, span, div, button, input, textarea {
 .hover-effect:hover {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
+
+/* Custom animations for Show Me button - removed, using Tailwind's animate-ping */

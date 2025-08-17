@@ -4,33 +4,13 @@ import { useState } from 'react'
 import HeaderSection from './components/HeaderSection'
 import PortfolioSection from './components/PortfolioSection'
 import SkillsSection from './components/SkillsSection'
-import { CORE_PROFILE_DATA, CORE_SKILLS_SECTION } from '../../lib/consolidatedData'
+import { CORE_PROFILE_DATA } from '../../lib/consolidatedData'
 
 export default function SinglePage() {
-  const [highlightedSkills, setHighlightedSkills] = useState<string[]>([])
   const [showSkillMapping, setShowSkillMapping] = useState(false)
 
   const handleShowMe = () => {
-    if (showSkillMapping) {
-      // Turn off skill mapping
-      setHighlightedSkills([])
-      setShowSkillMapping(false)
-    } else {
-      // Turn on skill mapping
-      const allSkills = [
-        // Primary skills
-        ...CORE_SKILLS_SECTION.primary.map(skill => skill.name),
-        // Secondary skills  
-        ...CORE_SKILLS_SECTION.secondary.map(skill => skill.name),
-        // Worked with skills
-        ...CORE_SKILLS_SECTION.workedWith,
-        // Education skills
-        'Matlab'
-      ]
-      
-      setHighlightedSkills(allSkills)
-      setShowSkillMapping(true)
-    }
+    setShowSkillMapping(!showSkillMapping)
   }
 
   return (
@@ -52,7 +32,6 @@ export default function SinglePage() {
         <div className="flex flex-col lg:flex-row max-w-6xl mx-auto px-6 py-12 gap-8">
           <div className="lg:w-4/5">
             <PortfolioSection 
-              highlightedSkills={highlightedSkills}
               showSkillMapping={showSkillMapping}
             />
           </div>
