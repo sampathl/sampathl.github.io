@@ -42,6 +42,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     isTablet: false,
     isDesktop: false
   })
+  const [isReady, setIsReady] = useState(false)
 
   // Save single-page mode preference to localStorage
   useEffect(() => {
@@ -62,6 +63,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
     updateViewportInfo()
     window.addEventListener('resize', updateViewportInfo)
     return () => window.removeEventListener('resize', updateViewportInfo)
+  }, [])
+
+  // Ensure stylesheets are loaded before rendering layout
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsReady(true)
+    }, 100)
+    
+    return () => clearTimeout(timer)
   }, [])
 
   // Scroll detection for active section - Fixed logic
@@ -126,6 +136,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
     ...viewportInfo,
     isSinglePageMode,
     setIsSinglePageMode
+  }
+
+  // Don't render until ready to prevent layout issues
+  if (!isReady) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[rgb(var(--bg))]">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[rgb(var(--accent))] mx-auto mb-4"></div>
+          <p className="text-[rgb(var(--muted))]">Loading...</p>
+        </div>
+      </div>
+    )
   }
 
   return (
