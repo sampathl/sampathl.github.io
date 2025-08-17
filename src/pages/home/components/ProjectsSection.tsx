@@ -40,14 +40,17 @@ export default function ProjectsSection() {
         <p className="text-[rgb(var(--muted))] mb-4" style={{ fontFamily: '"Inter", sans-serif' }}>
           {description}
         </p>
-        <button 
-          onClick={() => scrollToSection('projects')}
-          className="inline-flex items-center gap-2 text-[rgb(var(--accent))] font-medium hover:underline hover:scale-105 transition-all duration-300"
-          style={{ fontFamily: '"Work Sans", sans-serif' }}
-        >
-          <MdArrowForward className="text-lg" />
-          {viewAllButton}
-        </button>
+        {/* 
+          TODO: switch it once the projects page is done
+          <button 
+            onClick={() => scrollToSection('projects')}
+            className="inline-flex items-center gap-2 text-[rgb(var(--accent))] font-medium hover:underline hover:scale-105 transition-all duration-300"
+            style={{ fontFamily: '"Work Sans", sans-serif' }}
+          >
+            <MdArrowForward className="text-lg" />
+            {viewAllButton}
+          </button>
+        */}
       </div>
     </section>
   )

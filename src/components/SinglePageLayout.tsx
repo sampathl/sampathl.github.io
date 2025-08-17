@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { ThemeToggle } from './Theme'
-import SinglePage from '../pages/single-page'
+import SinglePage from '../pages/single-page/SinglePage'
 
 function FloatingControls() {
   return (

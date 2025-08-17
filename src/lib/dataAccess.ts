@@ -240,8 +240,8 @@ export const getProjectData = (format: ProjectFormat = 'detailed'): readonly Pro
       }));
     
     case 'featured':
-      // Return only featured projects (completed projects)
-      return CORE_PROJECTS_DATA.filter(item => item.status === 'completed');
+      // Return only featured projects
+      return CORE_PROJECTS_DATA.filter(item => item.featured === true);
     
     default:
       return CORE_PROJECTS_DATA;

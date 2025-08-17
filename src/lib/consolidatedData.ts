@@ -9,6 +9,19 @@ export const UI_STRINGS = {
     pageDescription: "A collection of my work in data engineering, API development, and full-stack applications"
   },
 
+  // Featured Projects Section
+  featuredProjects: {
+    title: "Personal Projects",
+    description: "New builds in progress — more projects coming soon",
+    viewAllButton: "View All Projects →"
+  },
+
+  // About Section
+  about: {
+    description: "I'm a Senior Software Engineer with over 9 years of experience building scalable applications and data pipelines. I specialize in Python, React, and cloud technologies, with a focus on creating efficient, maintainable solutions that solves real-world problems.",
+    focusAreas: [ "Full-Stack Development", "Data Pipelines", "API Design", "System Architecture", "Performance Optimization"]
+  },
+
   // Section Titles
   sectionTitles: {
     // Main section titles
@@ -54,7 +67,7 @@ export const CORE_PROFILE_DATA = {
   
   // Experience and education
   experience: "Over 9 years of experience",
-  education: "Computer Science Degree",
+  education: "M.S. in Software Engineering",
   
   // Contact information
   contact: {
@@ -162,19 +175,19 @@ export const CORE_EXPERIENCE_DATA = [
     id: "1",
     title: "Senior Software Engineer",
     company: "Franklin Templeton",
-    details: "Refactored microservice read/write operations into modular handlers; Designed and deployed Airflow DAGs for daily data extraction from Snowflake to S3 and Postgres; Built backend microservices using Python and FastAPI to expose RESTful APIs",
-    fields: "Fullstack & Data ",
+    details: "Re-Designed microservice operations into modular handlers; Deployed Airflow DAGs for OLAP operations",
+    fields: "Backend & Data ",
     logo: "/images/companies/franklin-templeton.svg",
     fromDate: "June 2025",
     toDate: "Present",
-    technologies: ["Python", "FastAPI", "Airflow", "Snowflake", "S3", "Postgres", "AWS", "React", "TypeScript"],
-    focusAreas: ["Data Engineering", "API Development", "System Design"]
+    technologies: ["Python", "FastAPI", "Airflow", "Snowflake", "S3", "PostgreSQL", "AWS"],
+    focusAreas: ["Microservices", "Data Pipelines - OLAP", "Service Optimization"]
   },
   {
     id: "2",
     title: "Software Engineer",
     company: "FINRA",
-    details: "Migrated CAIS applications to AWS serverless architecture using Lambda, S3, SQS, Step Functions; Redesigned data pipelines for serverless execution; Developed service APIs with idempotency and function chaining; Used CloudWatch and Splunk for monitoring and on-call investigations",
+    details: "Migrated CAIS applications to AWS serverless architecture; Developed service APIs for idempotent processing and request deduplication; Redesigned data pipelines utilizing function chaining pattern",
     fields: "Application Development",
     logo: "/images/companies/finra.svg",
     fromDate: "April 2024",
@@ -186,23 +199,24 @@ export const CORE_EXPERIENCE_DATA = [
     id: "3",
     title: "Senior Software Engineer",
     company: "Dropbox",
-    details:  "Built data pipelines with Python, Airflow, Hive, HDFS, and MySQL for multi-vendor data ingestion; Developed PySpark SQL pipelines with tuning and refactoring; Built microservices and APIs in Python to power help article recommendations; Created reusable React and TypeScript UI components including support widgets and dashboards; Automated phone support infrastructure using AWS Connect, Lambda, DynamoDB; Implemented observability with CloudWatch and Grafana",
+    details:  "Designed and developed customer experience applications; Developed microservices for article recommendation, phone support, ticket dashboards, and support widgets; Developed reusable, internationalized UI components; Optimized data pipelines and PySpark SQL queries",
     fields: "Fullstack & Data",
     logo: "/images/companies/dropbox.svg",
     fromDate: "February 2024",
     toDate: "September 2024",
-    technologies: ["Python", "React", "TypeScript", "Airflow", "Hive", "HDFS", "MySQL", "PySpark", "AWS Lambda", "AWS Connect", "DynamoDB", "REST", "gRPC", "CloudWatch", "Grafana"],
-    focusAreas: ["Data Engineering", "Full-Stack Applications", "Performance Optimization"]
+    technologies: ["Python", "React", "TypeScript", "MySQL", "PySpark", "Apache Hadoop", "AWS", "REST API", "gRPC", "Grafana"],
+    focusAreas: ["Full-Stack Applications","Microservices", "Data Engineering", "Service Optimization"]
   },
   {
     id: "4",
     title: "Software Engineer",
     company: "Tech Mahindra",
-    details:"Automated Medicaid and Managed Care rebate data pipelines using Python and SQL; Built dashboards for contracts and sales using Python, JavaScript, AWS EC2, RDS, S3; Developed MVPs for validation of sales processes; Created support dashboards and data monitoring tools for transparency", fields: "Data Engineering & Automation",
+    details:"Automated Medicaid and Managed Care rebate data pipelines; Built dashboards for contracts and sales; Developed MVPs for validation of sales processes",
+    fields: "Data Engineering & Automation",
     logo: "/images/companies/tech-mahindra.svg",
     fromDate: "January 2014",
     toDate: "June 2017",
-    technologies: ["Python", "SQL", "JavaScript", "AWS EC2", "AWS RDS", "AWS S3"],
+    technologies: ["Python", "SQL", "VBA", "JavaScript", "AWS EC2", "AWS RDS", "AWS S3"],
     focusAreas: ["Data Engineering", "Automation", "Performance Optimization"]
   }
 ] as const;
@@ -218,8 +232,8 @@ export const CORE_EDUCATION_DATA = [
     organization: "San Jose State University ",
     dates: "2017 - 2019",
     description: "Corse Work: Cloud Computing, UI-UX engineering, Virtualization, Distributed Systems, Object Oriented Programming and Data Structures, Autonomous Cars, Machine learning, Software Quality Assurance and Testing",
-    technologies: ["Python"],
-    focusAreas: ["System Design", "UI-UX Engineering", "Machine Learning", "Software Quality Assurance"]
+    technologies: ["Python", "AWS", "SQL", "JavaScript", "C++", "Linux"],
+    focusAreas: ["Software Engineering", "UI-UX design and development", "Software Quality Assurance",  "Machine Learning"]
   },
   {
     id: "edu-2",
@@ -227,7 +241,7 @@ export const CORE_EDUCATION_DATA = [
     organization: "Jawaharlal Nehru Technological University",
     dates: "2009 - 2013",
     description: "Corse Work: Control Systems, Electrical Machines, Neural Networks and Fuzzy Logics, Electro magnetic fields, Power systems, Power electronics",
-    technologies: ["Matlab"],
+    technologies: ["Matlab", "PSpice"],
     focusAreas: ["Control Systems", "Neural Networks", "Power Systems", "Electronics"]
   }
 ] as const;
@@ -239,39 +253,42 @@ export type EducationFormat = 'detailed' | 'summary' | 'portfolio';
 export const CORE_PROJECTS_DATA = [
   {
     id: "proj-1",
-    title: "Data Pipeline Optimization",
-    organization: "Professional Project",
-    dates: "2023",
-    description: "Built a high-performance ETL pipeline using Apache Kafka and Apache Spark, reducing data processing time by 70% and improving reliability through fault-tolerant design patterns.",
-    technologies: ["Python", "Apache Kafka", "Apache Spark", "AWS S3", "Docker"],
-    status: "completed" as const,
-    icon: "data_usage",
-    metric: "70% faster processing",
-    focusAreas: ["Data Engineering", "Performance Optimization", "System Design"]
+    title: "Election Info",
+    organization: "Personal Project",
+    dates: "2023–2024",
+    description: "Developed an automated system that scrapes publicly available Indian election data, generates constituency-wise insights creates GenAI-powered audio and short video content for digital and phone-based delivery across India's electoral divisions.",
+    technologies: ["Python", "BeautifulSoup", "GenAI", "gTTS", "MoviePy", "AWS Lambda", "AWS S3"],
+    status: "active" as const,
+    icon: "active",
+    metric: "Automated insights for 540+ constituencies",
+    focusAreas: ["Civic Tech", "Data Automation", "AI Content Generation"],
+    featured: true
   },
   {
     id: "proj-2",
-    title: "Real-time Analytics Dashboard",
+    title: "International Debt Dashboard",
     organization: "Personal Project",
     dates: "2024",
-    description: "Developed a real-time analytics platform using React, Node.js, and WebSocket connections, providing live insights into system performance and user behavior metrics.",
-    technologies: ["React", "Node.js", "WebSocket", "PostgreSQL", "Redis"],
-    status: "active" as const,
-    icon: "analytics",
-    metric: "Real-time insights",
-    focusAreas: ["Full-Stack Applications", "Performance Optimization", "Real-time Systems"]
+    description: "Built a full-stack dashboard using public World Bank BigQuery data to visualize international debt metrics; Developed React SPA frontend hosted on Google Cloud Storage; Designed Flask-based backend API served via Google Cloud Run; Secured BigQuery access using GCP IAM service accounts",
+    technologies: ["React", "TypeScript", "Flask", "Python", "Google BigQuery", "GCP Cloud Run", "GCP Storage", "IAM"],
+    status: "completed" as const,
+    icon: "public",
+    metric: "Live insights from 200+ country debt indicators",
+    focusAreas: ["Data Visualization", "Cloud Architecture", "Public Datasets"],
+    featured: true
   },
   {
     id: "proj-3",
-    title: "AI-Powered Recommendation Engine",
+    title: "Personal Tracking & Support App - Uhhum",
     organization: "Personal Project",
     dates: "2024",
-    description: "Machine learning system for personalized content recommendations using collaborative filtering and deep learning models, currently in development phase.",
-    technologies: ["Python", "TensorFlow", "Scikit-learn", "FastAPI", "MongoDB"],
-    status: "active" as const,
-    icon: "code",
-    metric: "ML-powered",
-    focusAreas: ["Machine Learning", "API Development", "Data Science"]
+    description: "Designed a personal habit tracking and reflection tool to support mindfulness, daily journaling, and self-monitoring; Implemented modular frontend in React for logging, reminders, and weekly reviews; Developed backend using Python and Flask with user authentication and local storage integration",
+    technologies: ["React", "TypeScript", "Flask", "Python", "SQLite", "Tailwind CSS"],
+    status: "disabled" as const,
+    icon: "self_improvement",
+    metric: "Daily usage across 3 reflection modes and 5+ habit types",
+    focusAreas: ["Self-Tracking", "Behavioral Design", "Frontend UX"],
+    featured: true
   },
   {
     id: "proj-4",
@@ -280,10 +297,11 @@ export const CORE_PROJECTS_DATA = [
     dates: "2023",
     description: "Designed and implemented a scalable microservices architecture using Docker and Kubernetes, improving system reliability and deployment efficiency.",
     technologies: ["Docker", "Kubernetes", "Node.js", "PostgreSQL", "Redis"],
-    status: "completed" as const,
+    status: "disabled" as const,
     icon: "cloud",
     metric: "Scalable architecture",
-    focusAreas: ["System Design", "Performance Optimization", "Architecture"]
+    focusAreas: ["System Design", "Performance Optimization", "Architecture"],
+    featured: false
   },
   {
     id: "proj-5",
@@ -292,22 +310,11 @@ export const CORE_PROJECTS_DATA = [
     dates: "2023",
     description: "Built robust REST APIs using FastAPI and Python, implementing authentication, rate limiting, and comprehensive documentation.",
     technologies: ["Python", "FastAPI", "PostgreSQL", "JWT", "Swagger"],
-    status: "completed" as const,
+    status: "disabled" as const,
     icon: "api",
     metric: "Production ready",
-    focusAreas: ["API Development", "System Design", "Performance Optimization"]
-  },
-  {
-    id: "proj-6",
-    title: "Full-Stack E-commerce",
-    organization: "Personal Project",
-    dates: "2024",
-    description: "Developed a complete e-commerce solution with user authentication, payment processing, and admin dashboard.",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe", "Redux"],
-    status: "active" as const,
-    icon: "folder",
-    metric: "Full-stack solution",
-    focusAreas: ["Full-Stack Applications", "API Development", "System Design"]
+    focusAreas: ["API Development", "System Design", "Performance Optimization"],
+    featured: false
   }
 ] as const;
 

@@ -70,9 +70,9 @@ export const getMultiPageHomeEducationData = () => {
  */
 export const getMultiPageHomeProjectsData = () => {
   return {
-    title: "Featured Projects",
-    description: "Explore my latest work in data engineering, API development, and full-stack applications.",
-    viewAllButton: "View All Projects →",
+    title: UI_STRINGS.featuredProjects.title,
+    description: UI_STRINGS.featuredProjects.description,
+    viewAllButton: UI_STRINGS.featuredProjects.viewAllButton,
     projects: getProjectData('featured'),
   };
 };
