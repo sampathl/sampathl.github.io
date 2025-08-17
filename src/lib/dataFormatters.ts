@@ -1,8 +1,8 @@
 // Usage functions for different page types
 // Provides context-specific data access for multi-page and single-page layouts
 
-import { getProfileData, getProfileDataByContext, getContactSectionData as getContactData, getSectionTitlesData as getSectionTitles, getExperienceData, getExperienceById, getEducationData, getEducationById, getProjectData, getProjectById } from './experienceData';
-import { CORE_PROFILE_DATA, CORE_CONTACT_SECTION, CORE_SECTION_TITLES, ProfileData, ContactSectionData, SectionTitlesData, ExperienceFormat, EducationFormat, ProjectFormat } from './consolidatedData';
+import { getProfileData, getProfileDataByContext, getSectionTitlesData as getSectionTitles, getExperienceData, getExperienceById, getEducationData, getEducationById, getProjectData, getProjectById } from './dataAccess';
+import { CORE_PROFILE_DATA, CORE_SECTION_TITLES, ProfileData, SectionTitlesData, ExperienceFormat, EducationFormat, ProjectFormat } from './consolidatedData';
 
 // ============================================================================
 // PROFILE USAGE FUNCTIONS
@@ -60,13 +60,7 @@ export const getUniversalProfileData = (): ProfileData => {
 // CONTACT SECTION USAGE FUNCTIONS
 // ============================================================================
 
-/**
- * Get contact section data
- * Returns complete contact section data including titles, descriptions, and labels
- */
-export const getContactSectionData = (): ContactSectionData => {
-  return getContactData();
-};
+
 
 /**
  * Get contact section data for multi-page layouts
@@ -74,13 +68,21 @@ export const getContactSectionData = (): ContactSectionData => {
  */
 export const getMultiPageContactData = () => {
   return {
-    ...getContactData(),
-    emailAddress: CORE_PROFILE_DATA.email,
-    linkedinUrl: CORE_PROFILE_DATA.linkedinUrl,
-    githubUrl: CORE_PROFILE_DATA.githubUrl,
-    availableStatus: CORE_PROFILE_DATA.availableStatus,
-    statusDescription: CORE_PROFILE_DATA.statusDescription,
-    responseTimeDescription: CORE_PROFILE_DATA.responseTimeDescription
+    title: CORE_PROFILE_DATA.contactSection.ui.title,
+    subtitle: CORE_PROFILE_DATA.contactSection.ui.subtitle,
+    description1: CORE_PROFILE_DATA.contactSection.ui.description1,
+    description2: CORE_PROFILE_DATA.contactSection.ui.description2,
+    email: CORE_PROFILE_DATA.contactSection.labels.email,
+    emailAddress: CORE_PROFILE_DATA.contact.email,
+    linkedin: CORE_PROFILE_DATA.contactSection.labels.linkedin,
+    linkedinUrl: CORE_PROFILE_DATA.contact.linkedin,
+    github: CORE_PROFILE_DATA.contactSection.labels.github,
+    githubUrl: CORE_PROFILE_DATA.contact.github,
+    currentStatusTitle: CORE_PROFILE_DATA.contactSection.labels.currentStatus,
+    availableStatus: CORE_PROFILE_DATA.contactSection.status.availableStatus,
+    statusDescription: CORE_PROFILE_DATA.contactSection.status.statusDescription,
+    responseTimeTitle: CORE_PROFILE_DATA.contactSection.labels.responseTime,
+    responseTimeDescription: CORE_PROFILE_DATA.contactSection.status.responseTimeDescription
   };
 };
 
@@ -378,8 +380,8 @@ export const getUniversalProjectById = (id: string) => {
 export const getLegacyPageMetadata = () => {
   return {
     title: `${CORE_PROFILE_DATA.name} — ${CORE_PROFILE_DATA.role}`,
-    metaDescription: CORE_PROFILE_DATA.metaDescription,
-    nameSubtitle: CORE_PROFILE_DATA.longDescription
+            metaDescription: CORE_PROFILE_DATA.shortDescription,
+        nameSubtitle: CORE_PROFILE_DATA.role
   };
 };
 
@@ -390,7 +392,7 @@ export const getLegacyPageMetadata = () => {
 export const getLegacyHeroSection = () => {
   return {
     title: CORE_PROFILE_DATA.name,
-    subtitle: CORE_PROFILE_DATA.longDescription,
+            subtitle: CORE_PROFILE_DATA.role,
     lightThemeAlt: `${CORE_PROFILE_DATA.name} - Light Theme`,
     darkThemeAlt: `${CORE_PROFILE_DATA.name} - Dark Theme`,
     initials: CORE_PROFILE_DATA.initials
@@ -406,8 +408,8 @@ export const getLegacyHeaderSection = () => {
     title: CORE_PROFILE_DATA.name,
     role: CORE_PROFILE_DATA.role,
     description: CORE_PROFILE_DATA.shortDescription,
-    email: CORE_PROFILE_DATA.email,
-    linkedinUrl: CORE_PROFILE_DATA.linkedinUrl
+    email: CORE_PROFILE_DATA.contact.email,
+    linkedinUrl: CORE_PROFILE_DATA.contact.linkedin
   };
 };
 
@@ -417,21 +419,21 @@ export const getLegacyHeaderSection = () => {
  */
 export const getLegacyContactSection = () => {
   return {
-    title: CORE_CONTACT_SECTION.title,
-    subtitle: CORE_CONTACT_SECTION.subtitle,
-    description1: CORE_CONTACT_SECTION.description1,
-    description2: CORE_CONTACT_SECTION.description2,
-    email: CORE_CONTACT_SECTION.email,
-    emailAddress: CORE_PROFILE_DATA.email,
-    linkedin: CORE_CONTACT_SECTION.linkedin,
-    linkedinUrl: CORE_PROFILE_DATA.linkedinUrl,
-    github: CORE_CONTACT_SECTION.github,
-    githubUrl: CORE_PROFILE_DATA.githubUrl,
-    currentStatusTitle: CORE_CONTACT_SECTION.currentStatusTitle,
-    availableStatus: CORE_PROFILE_DATA.availableStatus,
-    statusDescription: CORE_PROFILE_DATA.statusDescription,
-    responseTimeTitle: CORE_CONTACT_SECTION.responseTimeTitle,
-    responseTimeDescription: CORE_PROFILE_DATA.responseTimeDescription
+    title: CORE_PROFILE_DATA.contactSection.ui.title,
+    subtitle: CORE_PROFILE_DATA.contactSection.ui.subtitle,
+    description1: CORE_PROFILE_DATA.contactSection.ui.description1,
+    description2: CORE_PROFILE_DATA.contactSection.ui.description2,
+    email: CORE_PROFILE_DATA.contactSection.labels.email,
+    emailAddress: CORE_PROFILE_DATA.contact.email,
+    linkedin: CORE_PROFILE_DATA.contactSection.labels.linkedin,
+    linkedinUrl: CORE_PROFILE_DATA.contact.linkedin,
+    github: CORE_PROFILE_DATA.contactSection.labels.github,
+    githubUrl: CORE_PROFILE_DATA.contact.github,
+    currentStatusTitle: CORE_PROFILE_DATA.contactSection.labels.currentStatus,
+    availableStatus: CORE_PROFILE_DATA.contactSection.status.availableStatus,
+    statusDescription: CORE_PROFILE_DATA.contactSection.status.statusDescription,
+    responseTimeTitle: CORE_PROFILE_DATA.contactSection.labels.responseTime,
+    responseTimeDescription: CORE_PROFILE_DATA.contactSection.status.responseTimeDescription
   };
 };
 

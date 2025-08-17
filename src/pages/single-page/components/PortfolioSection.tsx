@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { MdViewList } from 'react-icons/md'
-import { usePortfolio } from '../../../hooks/usePortfolio'
-import type { PortfolioSectionProps, PortfolioItem } from '../../../types/portfolio'
+import { usePortfolio } from './usePortfolio'
+import type { PortfolioSectionProps, PortfolioItem } from './portfolio'
 import { CORE_SECTION_TITLES } from '../../../lib/consolidatedData'
 
 // Sub-components

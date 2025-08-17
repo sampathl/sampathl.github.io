@@ -1,78 +1,11 @@
 import { motion } from 'framer-motion'
 import { MdArticle, MdCode, MdDataUsage, MdTrendingUp, MdAccessTime, MdReadMore } from 'react-icons/md'
 import { useState } from 'react'
-import { CORE_SECTION_TITLES } from '../../../lib/consolidatedData'
+import { CORE_SECTION_TITLES, CORE_WRITING_SECTION } from '../../../lib/consolidatedData'
 
 export default function WritingSection() {
-  const articles = [
-    {
-      id: '1',
-      title: 'Building Scalable Data Pipelines with Apache Kafka',
-      excerpt: 'A comprehensive guide to designing and implementing robust data pipelines using Apache Kafka, Apache Spark, and modern cloud infrastructure. Learn best practices for handling millions of records daily while maintaining data quality and system reliability.',
-      category: 'Data Engineering',
-      readTime: '8 min read',
-      publishDate: '2024-01-15',
-      tags: ['Apache Kafka', 'Data Pipelines', 'Apache Spark', 'AWS'],
-      icon: 'MdDataUsage',
-      featured: true
-    },
-    {
-      id: '2',
-      title: 'Designing REST APIs for Performance and Scalability',
-      excerpt: 'Explore advanced techniques for building high-performance REST APIs that can handle thousands of concurrent requests. Covering caching strategies, database optimization, rate limiting, and monitoring best practices.',
-      category: 'API Development',
-      readTime: '12 min read',
-      publishDate: '2024-01-10',
-      tags: ['REST API', 'Performance', 'Caching', 'Monitoring'],
-      icon: 'MdCode',
-      featured: true
-    },
-    {
-      id: '3',
-      title: 'The Future of Full-Stack Development',
-      excerpt: 'An analysis of emerging trends in full-stack development, including the rise of TypeScript, the evolution of React patterns, and the growing importance of developer experience in modern web applications.',
-      category: 'Full-Stack',
-      readTime: '6 min read',
-      publishDate: '2024-01-05',
-      tags: ['TypeScript', 'React', 'Developer Experience', 'Trends'],
-      icon: 'MdTrendingUp',
-      featured: false
-    },
-    {
-      id: '4',
-      title: 'Optimizing React Applications for Production',
-      excerpt: 'Practical strategies for improving React application performance, including code splitting, lazy loading, memoization techniques, and bundle optimization strategies that can significantly improve user experience.',
-      category: 'Frontend',
-      readTime: '10 min read',
-      publishDate: '2023-12-28',
-      tags: ['React', 'Performance', 'Optimization', 'Bundle Size'],
-      icon: 'MdCode',
-      featured: false
-    },
-    {
-      id: '5',
-      title: 'Microservices Architecture: Lessons Learned',
-      excerpt: 'Real-world insights from implementing microservices at scale, including service discovery, inter-service communication, monitoring, and the challenges of maintaining distributed systems in production environments.',
-      category: 'Architecture',
-      readTime: '15 min read',
-      publishDate: '2023-12-20',
-      tags: ['Microservices', 'Architecture', 'Distributed Systems', 'Monitoring'],
-      icon: 'MdTrendingUp',
-      featured: false
-    },
-    {
-      id: '6',
-      title: 'Data-Driven Decision Making in Software Development',
-      excerpt: 'How to leverage analytics and metrics to make informed decisions about software architecture, feature development, and technical debt management. Includes practical examples and measurement strategies.',
-      category: 'Data Science',
-      readTime: '9 min read',
-      publishDate: '2023-12-15',
-      tags: ['Analytics', 'Metrics', 'Decision Making', 'Data Science'],
-      icon: 'MdDataUsage',
-      featured: false
-    }
-  ]
-  const categories = ['All', 'Data Engineering', 'API Development', 'Full-Stack', 'Frontend', 'Architecture', 'Data Science']
+  const articles = CORE_WRITING_SECTION.articles
+  const categories = CORE_WRITING_SECTION.categories
   const [activeCategory, setActiveCategory] = useState('All')
 
   const filteredArticles = articles.filter(article => 
@@ -89,9 +22,9 @@ export default function WritingSection() {
 
   const getIconComponent = (iconName: string) => {
     switch (iconName) {
-      case 'MdDataUsage': return MdDataUsage
-      case 'MdCode': return MdCode
-      case 'MdTrendingUp': return MdTrendingUp
+      case 'data_usage': return MdDataUsage
+      case 'code': return MdCode
+      case 'trending_up': return MdTrendingUp
       default: return MdArticle
     }
   }
@@ -110,7 +43,7 @@ export default function WritingSection() {
             {CORE_SECTION_TITLES.writing}
           </h1>
           <p className="text-xl text-[rgb(var(--muted))] max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: '"Inter", sans-serif' }}>
-            Thoughts on software engineering, data architecture, and the future of technology. Sharing knowledge and experiences from building systems at scale.
+            {CORE_WRITING_SECTION.pageDescription}
           </p>
         </motion.div>
 
@@ -186,7 +119,7 @@ export default function WritingSection() {
                         <span>{formatDate(article.publishDate)}</span>
                       </div>
                       <button className="flex items-center gap-2 text-[rgb(var(--accent))] hover:text-[rgb(var(--accent))]/80 transition-colors font-medium">
-                        Read More
+                        {CORE_WRITING_SECTION.readMoreButton}
                         <MdReadMore className="text-lg" />
                       </button>
                     </div>
@@ -204,7 +137,7 @@ export default function WritingSection() {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <h2 className="text-3xl font-bold text-[rgb(var(--fg))] mb-8 text-center" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-            {activeCategory === 'All' ? 'All Articles' : `${activeCategory} Articles`}
+            {activeCategory === 'All' ? CORE_WRITING_SECTION.allArticlesTitle : `${activeCategory} ${CORE_WRITING_SECTION.categoryArticlesTitle}`}
           </h2>
           <div className="space-y-6">
             {filteredArticles.map((article, index) => {
@@ -258,7 +191,7 @@ export default function WritingSection() {
                             {formatDate(article.publishDate)}
                           </span>
                           <button className="flex items-center gap-2 text-[rgb(var(--accent))] hover:text-[rgb(var(--accent))]/80 transition-colors font-medium">
-                            Read More
+                            {CORE_WRITING_SECTION.readMoreButton}
                             <MdReadMore className="text-lg" />
                           </button>
                         </div>
@@ -279,18 +212,18 @@ export default function WritingSection() {
           className="mt-20 text-center"
         >
           <div className="bg-[rgb(var(--surface))] border border-[rgb(var(--secondary))] rounded-xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-[rgb(var(--fg))] mb-4">Stay Updated</h3>
+            <h3 className="text-2xl font-bold text-[rgb(var(--fg))] mb-4">{CORE_WRITING_SECTION.newsletter.title}</h3>
             <p className="text-[rgb(var(--muted))] mb-6">
-              Get notified when I publish new articles about software engineering, data architecture, and technology trends.
+              {CORE_WRITING_SECTION.newsletter.description}
             </p>
             <div className="flex gap-3 max-w-md mx-auto">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder={CORE_WRITING_SECTION.newsletter.placeholder}
                 className="flex-1 px-4 py-3 bg-[rgb(var(--bg))] border border-[rgb(var(--secondary))] rounded-lg focus:border-[rgb(var(--accent))] focus:outline-none"
               />
               <button className="px-6 py-3 bg-[rgb(var(--accent))] text-[rgb(var(--bg))] rounded-lg font-medium hover:bg-[rgb(var(--accent))]/80 transition-colors">
-                Subscribe
+                {CORE_WRITING_SECTION.newsletter.button}
               </button>
             </div>
           </div>

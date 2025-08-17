@@ -1,18 +1,16 @@
-import { useLayout } from '../../../components/layout/Layout'
+import { useLayout } from '../../../components/Layout'
 import { cn } from '../../../lib/cn'
 import { motion } from 'framer-motion'
 import { MdLocationOn, MdWork, MdSchool, MdCode, MdDataUsage, MdTrendingUp } from 'react-icons/md'
-import { CORE_PROFILE_DATA, CORE_SECTION_TITLES } from '../../../lib/consolidatedData'
-import { getAboutProfileData } from '../../../lib/usageFunctions'
+import { CORE_PROFILE_DATA, CORE_SECTION_TITLES, CORE_ABOUT_SECTION } from '../../../lib/consolidatedData'
+import { getAboutProfileData } from '../../../lib/dataFormatters'
 
 export default function AboutSection() {
   const { isCollapsed } = useLayout()
   
-  const skills = ['Python', 'TypeScript', 'React', 'Node.js', 'AWS', 'Docker', 'Kubernetes', 'PostgreSQL']
-  const focusAreas = ['Data Engineering', 'API Development', 'Full-Stack Applications', 'System Design', 'Performance Optimization']
-  
-  // Get profile data for location, experience, and education
-  const { location, experience, education } = getAboutProfileData()
+  // Get profile data for experience and education, contact info for location
+  const { experience, education } = getAboutProfileData()
+  const { location } = CORE_PROFILE_DATA.contact
 
   return (
     <section id="about" className="py-16 min-h-screen">
@@ -25,13 +23,13 @@ export default function AboutSection() {
       )} data-sidebar-collapsed={isCollapsed.toString()}>
         <div>
           <h3 className="text-2xl font-semibold text-[rgb(var(--fg))] mb-4" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-            Senior Software Engineer
+            {CORE_ABOUT_SECTION.title}
           </h3>
           <p className="text-[rgb(var(--muted))] mb-6 leading-relaxed" style={{ fontFamily: '"Inter", sans-serif' }}>
-            I specialize in building scalable data pipelines, reliable APIs, and polished user experiences. With over 8 years of experience in software engineering, I've worked across the full stack to deliver solutions that drive business impact.
+            {CORE_ABOUT_SECTION.description1}
           </p>
           <p className="text-[rgb(var(--muted))] mb-6 leading-relaxed" style={{ fontFamily: '"Inter", sans-serif' }}>
-            My expertise includes Python, TypeScript, React, AWS, and modern data technologies. I'm passionate about clean code, system design, and creating tools that developers love to use.
+            {CORE_ABOUT_SECTION.description2}
           </p>
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-[rgb(var(--muted))]">
@@ -55,7 +53,7 @@ export default function AboutSection() {
               {CORE_SECTION_TITLES.coreSkills}
             </h4>
             <div className="grid grid-cols-2 gap-3">
-              {skills.map((skill) => (
+              {CORE_ABOUT_SECTION.skills.map((skill) => (
                 <div key={skill} className="p-3 rounded-lg bg-[rgb(var(--hover))] text-center text-[rgb(var(--fg))] font-medium">
                   {skill}
                 </div>
@@ -68,7 +66,7 @@ export default function AboutSection() {
               {CORE_SECTION_TITLES.focusAreas}
             </h4>
             <div className="space-y-2">
-              {focusAreas.map((area) => (
+              {CORE_ABOUT_SECTION.focusAreas.map((area) => (
                 <div key={area} className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-[rgb(var(--accent))] rounded-full"></div>
                   <span className="text-[rgb(var(--muted))]" style={{ fontFamily: '"Inter", sans-serif' }}>{area}</span>

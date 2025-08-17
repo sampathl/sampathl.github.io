@@ -1,7 +1,7 @@
 // Profile, Experience, Education, and Project data getter functions
 // Provides flexible access to profile, experience, education, and project data based on usage context
 
-import { CORE_PROFILE_DATA, CORE_CONTACT_SECTION, CORE_SECTION_TITLES, CORE_EXPERIENCE_DATA, CORE_EDUCATION_DATA, CORE_PROJECTS_DATA, ProfileData, ContactSectionData, SectionTitlesData, ExperienceItem, ExperienceFormat, EducationItem, EducationFormat, ProjectItem, ProjectFormat } from './consolidatedData';
+import { CORE_PROFILE_DATA, CORE_SECTION_TITLES, CORE_EXPERIENCE_DATA, CORE_EDUCATION_DATA, CORE_PROJECTS_DATA, ProfileData, SectionTitlesData, ExperienceItem, ExperienceFormat, EducationItem, EducationFormat, ProjectItem, ProjectFormat } from './consolidatedData';
 
 // ============================================================================
 // PROFILE GETTER FUNCTIONS
@@ -26,7 +26,7 @@ export const getProfileDataByContext = (context: 'hero' | 'header' | 'meta' | 'c
       return {
         name: CORE_PROFILE_DATA.name,
         role: CORE_PROFILE_DATA.role,
-        description: CORE_PROFILE_DATA.longDescription,
+        description: CORE_PROFILE_DATA.shortDescription,
         initials: CORE_PROFILE_DATA.initials
       };
     
@@ -35,30 +35,30 @@ export const getProfileDataByContext = (context: 'hero' | 'header' | 'meta' | 'c
         name: CORE_PROFILE_DATA.name,
         role: CORE_PROFILE_DATA.role,
         description: CORE_PROFILE_DATA.shortDescription,
-        email: CORE_PROFILE_DATA.email,
-        linkedinUrl: CORE_PROFILE_DATA.linkedinUrl
+        email: CORE_PROFILE_DATA.contact.email,
+        linkedinUrl: CORE_PROFILE_DATA.contact.linkedin
       };
     
     case 'meta':
       return {
         title: `${CORE_PROFILE_DATA.name} — ${CORE_PROFILE_DATA.role}`,
-        metaDescription: CORE_PROFILE_DATA.metaDescription,
-        nameSubtitle: CORE_PROFILE_DATA.longDescription
+        metaDescription: CORE_PROFILE_DATA.shortDescription,
+        nameSubtitle: CORE_PROFILE_DATA.role
       };
     
     case 'contact':
       return {
-        email: CORE_PROFILE_DATA.email,
-        linkedinUrl: CORE_PROFILE_DATA.linkedinUrl,
-        githubUrl: CORE_PROFILE_DATA.githubUrl,
-        availableStatus: CORE_PROFILE_DATA.availableStatus,
-        statusDescription: CORE_PROFILE_DATA.statusDescription,
-        responseTimeDescription: CORE_PROFILE_DATA.responseTimeDescription
+        email: CORE_PROFILE_DATA.contact.email,
+        linkedinUrl: CORE_PROFILE_DATA.contact.linkedin,
+        githubUrl: CORE_PROFILE_DATA.contact.github,
+        availableStatus: CORE_PROFILE_DATA.contactSection.status.availableStatus,
+        statusDescription: CORE_PROFILE_DATA.contactSection.status.statusDescription,
+        responseTimeDescription: CORE_PROFILE_DATA.contactSection.status.responseTimeDescription
       };
     
     case 'about':
       return {
-        location: CORE_PROFILE_DATA.location,
+        location: CORE_PROFILE_DATA.contact.location,
         experience: CORE_PROFILE_DATA.experience,
         education: CORE_PROFILE_DATA.education
       };
@@ -77,26 +77,7 @@ export const getProfileField = <K extends keyof ProfileData>(field: K): ProfileD
   return CORE_PROFILE_DATA[field];
 };
 
-// ============================================================================
-// CONTACT SECTION GETTER FUNCTIONS
-// ============================================================================
 
-/**
- * Get contact section data
- * @returns Complete contact section data object
- */
-export const getContactSectionData = (): ContactSectionData => {
-  return CORE_CONTACT_SECTION;
-};
-
-/**
- * Get specific contact section field
- * @param field - Contact section field name
- * @returns Value of the specified contact section field
- */
-export const getContactSectionField = <K extends keyof ContactSectionData>(field: K): ContactSectionData[K] => {
-  return CORE_CONTACT_SECTION[field];
-};
 
 // ============================================================================
 // SECTION TITLES GETTER FUNCTIONS

@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom'
-import { Layout, useLayout } from './components/layout/Layout'
-import SinglePageLayout from './components/layout/SinglePageLayout'
+import { Layout, useLayout } from './components/Layout'
+import SinglePageLayout from './components/SinglePageLayout'
 import Home from './pages/home'
 import Projects from './pages/projects'
 import Project from './pages/projects/Project'
 import Writing from './pages/writing'
 import About from './pages/about'
-import Contact from './pages/contact'
+
 import SinglePage from './pages/single-page'
 
 function AppContent() {
@@ -23,7 +23,7 @@ function AppContent() {
       <Route path="/projects/:slug" element={<Project />} />
       <Route path="/writing" element={<Writing />} />
       <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
+
     </Routes>
   )
 }

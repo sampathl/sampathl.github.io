@@ -1,9 +1,9 @@
-import { useLayout } from '../../../components/layout/Layout'
+import { useLayout } from '../../../components/Layout'
 import { cn } from '../../../lib/cn'
 import { motion } from 'framer-motion'
 import { MdArrowForward } from 'react-icons/md'
 import ProjectAccordion from './ProjectAccordion'
-import { getMultiPageHomeProjectsData } from '../../../lib/usageFunctions'
+import { getMultiPageHomeProjectsData } from '../../../lib/dataFormatters'
 
 // Scroll to section function
 const scrollToSection = (sectionId: string) => {

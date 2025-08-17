@@ -1,59 +1,27 @@
+import React from 'react'
 import { motion } from 'framer-motion'
 import { useParams, Link } from 'react-router-dom'
 import { MdArrowBack, MdCode, MdDataUsage, MdApi, MdCloud, MdAnalytics, MdFolder, MdLink } from 'react-icons/md'
 import { SlSocialGithub } from 'react-icons/sl'
+import { CORE_PROJECT_DETAILS } from '../../../lib/consolidatedData'
 
 export default function ProjectDetail() {
   const { slug } = useParams()
 
-  // Mock project data - in a real app, this would come from an API or data file
-  const projectData = {
-    'data-pipeline': {
-      title: 'Data Pipeline Optimization',
-      description: 'Built a high-performance ETL pipeline using Apache Kafka and Apache Spark, reducing data processing time by 70% and improving reliability through fault-tolerant design patterns.',
-      longDescription: `This project involved designing and implementing a robust data pipeline that processes millions of records daily. The system uses Apache Kafka for real-time data streaming, Apache Spark for distributed processing, and AWS S3 for data storage.
-
-Key achievements include:
-• Reduced data processing time by 70% through optimized Spark configurations
-• Implemented fault-tolerant design patterns ensuring 99.9% uptime
-• Added comprehensive monitoring and alerting using Prometheus and Grafana
-• Automated deployment pipeline using Docker and Kubernetes`,
-      technologies: ['Python', 'Apache Kafka', 'Apache Spark', 'AWS S3', 'Docker', 'Kubernetes', 'Prometheus', 'Grafana'],
-      status: 'completed',
-      icon: MdDataUsage,
-      githubUrl: 'https://github.com/example/data-pipeline',
-      liveUrl: 'https://example.com/data-pipeline',
-      metrics: [
-        { label: 'Processing Time', value: '70% reduction', color: 'text-green-600' },
-        { label: 'Uptime', value: '99.9%', color: 'text-blue-600' },
-        { label: 'Data Volume', value: '10M+ records/day', color: 'text-purple-600' }
-      ]
-    },
-    'analytics-dashboard': {
-      title: 'Real-time Analytics Dashboard',
-      description: 'Developed a real-time analytics platform using React, Node.js, and WebSocket connections, providing live insights into system performance and user behavior metrics.',
-      longDescription: `A comprehensive analytics platform that provides real-time insights into system performance, user behavior, and business metrics. The dashboard features interactive charts, real-time updates, and customizable widgets.
-
-Features include:
-• Real-time data visualization using WebSocket connections
-• Interactive charts and graphs with D3.js
-• Customizable dashboard layouts
-• Role-based access control
-• Export functionality for reports`,
-      technologies: ['React', 'Node.js', 'WebSocket', 'PostgreSQL', 'Redis', 'D3.js', 'TypeScript'],
-      status: 'active',
-      icon: MdAnalytics,
-      githubUrl: 'https://github.com/example/analytics-dashboard',
-      liveUrl: 'https://analytics.example.com',
-      metrics: [
-        { label: 'Real-time Updates', value: '< 100ms latency', color: 'text-green-600' },
-        { label: 'Active Users', value: '500+ daily', color: 'text-blue-600' },
-        { label: 'Data Points', value: '1M+ processed', color: 'text-purple-600' }
-      ]
+  // Helper function to get icon component
+  const getIconComponent = (iconName: string) => {
+    switch (iconName) {
+      case 'data_usage': return MdDataUsage
+      case 'analytics': return MdAnalytics
+      case 'code': return MdCode
+      case 'api': return MdApi
+      case 'cloud': return MdCloud
+      case 'folder': return MdFolder
+      default: return MdDataUsage
     }
   }
 
-  const project = projectData[slug as keyof typeof projectData]
+  const project = CORE_PROJECT_DETAILS[slug as keyof typeof CORE_PROJECT_DETAILS]
 
   if (!project) {
     return (
@@ -101,7 +69,7 @@ Features include:
         >
           <div className="flex items-center gap-4 mb-6">
             <div className="w-16 h-16 bg-[rgb(var(--accent))] rounded-xl flex items-center justify-center text-white">
-              <project.icon className="text-3xl" />
+              {React.createElement(getIconComponent(project.icon), { className: "text-3xl" })}
             </div>
             <div>
               <h1 className="text-4xl font-bold text-[rgb(var(--fg))]" style={{ fontFamily: '"Work Sans", sans-serif' }}>

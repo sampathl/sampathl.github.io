@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
-import { getExperienceData, getEducationData, getProjectData } from '../lib/experienceData'
-import type { PortfolioItem } from '../types/portfolio'
+import { getExperienceData, getEducationData, getProjectData } from '../../../lib/dataAccess'
+import type { PortfolioItem } from './portfolio'
 
 export const usePortfolio = (highlightedSkills: string[] = [], showSkillMapping: boolean = false) => {
   const [activeFilter, setActiveFilter] = useState('All')

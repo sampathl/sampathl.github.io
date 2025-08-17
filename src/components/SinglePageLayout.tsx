@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useLayout } from './Layout'
 import { ThemeToggle } from './Theme'
 import { MdViewList } from 'react-icons/md'
-import SinglePage from '../../pages/single-page'
+import SinglePage from '../pages/single-page'
 
 function FloatingControls() {
   const { setIsSinglePageMode } = useLayout()

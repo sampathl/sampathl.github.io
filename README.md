@@ -64,7 +64,7 @@ src/
 │   ├── contact/                 # Contact page
 │   │   ├── components/          # Contact components
 │   │   │   └── ContactSection.tsx   # Contact form and info
-│   │   ├── Contact.tsx          # Contact page
+
 │   │   └── index.ts             # Export file
 │   │
 │   └── writing/                 # Writing page

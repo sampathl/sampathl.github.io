@@ -1,4 +1,4 @@
-import { useLayout } from '../../../components/layout/Layout'
+import { useLayout } from '../../../components/Layout'
 import { cn } from '../../../lib/cn'
 import { motion } from 'framer-motion'
 import { CORE_PROFILE_DATA } from '../../../lib/consolidatedData'
@@ -40,8 +40,8 @@ export default function HeroSection() {
             {CORE_PROFILE_DATA.name}
           </h1>
           <div className="text-xl lg:text-2xl text-white/90 mb-8 drop-shadow-lg" style={{ fontFamily: '"Inter", sans-serif' }}>
-            <div>{CORE_PROFILE_DATA.longDescription.split('\n')[0]}</div>
-            <div>{CORE_PROFILE_DATA.longDescription.split('\n')[1]}</div>
+                    <div>{CORE_PROFILE_DATA.role}</div>
+        <div>{CORE_PROFILE_DATA.shortDescription}</div>
           </div>
         </div>
         

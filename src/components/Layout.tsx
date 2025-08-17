@@ -1,12 +1,12 @@
 import { Link, NavLink } from 'react-router-dom'
 import { ThemeProvider, ThemeToggle } from './Theme'
 import { useState, useEffect, createContext, useContext } from 'react'
-import { cn } from '../../lib/cn'
+import { cn } from '../lib/cn'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
 import { MdViewList, MdFullscreen, MdMenu, MdChevronRight, MdChevronLeft, MdHome, MdWork, MdFolder, MdPerson, MdEmail } from 'react-icons/md'
-import { NAV_ITEMS, BREAKPOINTS, SCROLL_OFFSET } from '../../lib/constants'
-import { CORE_PROFILE_DATA } from '../../lib/consolidatedData'
+import { NAV_ITEMS, BREAKPOINTS, SCROLL_OFFSET } from '../lib/navigation'
+import { CORE_PROFILE_DATA } from '../lib/consolidatedData'
 
 // Enhanced context for layout state
 interface LayoutContextType {

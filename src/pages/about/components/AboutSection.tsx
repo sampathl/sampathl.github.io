@@ -1,57 +1,20 @@
+import React from 'react'
 import { motion } from 'framer-motion'
 import { MdLocationOn, MdWork, MdSchool, MdCode, MdDataUsage, MdTrendingUp } from 'react-icons/md'
-import { getMultiPageAboutEducationData } from '../../../lib/usageFunctions'
+import { getMultiPageAboutEducationData } from '../../../lib/dataFormatters'
+import { CORE_ABOUT_SECTION } from '../../../lib/consolidatedData'
 import type { EducationItem } from '../../../lib/consolidatedData'
 
 export default function AboutSection() {
-  const focusAreas = [
-    {
-      icon: MdDataUsage,
-      title: 'Data Engineering',
-      description: 'Building scalable data pipelines and ETL processes for large-scale data processing.'
-    },
-    {
-      icon: MdCode,
-      title: 'API Development',
-      description: 'Creating robust, high-performance REST APIs and microservices architecture.'
-    },
-    {
-      icon: MdTrendingUp,
-      title: 'Full-Stack Applications',
-      description: 'Developing end-to-end solutions with modern frontend and backend technologies.'
-    },
-    {
-      icon: MdDataUsage,
-      title: 'System Design',
-      description: 'Architecting scalable systems and optimizing performance for production environments.'
-    },
-    {
-      icon: MdTrendingUp,
-      title: 'Performance Optimization',
-      description: 'Improving application performance through code optimization and infrastructure tuning.'
+  // Helper function to get icon component
+  const getIconComponent = (iconName: string) => {
+    switch (iconName) {
+      case 'data_usage': return MdDataUsage
+      case 'code': return MdCode
+      case 'trending_up': return MdTrendingUp
+      default: return MdDataUsage
     }
-  ]
-
-  const experience = [
-    {
-      year: '2023 - Present',
-      title: 'Senior Software Engineer',
-      company: 'Tech Company',
-      description: 'Leading development of data processing pipelines and API services. Mentoring junior developers and implementing best practices.'
-    },
-    {
-      year: '2021 - 2023',
-      title: 'Software Engineer',
-      company: 'Startup',
-      description: 'Built full-stack applications using React, Node.js, and cloud services. Contributed to system architecture decisions.'
-    },
-    {
-      year: '2019 - 2020',
-      title: 'Junior Developer',
-      company: 'Digital Agency',
-      description: 'Developed responsive websites and e-commerce solutions. Collaborated with design team on UX improvements.'
-    }
-  ]
+  }
 
   // Get education data from consolidated source
   const { education } = getMultiPageAboutEducationData()
@@ -67,11 +30,10 @@ export default function AboutSection() {
           className="text-center mb-16"
         >
           <h1 className="text-5xl font-bold text-[rgb(var(--fg))] mb-6" style={{ fontFamily: '"Work Sans", sans-serif' }}>
-            About Me
+            {CORE_ABOUT_SECTION.pageTitle}
           </h1>
           <p className="text-xl text-[rgb(var(--muted))] max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: '"Inter", sans-serif' }}>
-            I'm a Senior Software Engineer passionate about building scalable data pipelines, reliable APIs, and polished user experiences. 
-            With over 8 years of experience, I've worked across the full stack to deliver solutions that drive business impact.
+            {CORE_ABOUT_SECTION.pageDescription}
           </p>
         </motion.div>
 
@@ -85,17 +47,17 @@ export default function AboutSection() {
           <div className="bg-[rgb(var(--surface))] border border-[rgb(var(--secondary))] rounded-xl p-6 text-center">
             <MdLocationOn className="text-3xl text-[rgb(var(--accent))] mx-auto mb-3" />
             <h3 className="text-lg font-semibold text-[rgb(var(--fg))] mb-2">Location</h3>
-            <p className="text-[rgb(var(--muted))]">San Francisco, CA</p>
+            <p className="text-[rgb(var(--muted))]">{CORE_ABOUT_SECTION.personalInfo.location}</p>
           </div>
           <div className="bg-[rgb(var(--surface))] border border-[rgb(var(--secondary))] rounded-xl p-6 text-center">
             <MdWork className="text-3xl text-[rgb(var(--accent))] mx-auto mb-3" />
             <h3 className="text-lg font-semibold text-[rgb(var(--fg))] mb-2">Experience</h3>
-            <p className="text-[rgb(var(--muted))]">8+ years</p>
+            <p className="text-[rgb(var(--muted))]">{CORE_ABOUT_SECTION.personalInfo.experience}</p>
           </div>
           <div className="bg-[rgb(var(--surface))] border border-[rgb(var(--secondary))] rounded-xl p-6 text-center">
             <MdSchool className="text-3xl text-[rgb(var(--accent))] mx-auto mb-3" />
             <h3 className="text-lg font-semibold text-[rgb(var(--fg))] mb-2">Education</h3>
-            <p className="text-[rgb(var(--muted))]">Master's Degree</p>
+            <p className="text-[rgb(var(--muted))]">{CORE_ABOUT_SECTION.personalInfo.education}</p>
           </div>
         </motion.div>
 
@@ -110,7 +72,7 @@ export default function AboutSection() {
             Focus Areas
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {focusAreas.map((area, index) => (
+            {CORE_ABOUT_SECTION.detailedFocusAreas.map((area, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -119,7 +81,7 @@ export default function AboutSection() {
                 className="bg-[rgb(var(--surface))] border border-[rgb(var(--secondary))] rounded-xl p-6 hover:border-[rgb(var(--accent))] transition-colors"
               >
                 <div className="w-12 h-12 bg-[rgb(var(--accent))] rounded-lg flex items-center justify-center text-white mb-4">
-                  <area.icon className="text-2xl" />
+                  {React.createElement(getIconComponent(area.icon), { className: "text-2xl" })}
                 </div>
                 <h3 className="text-xl font-semibold text-[rgb(var(--fg))] mb-3">{area.title}</h3>
                 <p className="text-[rgb(var(--muted))] leading-relaxed">{area.description}</p>
@@ -139,7 +101,7 @@ export default function AboutSection() {
             Core Skills
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {['Python', 'TypeScript', 'React', 'Node.js', 'AWS', 'Docker', 'Kubernetes', 'PostgreSQL'].map((skill, index) => (
+            {CORE_ABOUT_SECTION.skills.map((skill, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -164,7 +126,7 @@ export default function AboutSection() {
             Experience
           </h2>
           <div className="space-y-6">
-            {experience.map((exp, index) => (
+            {CORE_ABOUT_SECTION.aboutExperience.map((exp, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -20 }}

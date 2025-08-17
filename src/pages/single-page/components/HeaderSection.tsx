@@ -19,20 +19,20 @@ export default function HeaderSection() {
           
           <div className="flex items-center justify-center gap-4 flex-wrap">
             <a
-              href={`mailto:${CORE_PROFILE_DATA.email}`}
+              href={`mailto:${CORE_PROFILE_DATA.contact.email}`}
               className="flex items-center gap-2 hover:text-[rgb(var(--accent))] transition-colors"
             >
               <MdEmail className="text-lg" />
-              {CORE_PROFILE_DATA.email}
+              {CORE_PROFILE_DATA.contact.email}
             </a>
             <a
-              href={`https://${CORE_PROFILE_DATA.linkedinUrl}`}
+              href={CORE_PROFILE_DATA.contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 hover:text-[rgb(var(--accent))] transition-colors"
             >
               <FaLinkedin className="text-lg" />
-              {CORE_PROFILE_DATA.linkedinUrl}
+              {CORE_PROFILE_DATA.contact.linkedin}
             </a>
           </div>
         </div>

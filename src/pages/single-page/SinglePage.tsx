@@ -4,7 +4,7 @@ import { useState } from 'react'
 import HeaderSection from './components/HeaderSection'
 import PortfolioSection from './components/PortfolioSection'
 import SkillsSection from './components/SkillsSection'
-import { CORE_PROFILE_DATA } from '../../lib/consolidatedData'
+import { CORE_PROFILE_DATA, CORE_SKILLS_SECTION } from '../../lib/consolidatedData'
 
 export default function SinglePage() {
   const [highlightedSkills, setHighlightedSkills] = useState<string[]>([])
@@ -19,13 +19,11 @@ export default function SinglePage() {
       // Turn on skill mapping
       const allSkills = [
         // Primary skills
-        'TypeScript', 'React', 'Python', 'pandas', 'FastAPI',
+        ...CORE_SKILLS_SECTION.primary.map(skill => skill.name),
         // Secondary skills  
-        'Microservices', 'Data Pipelines', 'AWS', 'GCP', 'Node.js',
+        ...CORE_SKILLS_SECTION.secondary.map(skill => skill.name),
         // Worked with skills
-        'Docker', 'Kubernetes', 'PostgreSQL', 'MongoDB', 'Redis',
-        'GraphQL', 'REST APIs', 'CI/CD', 'Terraform', 'Airflow',
-        'Jupyter', 'Scikit-learn', 'Tailwind CSS', 'Material-UI',
+        ...CORE_SKILLS_SECTION.workedWith,
         // Education skills
         'Matlab'
       ]
@@ -39,7 +37,7 @@ export default function SinglePage() {
     <div style={{ fontFamily: '"Work Sans", "Inter", sans-serif' }}>
       <Helmet>
         <title>Sampath Lakkaraju — Portfolio</title>
-        <meta name="description" content={CORE_PROFILE_DATA.metaDescription} />
+        <meta name="description" content={CORE_PROFILE_DATA.shortDescription} />
       </Helmet>
 
       <motion.div

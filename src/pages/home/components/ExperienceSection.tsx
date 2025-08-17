@@ -1,7 +1,7 @@
-import { useLayout } from '../../../components/layout/Layout'
+import { useLayout } from '../../../components/Layout'
 import { cn } from '../../../lib/cn'
 import ExpandableExperience from './ExpandableExperience'
-import { getMultiPageHomeExperienceData } from '../../../lib/usageFunctions'
+import { getMultiPageHomeExperienceData } from '../../../lib/dataFormatters'
 
 export default function ExperienceSection() {
   const { isCollapsed } = useLayout()

@@ -1,5 +1,5 @@
 import { MdPsychology, MdCode, MdBuild, MdDataObject } from 'react-icons/md'
-import { CORE_SECTION_TITLES } from '../../../lib/consolidatedData'
+import { CORE_SECTION_TITLES, CORE_SKILLS_SECTION } from '../../../lib/consolidatedData'
 
 interface SkillsSectionProps {
   onShowMe: () => void
@@ -7,28 +7,7 @@ interface SkillsSectionProps {
 }
 
 export default function SkillsSection({ onShowMe, isActive }: SkillsSectionProps) {
-  // Skills data with years of experience based on user's actual stack
-  const skillsData = {
-    primary: [
-      { name: 'Python', years: 5 },
-      { name: 'TypeScript', years: 4 },
-      { name: 'React', years: 4 },
-      { name: 'pandas', years: 4 },
-      { name: 'FastAPI', years: 3 },
-    ],
-    secondary: [
-      { name: 'Microservices', years: 3 },
-      { name: 'Data Pipelines', years: 3 },
-      { name: 'AWS', years: 3 },
-      { name: 'Node.js', years: 3 },
-      { name: 'GCP', years: 2 },
-    ],
-    workedWith: [
-      'Docker', 'Kubernetes', 'PostgreSQL', 'MongoDB', 'Redis',
-      'GraphQL', 'REST APIs', 'CI/CD', 'Terraform', 'Airflow',
-      'Jupyter', 'Scikit-learn', 'Tailwind CSS', 'Material-UI'
-    ]
-  }
+  const skillsData = CORE_SKILLS_SECTION
 
   return (
     <div className="lg:sticky lg:top-24">

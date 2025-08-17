@@ -11,7 +11,7 @@ export default function Home() {
     <div style={{ fontFamily: '"Work Sans", "Inter", sans-serif' }}>
       <Helmet>
         <title>{`${CORE_PROFILE_DATA.name} — ${CORE_PROFILE_DATA.role}`}</title>
-        <meta name="description" content={CORE_PROFILE_DATA.metaDescription} />
+        <meta name="description" content={CORE_PROFILE_DATA.shortDescription} />
       </Helmet>
 
       <HeroSection />

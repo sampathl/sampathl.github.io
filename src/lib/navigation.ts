@@ -7,7 +7,7 @@ export const NAV_ITEMS = [
   { to: '/', label: CORE_SECTION_TITLES.projects, icon: 'folder', section: 'projects' },
   // { to: '/', label: 'Writing', icon: 'edit', section: 'writing' },
   { to: '/', label: CORE_SECTION_TITLES.about, icon: 'person', section: 'about' },
-  { to: '/', label: CORE_SECTION_TITLES.contact, icon: 'email', section: 'contact' },
+  { to: '/', label: 'Get In Touch', icon: 'email', section: 'contact' },
 ] as const;
 
 // Breakpoint constants
