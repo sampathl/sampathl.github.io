@@ -103,7 +103,14 @@ function ListItem({
           </p>
         </div>
         
-        <p className="text-[rgb(var(--fg))] leading-relaxed mt-3">{item.description}</p>
+        <div className="mt-3">
+          {item.description.split(';').map((part, index) => (
+            <div key={index} className="flex items-start gap-2 mb-2">
+              <div className="w-2 h-2 bg-[rgb(var(--accent))] rounded-full mt-2 flex-shrink-0"></div>
+              <p className="text-[rgb(var(--fg))] leading-relaxed">{part.trim()}</p>
+            </div>
+          ))}
+        </div>
         
         {/* Technologies tags - only show when skill mapping is active */}
         {showSkillMapping && (

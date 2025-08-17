@@ -123,46 +123,42 @@ export const CORE_SKILLS_SECTION = {
     'React': 4,
     'AWS': 7,
     'SQL': 6,
-    'REST APIs': 6,
     'GCP': 2,
   },
   
   // Worked with skills (technologies used but not primary focus)  
   //TODO: make it better along with the technologies stack. 
   workedWith: {
-    'Docker': 3,
-    'Kubernetes': 3,
-    'PostgreSQL': 3,
+    'Flask': 4,
+    'FastAPI': 2,
+    'SQLAlchemy': 2,
+    'Docker': 2,
+    'PostgreSQL': 2,
     'MongoDB': 3,
     'Redis': 3,
-    'GraphQL': 2,
+    'REST APIs': 6,
     
     'CI/CD': 2,
-    'Terraform': 2,
     'Airflow': 2,
     'Jupyter': 2,
-    'Scikit-learn': 2,
     'Tailwind CSS': 2,
     'Material-UI': 2,
-    'Apache Kafka': 2,
     'Apache Spark': 2,
-    'PySpark': 2,
     'Hive': 2,
     'HDFS': 2,
-    'MySQL': 2,
+    'MySQL': 5,
+    'Oracle': 4,
     'Snowflake': 2,
-    'S3': 2,
-    'Lambda': 2,
+    'S3': 5,
+    'Lambda': 5,
     'SQS': 2,
     'Step Functions': 2,
     'EMR': 2,
-    'WebSocket': 2,
     'TensorFlow': 2,
     'JWT': 2,
     'Swagger': 2,
-    'Stripe': 2,
     'Redux': 2,
-    'Matlab': 1
+    'Matlab': 4
   }
 } as const;
 
@@ -233,7 +229,7 @@ export const CORE_EDUCATION_DATA = [
     dates: "2017 - 2019",
     description: "Corse Work: Cloud Computing, UI-UX engineering, Virtualization, Distributed Systems, Object Oriented Programming and Data Structures, Autonomous Cars, Machine learning, Software Quality Assurance and Testing",
     technologies: ["Python", "AWS", "SQL", "JavaScript", "C++", "Linux"],
-    focusAreas: ["Software Engineering", "UI-UX design and development", "Software Quality Assurance",  "Machine Learning"]
+    focusAreas: ["Software Engineering", "UI-UX", "Quality Assurance",  "Machine Learning"]
   },
   {
     id: "edu-2",
@@ -287,7 +283,7 @@ export const CORE_PROJECTS_DATA = [
     status: "disabled" as const,
     icon: "self_improvement",
     metric: "Daily usage across 3 reflection modes and 5+ habit types",
-    focusAreas: ["Self-Tracking", "Behavioral Design", "Frontend UX"],
+    focusAreas: ["Self-Tracking", "Behavioral Design", "Mobile App"],
     featured: true
   },
   {
