@@ -19,7 +19,34 @@ export const UI_STRINGS = {
   // About Section
   about: {
     description: "I'm a Senior Software Engineer with over 9 years of experience building scalable applications and data pipelines. I specialize in Python, React, and cloud technologies, with a focus on creating efficient, maintainable solutions that solves real-world problems.",
-    focusAreas: [ "Full-Stack Development", "Data Pipelines", "API Design", "System Architecture", "Performance Optimization"]
+    focusAreas: [ "Full-Stack Development", "Data Pipelines", "API Design", "System Architecture", "Performance Optimization"],
+    hobbies: "When I'm am not working, I enjoy traveling especially by road, hiking and camping. Food, music and stories in any form are pleasures of life I actively seek. My latest relaxation is exploring generative AI and discovering use cases across different domains."
+  },
+
+  // Contact Section
+  contactSection: {
+    // Basic UI elements
+    ui: {
+      title: "Get In Touch",
+      description1: "I'm always interested in hearing about new opportunities, interesting projects, or just connecting with fellow developers and designers.",
+      description2: "Whether you have a question about my work, want to collaborate on something, or just want to say hello, feel free to reach out."
+    },
+    
+    // Form labels
+    labels: {
+      email: "Email",
+      linkedin: "LinkedIn",
+      github: "GitHub",
+      currentStatus: "Current Status",
+      responseTime: "Response Time"
+    },
+    
+    // Status information
+    status: {
+      availableStatus: "Available for new opportunities",
+      statusDescription: "Open to full-time roles and interesting side projects.",
+      responseTimeDescription: "I typically respond to messages within 48 hours during weekdays. For urgent matters, feel free to reach out on LinkedIn."
+    }
   },
 
   // Section Titles
@@ -28,7 +55,7 @@ export const UI_STRINGS = {
     about: "About Me",
     experience: "Experience",
     education: "Education",
-    projects: "Featured Projects",
+    projects: "Projects",
     skills: "Skills",
     portfolio: "Portfolio",
     writing: "Writing & Articles",
@@ -82,32 +109,7 @@ export const CORE_PROFILE_DATA = {
     github: "https://github.com/sampathl"
   },
   
-  // Contact section UI content
-  contactSection: {
-    // Basic UI elements
-    ui: {
-      title: "Get In Touch",
-      subtitle: "Let's Work Together",
-      description1: "I'm always interested in hearing about new opportunities, interesting projects, or just connecting with fellow developers and designers.",
-      description2: "Whether you have a question about my work, want to collaborate on something, or just want to say hello, feel free to reach out."
-    },
-    
-    // Form labels
-    labels: {
-      email: "Email",
-      linkedin: "LinkedIn",
-      github: "GitHub",
-      currentStatus: "Current Status",
-      responseTime: "Response Time"
-    },
-    
-    // Status information
-    status: {
-      availableStatus: "Available for new opportunities",
-      statusDescription: "Open to full-time roles and interesting side projects.",
-      responseTimeDescription: "I typically respond to messages within 48 hours during weekdays. For urgent matters, feel free to reach out on LinkedIn."
-    }
-  }
+
 } as const;
 
 // Profile data types
@@ -123,12 +125,13 @@ export const CORE_SKILLS_SECTION = {
     'React': 4,
     'AWS': 7,
     'SQL': 6,
-    'GCP': 2,
+    
   },
   
   // Worked with skills (technologies used but not primary focus)  
   //TODO: make it better along with the technologies stack. 
   workedWith: {
+    'GCP': 2,
     'Flask': 4,
     'FastAPI': 2,
     'SQLAlchemy': 2,
@@ -171,7 +174,7 @@ export const CORE_EXPERIENCE_DATA = [
     id: "1",
     title: "Senior Software Engineer",
     company: "Franklin Templeton",
-    details: "Re-Designed microservice operations into modular handlers; Deployed Airflow DAGs for OLAP operations",
+    details: "Refactored tightly coupled microservice operations into modular handlers; Deployed Airflow DAGs for OLAP operations",
     fields: "Backend & Data ",
     logo: "/images/companies/franklin-templeton.svg",
     fromDate: "June 2025",
@@ -278,7 +281,7 @@ export const CORE_PROJECTS_DATA = [
     title: "Personal Tracking & Support App - Uhhum",
     organization: "Personal Project",
     dates: "2024",
-    description: "Designed a personal habit tracking and reflection tool to support mindfulness, daily journaling, and self-monitoring; Implemented modular frontend in React for logging, reminders, and weekly reviews; Developed backend using Python and Flask with user authentication and local storage integration",
+    description: "Will design a personal habit tracking and reflection tool to support mindfulness, daily journaling, and self-monitoring; Will implement modular frontend in React for logging, reminders, and weekly reviews; Will develop backend using Python and Flask with user authentication and local storage integration",
     technologies: ["React", "TypeScript", "Flask", "Python", "SQLite", "Tailwind CSS"],
     status: "disabled" as const,
     icon: "self_improvement",

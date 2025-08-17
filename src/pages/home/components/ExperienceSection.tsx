@@ -9,7 +9,7 @@ export default function ExperienceSection() {
   const { experiences } = getMultiPageHomeExperienceData()
   
   return (
-    <section id="experience" className="py-16 min-h-screen">
+    <section id="experience" className="py-12">
       <h2 className="text-3xl font-bold text-[rgb(var(--fg))] mb-8" style={{ fontFamily: '"Work Sans", sans-serif' }}>
         Experience
       </h2>

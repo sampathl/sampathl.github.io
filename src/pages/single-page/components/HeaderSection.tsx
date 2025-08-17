@@ -1,4 +1,4 @@
-import { FaLinkedin } from 'react-icons/fa'
+import { FaLinkedin, FaGithub } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import { CORE_PROFILE_DATA } from '../../../lib/consolidatedData'
 
@@ -33,6 +33,15 @@ export default function HeaderSection() {
             >
               <FaLinkedin className="text-lg" />
               {CORE_PROFILE_DATA.contact.linkedin}
+            </a>
+            <a
+              href={CORE_PROFILE_DATA.contact.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-[rgb(var(--accent))] transition-colors"
+            >
+              <FaGithub className="text-lg" />
+              {CORE_PROFILE_DATA.contact.github}
             </a>
           </div>
         </div>

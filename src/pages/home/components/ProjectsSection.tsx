@@ -26,7 +26,7 @@ export default function ProjectsSection() {
   const { title, description, viewAllButton, projects } = getMultiPageHomeProjectsData()
 
   return (
-    <section id="projects" className="py-16 min-h-screen">
+    <section id="projects" className="py-12">
       <h2 className="text-3xl font-bold text-[rgb(var(--fg))] mb-8" style={{ fontFamily: '"Work Sans", sans-serif' }}>
         {title}
       </h2>

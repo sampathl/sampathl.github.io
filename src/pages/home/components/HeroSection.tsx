@@ -7,7 +7,7 @@ export default function HeroSection() {
   const { isCollapsed } = useLayout()
   
   return (
-    <section id="hero" className="pt-8 pb-32 min-h-screen flex flex-col justify-center">
+    <section id="hero" className="pt-8 pb-16 flex flex-col justify-center">
       {/* Hero Pane with Images and Overlay */}
       <div className={cn(
         "hero-pane relative h-96 lg:h-[500px] rounded-3xl overflow-hidden bg-gradient-to-br from-[rgb(var(--surface))] to-[rgb(var(--hover))] border border-[rgb(var(--secondary))] shadow-2xl content-pane",

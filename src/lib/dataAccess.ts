@@ -51,9 +51,9 @@ export const getProfileDataByContext = (context: 'hero' | 'header' | 'meta' | 'c
         email: CORE_PROFILE_DATA.contact.email,
         linkedinUrl: CORE_PROFILE_DATA.contact.linkedin,
         githubUrl: CORE_PROFILE_DATA.contact.github,
-        availableStatus: CORE_PROFILE_DATA.contactSection.status.availableStatus,
-        statusDescription: CORE_PROFILE_DATA.contactSection.status.statusDescription,
-        responseTimeDescription: CORE_PROFILE_DATA.contactSection.status.responseTimeDescription
+        availableStatus: UI_STRINGS.contactSection.status.availableStatus,
+        statusDescription: UI_STRINGS.contactSection.status.statusDescription,
+        responseTimeDescription: UI_STRINGS.contactSection.status.responseTimeDescription
       };
     
     case 'about':

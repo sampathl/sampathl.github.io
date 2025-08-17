@@ -106,8 +106,8 @@ export default function ExpandableExperience({ experiences }: Props) {
                   <div className="pt-4">
                     <ul className="space-y-2">
                       {experience.details.split(';').map((detail, index) => (
-                        <li key={index} className="flex items-start gap-2 text-[rgb(var(--fg))] leading-relaxed">
-                          <span className="text-[rgb(var(--accent))] mt-1">•</span>
+                        <li key={index} className="flex items-center gap-2 text-[rgb(var(--fg))] leading-relaxed">
+                          <span className="text-[rgb(var(--accent))]">•</span>
                           <span>{detail.trim()}</span>
                         </li>
                       ))}

@@ -13,7 +13,7 @@ export default function AboutSection() {
   const { location } = CORE_PROFILE_DATA.contact
 
   return (
-    <section id="about" className="py-16 min-h-screen">
+    <section id="about" className="py-12">
       <h2 className="text-3xl font-bold text-[rgb(var(--fg))] mb-8" style={{ fontFamily: '"Work Sans", sans-serif' }}>
         {UI_STRINGS.sectionTitles.about}
       </h2>
@@ -25,13 +25,23 @@ export default function AboutSection() {
           <h3 className="text-2xl font-semibold text-[rgb(var(--fg))] mb-4" style={{ fontFamily: '"Work Sans", sans-serif' }}>
             {CORE_PROFILE_DATA.role}
           </h3>
-          <p className="text-[rgb(var(--muted))] mb-6 leading-relaxed" style={{ fontFamily: '"Inter", sans-serif' }}>
+          <div className="mb-6">
             {UI_STRINGS.about.description.split(';').map((part, index) => (
               <p key={index} className="text-[rgb(var(--muted))] mb-6 leading-relaxed" style={{ fontFamily: '"Inter", sans-serif' }}>
                 {part.trim()}
               </p>
             ))}
-          </p>
+          </div>
+          
+          {/* Hobbies Section */}
+          <div className="mb-6">
+            <h4 className="text-lg font-semibold text-[rgb(var(--fg))] mb-3" style={{ fontFamily: '"Work Sans", sans-serif' }}>
+              Hobbies & Interests
+            </h4>
+            <p className="text-[rgb(var(--muted))] leading-relaxed" style={{ fontFamily: '"Inter", sans-serif' }}>
+              When I'm not working, I enjoy traveling especially by road, hiking and camping. Food, music and stories in any form are pleasures of life I actively seek. My latest relaxation is exploring generative AI and discovering use cases across different domains.
+            </p>
+          </div>
           
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-[rgb(var(--muted))]">
