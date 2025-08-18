@@ -304,22 +304,12 @@ function Sidebar({
               onClick={() => setIsMobileOpen(false)}
               style={{ fontFamily: '"Work Sans", sans-serif' }}
             >
-              {/* Avatar - Shows image when not on home, initials when on home */}
+              {/* Avatar - Always shows SL initials */}
               <div className={cn(
                 "w-10 h-10 rounded-xl flex items-center justify-center font-bold text-lg transition-all duration-300 overflow-hidden",
-                activeSection === 'hero' 
-                  ? "bg-[rgb(var(--accent))] text-[rgb(var(--bg))]" 
-                  : "bg-[rgb(var(--surface))] border border-[rgb(var(--secondary))]"
+                "bg-[rgb(var(--accent))] text-[rgb(var(--bg))]"
               )}>
-                {activeSection === 'hero' ? (
-                  'SL'
-                ) : (
-                  <img 
-                    src="/images/profile-placeholder.svg" 
-                    alt="Sampath Lakkaraju" 
-                    className="w-full h-full object-cover"
-                  />
-                )}
+                SL
               </div>
               {!isCollapsed && <span>Sampath Lakkaraju</span>}
             </Link>
