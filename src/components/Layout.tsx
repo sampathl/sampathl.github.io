@@ -315,7 +315,7 @@ function Sidebar({
                   'SL'
                 ) : (
                   <img 
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face&auto=format" 
+                    src="/images/profile-placeholder.svg" 
                     alt="Sampath Lakkaraju" 
                     className="w-full h-full object-cover"
                   />

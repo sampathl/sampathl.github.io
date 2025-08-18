@@ -16,7 +16,7 @@ export default function HeroSection() {
         {/* Light Theme Image */}
         <div className="absolute inset-0 transition-opacity duration-500" data-theme="light">
           <img 
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=face&auto=format" 
+            src="/images/hero-placeholder.svg" 
             alt={`${CORE_PROFILE_DATA.name} - Light Theme`}
             className="w-full h-full object-cover opacity-100"
           />
@@ -25,7 +25,7 @@ export default function HeroSection() {
         {/* Dark Theme Image */}
         <div className="absolute inset-0 transition-opacity duration-500 opacity-0" data-theme="dark">
           <img 
-            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=600&fit=crop&crop=face&auto=format" 
+            src="/images/hero-placeholder.svg" 
             alt={`${CORE_PROFILE_DATA.name} - Dark Theme`}
             className="w-full h-full object-cover"
           />
