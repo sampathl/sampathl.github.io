@@ -2,7 +2,7 @@
   "name": "sampath-portfolio",
   "private": true,
   "version": "0.1.0",
-  "homepage": "https://sampathl.github.io/Portfolio",
+  "homepage": "https://sampathl.github.io",
   "type": "module",
   "scripts": {
     "dev": "vite",

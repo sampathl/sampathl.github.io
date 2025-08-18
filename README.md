@@ -10,6 +10,7 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 - **Smooth Animations**: Powered by Framer Motion
 - **TypeScript**: Full type safety throughout the application
 - **Modern UI**: Clean, professional design with Tailwind CSS
+- **GitHub Pages Ready**: Configured for seamless deployment
 
 ## 🏗️ Project Structure
 
@@ -43,7 +44,7 @@ src/
 - **TypeScript** - Type safety and better developer experience
 - **Tailwind CSS** - Utility-first CSS framework
 - **Framer Motion** - Animation library for smooth transitions
-- **React Router** - Client-side routing
+- **React Router** - Client-side routing (HashRouter for GitHub Pages compatibility)
 - **React Icons** - Icon library
 - **Vite** - Fast build tool and development server
 
@@ -73,7 +74,10 @@ src/
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
+- `npm run deploy` - Deploy to GitHub Pages
+- `npm run test` - Run tests
+- `npm run test:ui` - Run tests with UI
+- `npm run test:coverage` - Run tests with coverage
 
 ## 🎨 Customization
 
@@ -111,12 +115,92 @@ src/
 
 ## 🚀 Deployment
 
+### GitHub Pages Deployment (Recommended)
+
+This portfolio is configured for GitHub Pages deployment with the following setup:
+
+1. **Repository Configuration**
+   - Repository name: `Portfolio` (or your preferred name)
+   - GitHub Pages source: `gh-pages` branch
+   - Base URL: `/Portfolio/` (configured in `vite.config.ts`)
+
+2. **Deploy Command**
+   ```bash
+   npm run deploy
+   ```
+   This will:
+   - Build the project for production
+   - Deploy to the `gh-pages` branch
+   - Make it available at `https://yourusername.github.io/Portfolio/`
+
+3. **Manual Deployment Steps** (if needed)
+   ```bash
+   npm run build
+   git checkout gh-pages
+   rm -rf *
+   cp -r dist/* .
+   git add .
+   git commit -m "Deploy portfolio"
+   git push origin gh-pages
+   git checkout main
+   ```
+
+### Other Hosting Services
+
 1. **Build the application**
    ```bash
    npm run build
    ```
 
 2. **Deploy the `dist/` folder** to your hosting service
+
+## 🔧 Configuration Files
+
+### Vite Configuration (`vite.config.ts`)
+```typescript
+export default defineConfig({
+  plugins: [react()],
+  base: '/Portfolio/',  // Base path for GitHub Pages
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false
+  }
+})
+```
+
+### Package.json Scripts
+- **Development**: `npm run dev`
+- **Build**: `npm run build`
+- **Deploy**: `npm run deploy` (uses gh-pages package)
+
+## 🐛 Troubleshooting
+
+### Common Issues and Solutions
+
+1. **MIME Type Errors on GitHub Pages**
+   - **Cause**: GitHub Pages trying to serve source TypeScript files
+   - **Solution**: Ensure you're using the built files from the `gh-pages` branch
+
+2. **Routing Not Working on GitHub Pages**
+   - **Cause**: `BrowserRouter` doesn't work on GitHub Pages
+   - **Solution**: This portfolio uses `HashRouter` for GitHub Pages compatibility
+
+3. **Assets Not Loading**
+   - **Cause**: Incorrect base path configuration
+   - **Solution**: Verify `base: '/Portfolio/'` in `vite.config.ts` matches your repository name
+
+4. **Build Failures**
+   - **Cause**: Missing dependencies
+   - **Solution**: Run `npm install` to ensure all packages are installed
+
+### Deployment Checklist
+
+- [ ] Repository name matches the base path in `vite.config.ts`
+- [ ] GitHub Pages is configured to serve from `gh-pages` branch
+- [ ] All dependencies are installed (`npm install`)
+- [ ] Build succeeds locally (`npm run build`)
+- [ ] Deployment completes without errors (`npm run deploy`)
 
 ## 🤝 Contributing
 
@@ -133,3 +217,10 @@ This project is licensed under the MIT License.
 ---
 
 Built with ❤️ by Sampath Lakkaraju
+
+## 📚 Additional Documentation
+
+- [CUSTOMIZATION.md](./CUSTOMIZATION.md) - Detailed customization guide
+- [TESTING.md](./TESTING.md) - Testing setup and guidelines
+- [INTERNATIONALIZATION.md](./INTERNATIONALIZATION.md) - i18n support
+- [LEARNING_JOURNEY.md](./LEARNING_JOURNEY.md) - Development journey and lessons learned
