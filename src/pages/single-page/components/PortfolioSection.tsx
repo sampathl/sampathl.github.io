@@ -63,7 +63,7 @@ function ListItem({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="rounded-lg p-6 mb-4 hover:shadow-lg transition-all duration-200 bg-[rgb(var(--card))]"
+      className="rounded-lg p-6 mb-4 hover:shadow-lg transition-all duration-200"
     >
       <div className="flex-1">
         {/* Top row: Title and Category */}

@@ -262,6 +262,6 @@ export const getProjectById = (id: string): ProjectItem | undefined => {
  * @param status - Project status to filter by
  * @returns Array of project items with the specified status
  */
-export const getProjectByStatus = (status: 'completed' | 'active'): readonly ProjectItem[] => {
+export const getProjectByStatus = (status: 'completed' | 'active' | 'coming-soon'): readonly ProjectItem[] => {
   return CORE_PROJECTS_DATA.filter(item => item.status === status);
 };

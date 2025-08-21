@@ -28,7 +28,7 @@ export default function ContactSection() {
           <div className="space-y-4">
             <a 
               href={`mailto:${CORE_PROFILE_DATA.contact.email}`}
-              className="flex items-center gap-3 p-4 rounded-lg bg-[rgb(var(--hover))] hover:bg-[rgb(var(--accent))]/10 hover:border-[rgb(var(--accent))] border border-transparent transition-all duration-200 cursor-pointer group"
+              className="flex items-center gap-3 p-4 rounded-lg bg-[rgb(var(--surface))] border border-[rgb(var(--secondary))] hover:bg-[rgb(var(--hover))] hover:border-[rgb(var(--accent))] hover:shadow-lg transition-all duration-200 cursor-pointer group"
             >
               <MdEmail className="text-[rgb(var(--accent))] text-xl group-hover:scale-110 transition-transform duration-200" />
               <div>
@@ -40,7 +40,7 @@ export default function ContactSection() {
               href={CORE_PROFILE_DATA.contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 p-4 rounded-lg bg-[rgb(var(--hover))] hover:bg-[rgb(var(--accent))]/10 hover:border-[rgb(var(--accent))] border border-transparent transition-all duration-200 cursor-pointer group"
+              className="flex items-center gap-3 p-4 rounded-lg bg-[rgb(var(--surface))] border border-[rgb(var(--secondary))] hover:bg-[rgb(var(--hover))] hover:border-[rgb(var(--accent))] hover:shadow-lg transition-all duration-200 cursor-pointer group"
             >
               <FaLinkedin className="text-[rgb(var(--accent))] text-xl group-hover:scale-110 transition-transform duration-200" />
               <div>
@@ -52,7 +52,7 @@ export default function ContactSection() {
               href={CORE_PROFILE_DATA.contact.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 p-4 rounded-lg bg-[rgb(var(--hover))] hover:bg-[rgb(var(--accent))]/10 hover:border-[rgb(var(--accent))] border border-transparent transition-all duration-200 cursor-pointer group"
+              className="flex items-center gap-3 p-4 rounded-lg bg-[rgb(var(--surface))] border border-[rgb(var(--secondary))] hover:bg-[rgb(var(--hover))] hover:border-[rgb(var(--accent))] hover:shadow-lg transition-all duration-200 cursor-pointer group"
             >
               <FaGithub className="text-[rgb(var(--accent))] text-xl group-hover:scale-110 transition-transform duration-200" />
               <div>

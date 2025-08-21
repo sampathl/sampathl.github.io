@@ -66,7 +66,7 @@ export default function AboutSection() {
             </h4>
             <div className="grid grid-cols-2 gap-3">
               {Object.keys(CORE_SKILLS_SECTION.skills).map((skill) => (
-                <div key={skill} className="p-3 rounded-lg bg-[rgb(var(--hover))] text-center text-[rgb(var(--fg))] font-medium">
+                <div key={skill} className="p-3 rounded-lg bg-[rgb(var(--surface))] border border-[rgb(var(--secondary))] text-center text-[rgb(var(--fg))] font-medium hover:bg-[rgb(var(--hover))] hover:border-[rgb(var(--accent))] transition-all duration-200">
                   {skill}
                 </div>
               ))}

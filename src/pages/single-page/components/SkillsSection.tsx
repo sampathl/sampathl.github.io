@@ -30,12 +30,12 @@ export default function SkillsSection({ onShowMe, isActive }: SkillsSectionProps
           </button>
           
           {/* Pin animation */}
-          <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-white shadow-lg shadow-white/50 animate-ping"></div>
+          <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-black dark:bg-white shadow-lg shadow-black/50 dark:shadow-white/50 animate-ping"></div>
           
           {/* Tooltip hint */}
-          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-[rgb(var(--card))] text-[rgb(var(--fg))] px-3 py-2 rounded-lg text-xs shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-20">
+          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-[rgb(var(--fg))] text-[rgb(var(--bg))] px-3 py-2 rounded-lg text-xs shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-20">
             {isActive ? 'Hide skill mapping' : 'Map skills to portfolio items'}
-            <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-[rgb(var(--card))]"></div>
+            <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-[rgb(var(--fg))]"></div>
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@ export default function SkillsSection({ onShowMe, isActive }: SkillsSectionProps
         </h3>
         <div className="space-y-2">
           {primarySkills.map((skill: any, index: number) => (
-            <div key={index} className="flex justify-between items-center p-2 rounded-lg bg-[rgb(var(--card))]">
+            <div key={index} className="flex justify-between items-center p-2 rounded-lg">
               <span className="font-medium text-sm">{skill.name}</span>
               <span className="text-xs text-[rgb(var(--muted-foreground))]">{skill.years} years</span>
             </div>
@@ -64,7 +64,7 @@ export default function SkillsSection({ onShowMe, isActive }: SkillsSectionProps
         </h3>
         <div className="space-y-2">
           {secondarySkills.map((skill: any, index: number) => (
-            <div key={index} className="flex justify-between items-center p-2 rounded-lg bg-[rgb(var(--card))]">
+            <div key={index} className="flex justify-between items-center p-2 rounded-lg">
               <span className="font-medium text-sm">{skill.name}</span>
               <span className="text-xs text-[rgb(var(--muted-foreground))]">{skill.years} years</span>
             </div>
@@ -82,7 +82,7 @@ export default function SkillsSection({ onShowMe, isActive }: SkillsSectionProps
           {workedWithSkills.map((skill: string, index: number) => (
             <span 
               key={index}
-              className="px-2 py-1 bg-[rgb(var(--card))] text-[rgb(var(--foreground))] rounded text-xs font-medium"
+              className="px-2 py-1 text-[rgb(var(--foreground))] rounded text-xs font-medium"
             >
               {skill}
             </span>

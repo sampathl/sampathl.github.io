@@ -33,7 +33,7 @@ export default function ProjectsSection() {
     switch (status) {
       case 'completed': return 'Completed'
       case 'active': return 'Active'
-      case 'disabled': return 'Coming Soon'
+      case 'coming-soon': return 'Coming Soon'
       default: return 'Unknown'
     }
   }

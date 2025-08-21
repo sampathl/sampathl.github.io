@@ -16,6 +16,20 @@ export const UI_STRINGS = {
     viewAllButton: "View All Projects →"
   },
 
+  // Animated Project Cards Section
+  animatedProjectCards: {
+    title: "Projects",
+    description: "Explore my latest work in data engineering, API development, and full-stack applications",
+    labels: {
+      technologies: "Technologies"
+    },
+    status: {
+      active: "Active",
+      completed: "Completed",
+      comingSoon: "Coming Soon"
+    }
+  },
+
   // About Section
   about: {
     description: "I'm a Senior Software Engineer with over 9 years of experience building scalable applications and data pipelines. I specialize in Python, React, and cloud technologies, with a focus on creating efficient, maintainable solutions that solves real-world problems.",
@@ -252,9 +266,9 @@ export type EducationFormat = 'detailed' | 'summary' | 'portfolio';
 export const CORE_PROJECTS_DATA = [
   {
     id: "proj-1",
-    title: "Election Info",
+    title: "Election Contestant Information",
     organization: "Personal Project",
-    dates: "2023–2024",
+    dates: "2023 & 2025",
     description: "Developed an automated system that scrapes publicly available Indian election data, generates constituency-wise insights creates GenAI-powered audio and short video content for digital and phone-based delivery across India's electoral divisions.",
     technologies: ["Python", "BeautifulSoup", "GenAI", "gTTS", "MoviePy", "AWS Lambda", "AWS S3"],
     status: "active" as const,
@@ -278,12 +292,12 @@ export const CORE_PROJECTS_DATA = [
   },
   {
     id: "proj-3",
-    title: "Personal Tracking & Support App - Uhhum",
+    title: "Personal Tracking & Support App",
     organization: "Personal Project",
-    dates: "2024",
+    dates: "2025",
     description: "Will design a personal habit tracking and reflection tool to support mindfulness, daily journaling, and self-monitoring; Will implement modular frontend in React for logging, reminders, and weekly reviews; Will develop backend using Python and Flask with user authentication and local storage integration",
     technologies: ["React", "TypeScript", "Flask", "Python", "SQLite", "Tailwind CSS"],
-    status: "disabled" as const,
+    status: "coming-soon" as const,
     icon: "self_improvement",
     metric: "Daily usage across 3 reflection modes and 5+ habit types",
     focusAreas: ["Self-Tracking", "Behavioral Design", "Mobile App"],
@@ -293,10 +307,10 @@ export const CORE_PROJECTS_DATA = [
     id: "proj-4",
     title: "Microservices Architecture",
     organization: "Professional Project",
-    dates: "2023",
+    dates: "2025",
     description: "Designed and implemented a scalable microservices architecture using Docker and Kubernetes, improving system reliability and deployment efficiency.",
     technologies: ["Docker", "Kubernetes", "Node.js", "PostgreSQL", "Redis"],
-    status: "disabled" as const,
+    status: "coming-soon" as const,
     icon: "cloud",
     metric: "Scalable architecture",
     focusAreas: ["System Design", "Performance Optimization", "Architecture"],
@@ -306,10 +320,10 @@ export const CORE_PROJECTS_DATA = [
     id: "proj-5",
     title: "REST API Development",
     organization: "Professional Project",
-    dates: "2023",
+    dates: "2025",
     description: "Built robust REST APIs using FastAPI and Python, implementing authentication, rate limiting, and comprehensive documentation.",
     technologies: ["Python", "FastAPI", "PostgreSQL", "JWT", "Swagger"],
-    status: "disabled" as const,
+    status: "coming-soon" as const,
     icon: "api",
     metric: "Production ready",
     focusAreas: ["API Development", "System Design", "Performance Optimization"],
