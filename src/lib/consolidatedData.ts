@@ -215,7 +215,7 @@ export const CORE_EXPERIENCE_DATA = [
     details:  "Designed and developed customer experience applications; Developed microservices for article recommendation, phone support, ticket dashboards, and support widgets; Developed reusable, internationalized UI components; Optimized data pipelines and PySpark SQL queries",
     fields: "Fullstack & Data",
     logo: "/images/companies/dropbox.svg",
-    fromDate: "February 2024",
+    fromDate: "February 2020",
     toDate: "September 2024",
     technologies: ["Python", "React", "TypeScript", "MySQL", "PySpark", "Apache Hadoop", "AWS", "REST API", "gRPC", "Grafana"],
     focusAreas: ["Full-Stack Applications","Microservices", "Data Engineering", "Service Optimization"]
