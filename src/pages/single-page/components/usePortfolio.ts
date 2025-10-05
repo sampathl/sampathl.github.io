@@ -31,7 +31,7 @@ export const usePortfolio = (showSkillMapping: boolean = false) => {
     }))
     
     // Get project items from consolidated data
-    const projectItems = getProjectData('portfolio').map(item => ({
+    const projectItems = getProjectData('featured').map(item => ({
       id: item.id,
       title: item.title,
       organization: item.organization,
